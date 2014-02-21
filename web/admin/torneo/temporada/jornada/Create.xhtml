@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.JornadaTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.JornadaTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.JornadaCreateTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.ListLink}" action="#{jornadaController.prepareList}" immediate="true"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.JornadaLabel_Ligas}" for="ligaId" />
+                        <h:selectOneMenu id="ligaId" value="#{jornadaController.liga}" 
+                                         title="#{bundle.JornadaTitle_liga}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_liga}"
+                                         style="width: 220px;">
+                            <f:selectItems value="#{jornadaController.ligasAvalaibleSelectOne}"/>
+                            <f:ajax render="temporadaId"/>
+                        </h:selectOneMenu>
+                        
+                        <h:outputLabel value="#{bundle.JornadaLabel_temporada}" for="temporadaId" />
+                        <h:selectOneMenu id="temporadaId" value="#{jornadaController.temporada}" 
+                                         title="#{bundle.JornadaTitle_temporada}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_temporada}"
+                                         disabled="#{jornadaController.temporadaListDisabled}"
+                                         style="width: 220px;">
+                            <f:selectItems value="#{jornadaController.temporadasAvalaibleSelectOne}"/>
+                            <f:ajax render="faseId"/>
+                        </h:selectOneMenu>
+                        
+                        <h:outputLabel value="#{bundle.JornadaLabel_fase}" for="faseId" />
+                        <h:selectOneMenu id="faseId" value="#{jornadaController.fase}" 
+                                         title="#{bundle.JornadaTitle_fase}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_fase}"
+                                         disabled="#{jornadaController.faseListDisabled}"
+                                         style="width: 220px;">
+                            <f:selectItems value="#{jornadaController.fasesAvalaibleSelectOne}"/>
+                            <f:ajax render="grupoId"/>
+                        </h:selectOneMenu>
+                        
+                        <h:outputLabel value="#{bundle.JornadaLabel_grupo}" for="grupoId" />
+                        <h:selectOneMenu id="grupoId" value="#{jornadaController.selected.grupoId}" 
+                                         title="#{bundle.JornadaTitle_grupo}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_grupo}"
+                                         disabled="#{jornadaController.grupoListDisabled}"
+                                         style="width: 220px;">
+                            <f:selectItems value="#{jornadaController.gruposAvalaibleSelectOne}"/>
+                        </h:selectOneMenu>
+
+                        <h:outputLabel value="#{bundle.JornadaLabel_numero}" for="numero" />
+                        <h:inputText id="numero" value="#{jornadaController.selected.numero}" 
+                                     title="#{bundle.JornadaTitle_numero}"
+                                     style="width: 60px;">
+                            <f:convertNumber integerOnly="true"/>
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:panelGrid columns="3">
+                        <h:commandButton action="#{jornadaController.create}" value="#{bundle.OKLink}" />
+                        <h:outputText value="&nbsp;"/>
+                        <h:commandButton action="#{jornadaController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

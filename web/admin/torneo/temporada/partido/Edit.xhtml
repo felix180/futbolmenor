@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.PartidoTitle}"/>
+        </ui:define>
+
+        <ui:define name="top">
+            <h1><h:outputText value="#{bundle.PartidoTitle}"/></h1>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.PartidoTitle}"/>
+        </ui:define>
+        <ui:define name="content">
+        <h:form>
+            <p:growl id="growl" showDetail="true"/> 
+            <div class="hovermenu">
+                <ul>
+                    <li><h:commandLink value="#{bundle.ListLink}" action="#{partidoController.prepareList}" immediate="true"/></li>
+                    <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                    <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                </ul>
+            </div>
+            <br />
+            <fieldset style="width: 450px">
+                <legend>#{bundle.PartidoCompeticion}</legend>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="#{bundle.PartidoLabel_liga}" for="ligaList"/>
+                    <h:outputLabel value="#{bundle.PartidoLabel_temporada}" for="temporadaList"/>
+                    <h:outputLabel value="#{bundle.PartidoLabel_fase}" for="faseList"/>
+
+                    <h:selectOneMenu id="ligaList" value="#{partidoController.liga}"
+                                     title="#{bundle.PartidoTitle_liga}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.ligasAvalaibleSelectOne}"/>
+                        <f:ajax render="temporadaList"/>
+                    </h:selectOneMenu>
+
+                    <h:selectOneMenu id="temporadaList" value="#{partidoController.temporada}"
+                                     title="#{bundle.PartidoTitle_temporada}"
+                                     disabled="#{partidoController.temporadaListDisabled}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.temporadasAvalaibleSelectOne}"/>
+                        <f:ajax render="faseList"/>
+                    </h:selectOneMenu>
+
+                    <h:selectOneMenu id="faseList" value="#{partidoController.fase}"
+                                     title="#{bundle.PartidoTitle_fase}"
+                                     disabled="#{partidoController.faseListDisabled}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.fasesAvalaibleSelectOne}"/>
+                        <f:ajax render="grupoList llaveList categoriaList"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.PartidoLabel_grupo}" for="grupoList"/>
+                    <h:outputLabel value="#{bundle.PartidoLabel_jornada}" for="jornadaList"/>
+                    <h:outputLabel value="#{bundle.PartidoLabel_categoria}" for="categoriaList"/>
+
+                    <h:selectOneMenu id="grupoList" value="#{partidoController.grupo}"
+                                     title="#{bundle.PartidoTitle_grupo}"
+                                     disabled="#{partidoController.grupoListDisabled}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.gruposAvalaibleSelectOne}"/>
+                        <f:ajax render="jornadaList"/>
+                    </h:selectOneMenu>
+
+                    <h:selectOneMenu id="jornadaList" value="#{partidoController.selected.jornadaId}"
+                                     title="#{bundle.PartidoTitle_jornada}"
+                                     disabled="#{partidoController.jornadaListDisabled}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.jornadasAvalaibleSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:selectOneMenu id="categoriaList" value="#{partidoController.categoria}"
+                                     title="#{bundle.PartidoTitle_categoria}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.categoriasAvalaibleSelectOne}"/>
+                        <f:ajax render="equipo1Id equipo2Id"/> 
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.PartidoLabel_llave}" for="llaveList"/>
+                    <h:outputLabel value=""/>
+                    <h:outputLabel value=""/>
+
+                    <h:selectOneMenu id="llaveList" value="#{partidoController.selected.llaveId}"
+                                     title="#{bundle.PartidoTitle_llave}"
+                                     disabled="#{partidoController.llaveListDisabled}"
+                                     style="width: 120px">
+                        <f:selectItems value="#{partidoController.llavesAvalaibleSelectOne}"/>
+                        <f:converter converterId="com.spontecorp.LlaveConverter"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value=""/>
+                    <h:outputLabel value=""/>
+                </h:panelGrid>
+            </fieldset>
+
+            <fieldset style="width: 450px">
+                <legend>#{bundle.PartidoTitle_partido}</legend>
+                <h:panelGrid columns="3">
+
+                    <h:outputLabel value="#{bundle.PartidoLabel_equipo1}" for="equipo1Id" />
+                    <h:selectOneMenu id="equipo1Id" value="#{partidoController.selected.equipo1Id}" 
+                                     title="#{bundle.PartidoTitle_equipo1}"
+                                     style="width: 160px"
+                                     valueChangeListener="#{partidoController.equipo1ChangeListener}"
+                                     onchange="submit()">
+                        <f:selectItems value="#{partidoController.equiposAvalaibleSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:inputText id="fakeEq1" value="#{partidoController.selected.fakeEq1}"/>
+
+                    <h:outputLabel value="#{bundle.PartidoLabel_equipo2}" for="equipo2Id" />
+                    <h:selectOneMenu id="equipo2Id" value="#{partidoController.selected.equipo2Id}" 
+                                     title="#{bundle.PartidoTitle_equipo2}"
+                                     style="width: 160px"
+                                     valueChangeListener="#{partidoController.equipo1ChangeListener}"
+                                     onchange="submit()">
+                        <f:selectItems value="#{partidoController.equiposAvalaibleSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:inputText id="fakeEq2" value="#{partidoController.selected.fakeEq2}"/>
+
+                    <h:outputLabel value="#{bundle.PartidoLabel_fecha}" for="fecha" />
+                    <p:calendar id="fecha" value="#{partidoController.selected.fecha}"
+                                title="#{bundle.PartidoTitle_fecha}"
+                                pattern="dd/MM/yyyy   HH:mm a"
+                                style="width: 180px"/>
+                    <h:outputLabel value=" "/>
+
+                    <h:outputLabel value="#{bundle.PartidoLabel_cancha}" for="cancha" />
+                    <h:selectOneMenu id="cancha" value="#{partidoController.selected.canchaId}" 
+                                     title="#{bundle.PartidoTitle_cancha}"
+                                     required="true" 
+                                     requiredMessage="#{bundle.PartidoRequiredMessage_cancha}"
+                                     style="width: 160px">
+                        <f:selectItems value="#{canchaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value=" "/>
+                    
+                    <h:outputLabel value="#{bundle.PartidoLabel_status}" for="status" />
+                    <h:selectOneMenu id="status" value="#{partidoController.selected.status}" 
+                                     title="#{bundle.PartidoTitle_status}"
+                                     required="true" 
+                                     requiredMessage="#{bundle.PartidoRequiredMessage_status}"
+                                     style="width: 160px">
+                        <f:selectItems value="#{partidoController.statusAvalailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value=" "/>
+                </h:panelGrid>
+            </fieldset>
+            <br />
+            <h:panelGrid columns="3">
+                <p:commandButton action="#{partidoController.update}" value="#{bundle.OKLink}" update="growl"/>
+                <h:outputText value="&nbsp;"/>
+                <h:commandButton action="#{partidoController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Columnas
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Columnas
+            </ui:define>
+
+            <ui:define name="tituloContent">Listado de Columnas</ui:define>
+            <ui:define name="content">
+                <h:form id="cronicaForm">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="Agregar Artículo" action="#{columnaBean.prepareCreate}"/></li>
+                            <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h:panelGroup>
+                        <p:dataTable var="item" value="#{columnaBean.items}" style="width: 600px;">
+                            <p:column headerText="Cronica" style="width: 200px;">
+                                <h:outputText value="#{item.titulo}">
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Autor">
+                                <h:outputText value="#{item.cronistaId.nombre} #{item.cronistaId.apellido}"/>
+                            </p:column>
+                            <p:column headerText="Fecha">
+                                <h:outputText value="#{item.fecha}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Estado">
+                                <h:outputText value="#{(item.activa== 1 )? 'ACTIVO': 'INACTIVO'}"/>
+                            </p:column>
+
+                            <p:column headerText="Acciones">
+                                <h:commandLink value="Editar" action="#{columnaBean.prepareEdit}"/>
+                                &nbsp;
+                                <p:commandLink value="Eliminar" action="#{columnaBean.prepareDestroy}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <h:messages style="color: red;"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

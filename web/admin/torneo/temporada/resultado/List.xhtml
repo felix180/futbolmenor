@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.ResultadoTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.ResultadoTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.ResultadoTitle}"/>
+            </ui:define>
+            <ui:define name="content">
+                <h:form id="form" styleClass="jsfcrud_list_form">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <br />
+                    <fieldset style="width: 550px;">
+                        <legend>#{bundle.ResultadosLabel_seleccion}</legend>
+                        <h:panelGrid columns="3">
+                            <h:outputLabel value="#{bundle.PartidoLabel_liga}" for="ligaId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_temporada}" for="temporadaId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_fase}" for="faseId" />
+
+                            <h:selectOneMenu id="ligaId" value="#{resultadoController.liga}" 
+                                             title="#{bundle.PartidoTitle_liga}" 
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.ligasAvalaibleSelectOne}"/>
+                                <f:ajax render="temporadaId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="temporadaId" value="#{resultadoController.temporada}" 
+                                             title="#{bundle.PartidoTitle_temporada}" 
+                                             disabled="#{resultadoController.temporadaListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.temporadasAvalaibleSelectOne}"/>
+                                <f:ajax render="faseId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="faseId" value="#{resultadoController.fase}" 
+                                             title="#{bundle.PartidoTitle_fase}" 
+                                             disabled="#{resultadoController.faseListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.fasesAvalaibleSelectOne}"/>
+                                <f:ajax render="grupoId llaveId categoriaId"/>
+                            </h:selectOneMenu>
+                            
+                            <h:outputLabel value="#{bundle.PartidoLabel_grupo}" for="grupoId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_jornada}" for="jornadaId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_categoria}" for="categoriaId" />
+
+                            <h:selectOneMenu id="grupoId" value="#{resultadoController.grupo}" 
+                                             title="#{bundle.PartidoTitle_grupo}" 
+                                             disabled="#{resultadoController.grupoListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.gruposAvalaibleSelectOne}"/>
+                                <f:ajax render="jornadaId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="jornadaId" value="#{resultadoController.jornada}" 
+                                             title="#{bundle.PartidoTitle_jornada}" 
+                                             disabled="#{resultadoController.jornadaListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.jornadasAvalaibleSelectOne}"/>
+                                <f:ajax render="categoriaId"/>
+                            </h:selectOneMenu>
+                            <h:selectOneMenu id="categoriaId" value="#{resultadoController.categoria}" 
+                                             title="#{bundle.PartidoTitle_categoria}"
+                                             disabled="#{resultadoController.categoriaListDisable}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.categoriasAvalaibleSelectOne}"/>
+                                <f:ajax render="datos tableData"/>
+                            </h:selectOneMenu>
+                            
+                            <h:outputLabel value="#{bundle.PartidoLabel_llave}" for="llaveId" />
+                            <h:outputLabel value=""/>
+                            <h:outputLabel value=""/>
+                            
+                            <h:selectOneMenu id="llaveId" value="#{resultadoController.llave}" 
+                                             title="#{bundle.PartidoTitle_llave}" 
+                                             disabled="#{resultadoController.llaveListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{resultadoController.llavesAvalaibleSelectOne}"/>
+                                <f:converter converterId="com.spontecorp.LlaveConverter"/>
+                                <f:ajax render="categoriaId"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value=""/>
+                            <h:commandButton value="#{bundle.ResultadosLabel_consultar}"
+                                             actionListener="#{resultadoController.showTable}"/>
+                        </h:panelGrid>
+                    </fieldset>
+                    <br/>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup id="datos">
+<!--                        <h:outputText escape="false" value="#{bundle.PartidoListEmpty}" 
+                                      rendered="#{resultadoController.items.rowCount == 0}"/>
+                        <h:panelGroup rendered="#{resultadoController.items.rowCount > 0}">
+                            <h:outputText value="#{resultadoController.pagination.pageFirstItem + 1}..#{resultadoController.pagination.pageLastItem + 1}/#{resultadoController.pagination.itemsCount}"/>&nbsp;
+                            <h:commandLink action="#{resultadoController.previous}" 
+                                           value="#{bundle.Previous} #{resultadoController.pagination.pageSize}" 
+                                           rendered="#{resultadoController.pagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{resultadoController.next}" 
+                                           value="#{bundle.Next} #{resultadoController.pagination.pageSize}" 
+                                           rendered="#{resultadoController.pagination.hasNextPage}"/>&nbsp;-->
+                            <h:dataTable id="tableData" value="#{resultadoController.items}" var="item" border="0" 
+                                         cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" 
+                                         rules="all" style="border:solid 1px"
+                                         rendered="#{resultadoController.partidoTableShow}">
+
+                                <h:column rendered="#{item.equipo1Id.clubId.nombre != '' }">
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PartidoTitle_equipo1}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.equipo1Id.nombre}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ResultadoTitle_golEq1}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.golEq1}"/>
+                                </h:column>
+
+                                <h:column rendered="#{item.equipo2Id.clubId.nombre != ''}">
+                                    <f:facet name="header" >
+                                        <h:outputText value="#{bundle.PartidoTitle_equipo2}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.equipo2Id.nombre}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.ResultadoTitle_golEq2}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.golEq2}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PartidoTitle_cancha}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.canchaId.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PartidoTitle_fecha}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fecha}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PartidoTitle_status}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.statusString}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PartidoTitle_llave}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.llaveId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.PartidoTitle_jornada}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.jornadaId.numero}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="&nbsp;"/>
+                                    </f:facet>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink action="#{resultadoController.prepareEdit}" value="#{bundle.EditLink}"/>
+                                </h:column>
+                            </h:dataTable>
+                        <!--</h:panelGroup>-->
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

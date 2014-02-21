@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.EquipoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="top">
+            <h:outputText value="#{bundle.EquipoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.EquipoCreateTitle}"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.ListLink}" action="#{equipoController.prepareList}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                    </ul>
+                </div>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EquipoLabel_club}" for="clubId" />
+                    <h:selectOneMenu id="clubId" value="#{equipoController.selected.clubId}" 
+                                     title="#{bundle.EquipoTitle_club}" required="true" 
+                                     requiredMessage="#{bundle.EquipoRequiredMessage_club}">
+                        <f:selectItems value="#{clubController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EquipoLabel_categoria}" for="categoriaId" />
+                    <h:selectOneMenu id="categoriaId" value="#{equipoController.selected.categoriaId}" 
+                                     title="#{bundle.EquipoTitle_categoria}" 
+                                     required="true" requiredMessage="#{bundle.EquipoRequiredMessage_categoria}">
+                        <f:selectItems value="#{categoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EquipoLabel_liga}" for="ligaId" />
+                    <h:selectOneMenu id="ligaId" value="#{equipoController.selected.ligaId}" 
+                                     title="#{bundle.EquipoTitle_liga}" 
+                                     required="true" requiredMessage="#{bundle.EquipoRequiredMessage_liga}">
+                        <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EquipoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{equipoController.selected.nombre}" 
+                                 title="#{bundle.EquipoTitle_nombre}" />
+                    
+<!--                    <h:outputLabel value="#{bundle.EquipoLabel_canchas}" for="canchas" />
+                    <h:selectManyListbox id="canchas" value="#{equipoController.selected.canchaList}"
+                                      title="#{bundle.EquipoTitle_canchas}"
+                                      size="4"
+                                      required="true" requiredMessage="#{bundle.EquipoRequiredMessage_canchas}">
+                        <f:selectItems value="#{canchaController.canchasAvailable}"/>
+                    </h:selectManyListbox>-->
+                    
+                </h:panelGrid>
+                <h:panelGrid columns="3">
+                    <h:commandButton action="#{equipoController.create}" value="#{bundle.OKLink}" />
+                    <h:outputText value="&nbsp;"/>
+                    <h:commandButton action="#{equipoController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                </h:panelGrid>
+            </h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+
+</html>

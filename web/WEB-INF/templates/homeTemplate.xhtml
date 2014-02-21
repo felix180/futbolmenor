@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title><ui:insert name="titulo">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body style="background:resources/ligues/img/blue/bg2.png">
+
+        <div id="wrapper">
+            <!-- TOP -->
+            <ui:insert name="header">
+                Header Logo 
+            </ui:insert>
+            <!-- ENDS TOP -->
+            <!-- CONTENT -->
+            <div id="content">
+                <!-- top button -->
+                <ui:insert name="headerPatrocinante">
+                    Header Patrocinantes Principales
+                </ui:insert>
+                <!-- ENDS top button -->
+                <!-- MAIN -->
+
+                <div id="main">
+                    <!-- navigation -->                    
+                    <ui:insert name="headerMenu">
+                        Menu
+                    </ui:insert>
+                    <div class="clear"></div>
+                    <!-- ENDS navigation -->
+
+                    <!-- slideshow -->
+                    <ui:insert name="slideShow">
+                        SlideShow Noticias
+                    </ui:insert>
+                    <!-- ENDS slideshow -->
+
+                    <!-- carrusel resultados -->
+                    <ui:insert name="carruselResultados">
+                        Carrusel de Resultados
+                    </ui:insert>
+                    <!-- ENDS carrusel resultados -->
+
+                    <!-- Menu Ligas -->
+<!--                    <ui:insert name="menuLigas">
+                        Menu Ligas
+                    </ui:insert>-->
+
+                    <!-- ENDS Menu Ligas -->
+                    <div class="clear"></div>
+
+                    <!-- blocks 1-->
+                    <ui:insert name="bloqueNoticias1">
+                        Noticias - Audio
+                    </ui:insert>
+                    <!-- ENDS blocks 1-->
+
+                </div>
+                <!-- ENDS MAIN -->
+            </div>
+            <!-- ENDS CONTENT -->
+        </div>
+        <!-- ENDS WRAPPER -->
+
+        <!-- FOOTER -->
+        <ui:insert name="footerNew">
+            Footer
+        </ui:insert>
+        <!-- ENDS FOOTER -->
+        <!-- start cufon -->
+        <script type="text/javascript"> Cufon.now(); </script>
+        <!-- ENDS start cufon -->
+    </h:body>
+
+</html>
+

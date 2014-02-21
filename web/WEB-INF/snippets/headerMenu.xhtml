@@ -1,0 +1,136 @@
+<ui:composition 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:form>
+        <!-- navigation -->		
+        <div id="centeredmenu">
+            <ul class="sf-menu">
+
+                <c:if test="#{request.servletPath == '/index.xhtml'}">
+                    <li class="current_page_item"><a href="index.xhtml">INICIO</a></li>   
+                </c:if>
+                <c:if test="#{request.servletPath != '/index.xhtml'}">
+                    <li><a href="index.xhtml">INICIO</a></li>   
+                </c:if>
+
+                <c:if test="#{(request.servletPath == '/historia.xhtml' || request.servletPath == '/listaColumnistas.xhtml' || request.servletPath == '/listaEventos.xhtml' || request.servletPath == '/listaContactos.xhtml')}">
+                    <li class="current_page_item" ><a href="#">FUTBOL MENOR</a>
+                        <ul>
+                            <li><a href="historia.xhtml">HISTORIA</a></li>
+<!--                            <li><a href="listaColumnistas.xhtml">COLUMNISTAS</a></li>
+                            <li><a href="listaEventos.xhtml">EVENTOS</a></li>-->
+                            <li><a href="listaContactos.xhtml">CONTACTOS</a></li>
+                        </ul>
+                    </li>
+                </c:if>
+
+                <c:if test="#{(request.servletPath != '/historia.xhtml' and request.servletPath != '/listaColumnistas.xhtml' and request.servletPath != '/listaEventos.xhtml' and request.servletPath != '/listaContactos.xhtml')}">
+                    <li><a href="#">FUTBOL MENOR</a>
+                        <ul>
+                            <li><a href="historia.xhtml">HISTORIA</a></li>
+<!--                            <li><a href="listaColumnistas.xhtml">COLUMNISTAS</a></li>
+                            <li><a href="listaEventos.xhtml">EVENTOS</a></li>-->
+                            <li><a href="listaContactos.xhtml">CONTACTOS</a></li>
+                        </ul>
+                    </li>
+                </c:if>
+                
+                <c:if test="#{request.servletPath == '/indexLigas.xhtml'}">
+                    <li class="current_page_item"><a href="#">LIGAS</a>
+                        <ul>
+                            <ui:repeat var="liga" value="#{ligaBean.ligas}">
+                                <li><h:commandLink action="#{ligaBean.selectedLiga}">
+                                    <h:outputText value="#{liga.nombre}"/>
+                                    <f:param name="id" value="#{liga.nombre}"/>
+                                   </h:commandLink>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </li>
+                </c:if>
+                <c:if test="#{request.servletPath != '/indexLigas.xhtml'}">
+                    <li><a href="#">LIGAS</a>
+                        <ul>
+                            <ui:repeat var="liga" value="#{ligaBean.ligas}">
+                                <li><h:commandLink action="#{ligaBean.selectedLiga}">
+                                    <h:outputText value="#{liga.nombre}"/>
+                                    <f:param name="id" value="#{liga.nombre}"/>
+                                   </h:commandLink>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </li>
+                </c:if>
+
+<!--                <c:if test="#{request.servletPath == '/asociaciones.xhtml'}">
+                    <li class="current_page_item"><a href="asociaciones.xhtml">ASOCIACIONES</a></li>
+                </c:if>-->
+                
+<!--                <c:if test="#{request.servletPath != '/asociaciones.xhtml'}">
+                    <li><a href="asociaciones.xhtml">ASOCIACIONES</a></li>
+                </c:if>-->
+                
+                
+                <c:if test="#{(request.servletPath == '/listaNoticias.xhtml' || request.servletPath == '/noticias.xhtml' || request.servletPath == '/verNoticiaLiga.xhtml')}">
+                    <li class="current_page_item"><a href="listaNoticias.xhtml">NOTICIAS</a></li>
+                </c:if>
+                <c:if test="#{(request.servletPath != '/listaNoticias.xhtml' and request.servletPath != '/noticias.xhtml' and request.servletPath != '/verNoticiaLiga.xhtml')}">
+                    <li><a href="listaNoticias.xhtml">NOTICIAS</a></li>
+                </c:if>
+
+                <c:if test="#{(request.servletPath == '/listaAudios.xhtml' || request.servletPath == '/listaVideos.xhtml')}">
+                    <li class="current_page_item" ><a href="#">MULTIMEDIA</a>
+                        <ul>
+                            <li style="margin-left: 30px;"><a href="listaAudios.xhtml" >AUDIO</a></li>
+                            <li style="margin-left: 30px;"><a href="listaVideos.xhtml">VIDEO</a></li>
+                        </ul>
+                    </li>
+                </c:if>
+
+                <c:if test="#{(request.servletPath != '/listaAudios.xhtml' and request.servletPath != '/listaVideos.xhtml')}">
+                    <li><a href="#">MULTIMEDIA</a>
+                        <ul>
+                            <li style="margin-left: 30px;"><a href="listaAudios.xhtml">AUDIO</a></li>
+                            <li style="margin-left: 30px;"><a href="listaVideos.xhtml">VIDEO</a></li>
+                        </ul>
+                    </li>
+                </c:if>   
+
+<!--                <c:if test="#{request.servletPath == '/fvf.xhtml'}">
+                    <li class="current_page_item"><a href="fvf.xhtml">FVF</a></li>
+                </c:if>
+                <c:if test="#{request.servletPath != '/fvf.xhtml'}">
+                    <li><a href="fvf.xhtml">FVF</a></li>
+                </c:if>-->
+
+<!--                <c:if test="#{request.servletPath == '/listaClubes.xhtml'}">
+                    <li class="current_page_item"><a href="listaClubes.xhtml">CLUBES</a></li>
+                </c:if>
+                <c:if test="#{request.servletPath != '/listaClubes.xhtml'}">
+                    <li><a href="listaClubes.xhtml">CLUBES</a></li>
+                </c:if>-->
+
+<!--                <c:if test="#{request.servletPath == '/listaEquipos.xhtml'}">
+                    <li class="current_page_item"><a href="listaEquipos.xhtml">EQUIPOS</a></li>
+                </c:if>
+                <c:if test="#{request.servletPath != '/listaEquipos.xhtml'}">
+                    <li><a href="listaEquipos.xhtml">EQUIPOS</a></li>
+                </c:if>-->
+
+<!--                <c:if test="#{request.servletPath == '/listaJugadores.xhtml'}">
+                    <li class="current_page_item"><a href="listaJugadores.xhtml">JUGADORES</a></li>
+                </c:if>
+                <c:if test="#{request.servletPath != '/listaJugadores.xhtml'}">
+                    <li><a href="listaJugadores.xhtml">JUGADORES</a></li>
+                </c:if>-->
+
+            </ul>
+        </div>
+        <!-- ENDS navigation -->	
+    </h:form>
+</ui:composition>

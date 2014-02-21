@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.LigaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="top">
+            <h:outputText value="#{bundle.LigaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.LigaListTitle}"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="ligaForm" styleClass="jsfcrud_list_form">
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.CreateLink}" action="#{ligaController.prepareCreate}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.LigasLink}" action="/admin/adminLigas?faces-redirect=true" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true" immediate="true"/></li>
+                    </ul>
+                </div>
+                <h:outputText escape="false" value="#{bundle.LigaListEmpty}" rendered="#{ligaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{ligaController.items.rowCount > 0}">
+                    <h:outputText value="#{ligaController.pagination.pageFirstItem + 1}..#{ligaController.pagination.pageLastItem + 1}/#{ligaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{ligaController.previous}" value="#{bundle.Previous} #{ligaController.pagination.pageSize}" rendered="#{ligaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{ligaController.next}" value="#{bundle.Next} #{ligaController.pagination.pageSize}" rendered="#{ligaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{ligaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.LigaTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.LigaTitle_localidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionId.localidadId.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.LigaTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionId.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{ligaController.prepareView}" value="#{bundle.ViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ligaController.prepareEdit}" value="#{bundle.EditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{ligaController.prepareDestroy}" value="#{bundle.DeleteLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.TemporadaTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.TemporadaTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.TemporadaListTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form styleClass="jsfcrud_list_form">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.CreateLink}" action="#{temporadaController.prepareCreate}" immediate="true"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.TemporadaLabel_liga}" for="ligaId" />
+                        <h:selectOneMenu id="ligaId" value="#{temporadaController.liga}" 
+                                         title="#{bundle.TemporadaTitle_liga}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.TemporadaRequiredMessage_liga}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{temporadaController.ligasAvalaibleSelectOne}"/>
+                            <f:ajax render="datos"/>
+                        </h:selectOneMenu>
+
+                    </h:panelGrid>
+                    <br/>
+                    <h:outputText escape="false" value="#{bundle.TemporadaListEmpty}" rendered="#{temporadaController.items.rowCount == 0}"/>
+                    <h:panelGroup id="datos">
+                        <h:outputText value="#{temporadaController.pagination.pageFirstItem + 1}..#{temporadaController.pagination.pageLastItem + 1}/#{temporadaController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{temporadaController.previous}" value="#{bundle.Previous} #{temporadaController.pagination.pageSize}" rendered="#{temporadaController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{temporadaController.next}" value="#{bundle.Next} #{temporadaController.pagination.pageSize}" rendered="#{temporadaController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{temporadaController.items}" var="item" border="0" 
+                                     cellpadding="2" cellspacing="0" 
+                                     rowClasses="jsfcrud_odd_row,jsfcrud_even_row" 
+                                     rules="all" style="border:solid 1px"
+                                     rendered="#{!temporadaController.tableDisabled}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.TemporadaTitle_liga}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.ligaId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.TemporadaTitle_nombre}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.TemporadaTitle_fechaIni}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaInicial}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.TemporadaTitle_fechaFin}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fechaFin}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/> 
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{temporadaController.prepareEdit}" value="#{bundle.EditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{temporadaController.prepareDestroy}" value="#{bundle.DeleteLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

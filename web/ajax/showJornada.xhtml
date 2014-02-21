@@ -1,0 +1,79 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:form>
+
+        <div id="showJornada">
+            <table style="border-bottom: 0px; border-left: 0px">
+                <tr>
+                    <td style="border-bottom: 0px; border-left: 0px">
+                        <table width="665" style="border-bottom: 0px; border-left: 0px; margin-top:-20px">
+                            <tr class="texto_interno3">
+                                <td bgcolor="#E5E5E5" class="texto_interno3" colspan="2" rowspan="2">EQUIPO</td>
+                                <td bgcolor="#E5E5E5" colspan="7">Total</td>
+                                <td bgcolor="#E5E5E5" colspan="7">Local</td>
+                                <td bgcolor="#E5E5E5" colspan="7">Visitante</td>
+                            </tr>
+                            <tr class="texto_interno3">
+                                <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                            </tr>
+                            <ui:repeat var="posicion" value="#{jornadaBean.clasificaList}" varStatus ="status">
+                                <tr>  
+                                    <td class="texto_interno">#{status.index+1}</td>
+                                    <td class="texto_interno">#{posicion.equipoName}</td>
+                                    <td style="text-align: center;">#{posicion.jjugados}</td>
+                                    <td style="text-align: center;">#{posicion.jganados}</td>
+                                    <td style="text-align: center;">#{posicion.jempatados}</td>
+                                    <td style="text-align: center;">#{posicion.jperdidos}</td>
+                                    <td style="text-align: center;">#{posicion.gfavor}</td>
+                                    <td style="text-align: center;">#{posicion.gcontra}</td>
+                                    <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntos}</td>
+                                    <td style="text-align: center;">#{posicion.jjugadosLocal}</td>
+                                    <td style="text-align: center;">#{posicion.jganadosLocal}</td>
+                                    <td style="text-align: center;">#{posicion.jempatadosLocal}</td>
+                                    <td style="text-align: center;">#{posicion.jperdidosLocal}</td>
+                                    <td style="text-align: center;">#{posicion.gfavorLocal}</td>
+                                    <td style="text-align: center;">#{posicion.gcontraLocal}</td>
+                                    <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntosLocal}</td>
+                                    <td style="text-align: center;">#{posicion.jjugadosVisitante}</td>
+                                    <td style="text-align: center;">#{posicion.jganadosVisitante}</td>
+                                    <td style="text-align: center;">#{posicion.jempatadosVisitante}</td>
+                                    <td style="text-align: center;">#{posicion.jperdidosVisitante}</td>
+                                    <td style="text-align: center;">#{posicion.gfavorVisitante}</td>
+                                    <td style="text-align: center;">#{posicion.gcontraVisitante}</td>
+                                    <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntosVisitante}</td>
+                                </tr> 
+                            </ui:repeat>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </h:form>
+
+</ui:composition>

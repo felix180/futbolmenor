@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.LigaTitle}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="top">
+                <h:outputText value="#{bundle.LigaTitle}"></h:outputText>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.LigaDeleteTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="deleteForm">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.CreateLink}" action="#{ligaController.prepareCreate}"/></li>
+                            <li><h:commandLink value="#{bundle.EditLink}" action="#{ligaController.prepareEditFromView}"/></li>
+                            <li><h:commandLink value="#{bundle.ListLink}" action="#{ligaController.prepareList}"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h3><h:outputText value="#{bundle.LigaDestroyWarning}"/></h3>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.LigaLabel_nombre}"/>
+                        <h:outputText value="#{ligaController.selected.nombre}" 
+                                      title="#{bundle.LigaTitle_nombre}"/>
+
+                        <h:outputText value="#{bundle.LigaLabel_localidad}"/>
+                        <h:outputText value="#{ligaController.selected.direccionId.localidadId.nombre}" 
+                                      title="#{bundle.LigaTitle_localidad}"/>
+
+                        <h:outputText value="#{bundle.LigaLabel_direccion}"/>
+                        <h:outputText value="#{ligaController.selected.direccionId.direccion}" 
+                                      title="#{bundle.LigaTitle_direccion}"/>
+
+                        <h:outputText value="#{bundle.LigaLabel_telf1}"/>
+                        <h:outputText value="#{ligaController.selected.direccionId.telefono1}" 
+                                      title="#{bundle.LigaTitle_telf1}"/>
+
+                        <h:outputText value="#{bundle.LigaLabel_telf2}"/>
+                        <h:outputText value="#{ligaController.selected.direccionId.telefono2}" 
+                                      title="#{bundle.LigaTitle_telf2}"/>
+
+                        <h:outputText value="#{bundle.LigaLabel_email}"/>
+                        <h:outputText value="#{ligaController.selected.direccionId.email}" 
+                                      title="#{bundle.LigaTitle_email}"/>
+
+                        <h:outputText value="#{bundle.LigaLabel_pagWeb}"/>
+                        <h:outputText value="#{ligaController.selected.direccionId.paginaWeb}" 
+                                      title="#{bundle.LigaTitle_pagWeb}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:panelGrid columns="3">
+                        <h:commandButton value="#{bundle.DeleteLink}" action="#{ligaController.destroy}"/>
+                        <h:outputText value="&nbsp;" style="width: 50px;"/>
+                        <h:commandButton value="#{bundle.CancelLink}" action="#{ligaController.prepareList}" immediate="true"/>
+                    </h:panelGrid>
+                    <h:messages style="color: red;"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

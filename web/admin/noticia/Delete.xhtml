@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Noticias
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Noticias
+            </ui:define>
+            
+            <ui:define name="tituloContent">Eliminación de una Noticia</ui:define>
+            <ui:define name="content">
+                    <h:form id="newsForm" enctype="multipart/form-data">
+                        <div class="hovermenu">
+                            <ul>
+                                <li><h:commandLink value="Crear Noticia" action="#{noticiaBean.prepareCreate}"/></li>
+                                <li><h:commandLink value="Editar Noticia" action="#{noticiaBean.prepareEditFromDelete}"/></li>
+                                <li><h:commandLink value="Listar Noticias" action="List"/></li>
+                                <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                                <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                            </ul>
+                        </div>
+                        <h3><h:outputText value="Va a eliminar esta noticia: "/></h3>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Lugar: "/>
+                            <h:outputText value="#{noticiaBean.entity.lugar}"/>
+                            <h:outputLabel value="Fecha: "/>
+                            <h:outputText value="#{noticiaBean.entity.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                            <h:outputLabel value="Autor: "/>
+                            <h:outputText value="#{noticiaBean.entity.autor}"/>
+                            <h:outputLabel value="PreTítulo: "/>
+                            <h:outputText value="#{noticiaBean.entity.pretitulo}"/>
+                            <h:outputLabel value="Título: "/>
+                            <h:outputText value="#{noticiaBean.entity.titulo}"/>
+                            <h:outputLabel value="Comentario: "/>
+                            <h:outputText value="#{noticiaBean.entity.comentario}"/>
+                            
+                            <h:outputLabel value="Imagen: "/>
+                            <h:graphicImage url="#{noticiaBean.IMAGE_RETURN}thumb_#{noticiaBean.entity.foto}"></h:graphicImage>  
+                            
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:commandButton value="Eliminar" action="#{noticiaBean.destroy}"/>
+                            <h:outputText value="&nbsp;" style="width: 50px;"/>
+                            <h:commandButton value="Cancelar" action="#{noticiaBean.prepareList}"/>
+                        </h:panelGrid>
+                        
+                        <h:messages style="color: red;"/>
+                    </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

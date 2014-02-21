@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.ClasificacionTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.ClasificacionTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.ClasificacionTitle}"/>
+            </ui:define>
+            <ui:define name="content">
+                <h:form id="form" styleClass="jsfcrud_list_form">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <br />
+                    <fieldset style="width: 550px;">
+                        <legend>#{bundle.ResultadosLabel_seleccion}</legend>
+                        <h:panelGrid columns="3">
+                            <h:outputLabel value="#{bundle.PartidoLabel_liga}" for="ligaId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_temporada}" for="temporadaId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_fase}" for="faseId" />
+
+                            <h:selectOneMenu id="ligaId" value="#{clasificacionController.liga}" 
+                                             title="#{bundle.PartidoTitle_liga}" 
+                                             style="width: 180px">
+                                <f:selectItems value="#{clasificacionController.ligasAvalaibleSelectOne}"/>
+                                <f:ajax render="temporadaId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="temporadaId" value="#{clasificacionController.temporada}" 
+                                             title="#{bundle.PartidoTitle_temporada}" 
+                                             disabled="#{clasificacionController.temporadaListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{clasificacionController.temporadasAvalaibleSelectOne}"/>
+                                <f:ajax render="faseId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="faseId" value="#{clasificacionController.fase}" 
+                                             title="#{bundle.PartidoTitle_fase}" 
+                                             disabled="#{clasificacionController.faseListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{clasificacionController.fasesAvalaibleSelectOne}"/>
+                                <f:ajax render="grupoId"/>
+                            </h:selectOneMenu>
+
+                            <h:outputLabel value="#{bundle.PartidoLabel_grupo}" for="grupoId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_categoria}" for="categoriaId" />
+                            <h:outputLabel value="#{bundle.PartidoLabel_jornada}" for="jornadaId" />
+
+                            <h:selectOneMenu id="grupoId" value="#{clasificacionController.grupo}" 
+                                             title="#{bundle.PartidoTitle_grupo}" 
+                                             disabled="#{clasificacionController.grupoListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{clasificacionController.gruposAvalaibleSelectOne}"/>
+                                <f:ajax render="categoriaId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="categoriaId" value="#{clasificacionController.categoria}" 
+                                             title="#{bundle.PartidoTitle_categoria}"
+                                             disabled="#{clasificacionController.categoriaListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{clasificacionController.categoriasAvalaibleSelectOne}"/>
+                                <f:ajax render="jornadaId"/>
+                            </h:selectOneMenu>
+
+                            <h:selectOneMenu id="jornadaId" value="#{clasificacionController.jornada}" 
+                                             title="#{bundle.PartidoTitle_jornada}" 
+                                             disabled="#{clasificacionController.jornadaListDisabled}"
+                                             style="width: 180px">
+                                <f:selectItems value="#{clasificacionController.jornadasAvalaibleSelectOne}"/>
+<!--                                <f:ajax render="datos tableData"/>-->
+                            </h:selectOneMenu>
+
+                            <h:outputLabel value=""/>
+                            <h:outputLabel value=""/>
+                            <h:commandButton value="#{bundle.ResultadosLabel_consultar}"
+                                             actionListener="#{clasificacionController.showTable}"
+                                             onclick="submit()"/>
+                        </h:panelGrid>
+                    </fieldset>
+                    <br/>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+
+                    <h:panelGroup id="datos">
+                        <h:dataTable id="tableData" value="#{clasificacionController.items}" var="item" border="0" 
+                                     cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" 
+                                     rules="all" style="border:solid 1px"
+                                     rendered="#{clasificacionController.clasificaTableShow}">
+                            <h:column>
+                                <h:outputText value="#{clasificacionController.items.rowIndex + 1}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_equipo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.equipoName}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_jjugados}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.jjugados}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header" >
+                                    <h:outputText value="#{bundle.ClasificacionLabel_jganados}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.jganados}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_jempatados}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.jempatados}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_jperdidos}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.jperdidos}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_gFavor}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.gfavor}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_gContra}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.gcontra}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_diferencia}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.diferencia}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ClasificacionLabel_puntos}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.puntos}"/>
+                            </h:column>
+
+                        </h:dataTable>
+                        <!--</h:panelGroup>-->
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

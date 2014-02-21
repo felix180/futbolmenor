@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.JornadaTitle}"/>
+        </ui:define>
+
+        <ui:define name="top">
+            <h1><h:outputText value="#{bundle.JornadaTitle}"/></h1>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.JornadaEditTitle}"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.CreateLink}" action="#{jornadaController.prepareCreate}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.DeleteLink}" action="#{jornadaController.prepareDestroyFromView}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.GrupoListTitle}" action="#{jornadaController.prepareList}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                    </ul>
+                </div>
+                <br/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="No. de Jornada" for="numero" />
+                    <h:inputText id="numero" value="#{jornadaController.selected.numero}" 
+                                 title="Número de Jornada" required="true" 
+                                 requiredMessage="El Número de Jornada es obligatorio"/>
+                    
+                    <h:outputLabel value="Jornada actual" for="isCurrent" />
+                    <h:selectOneMenu id="isCurrent" value="#{jornadaController.selected.isCurrent}" 
+                                     required="true" requiredMessage="Jornada Actual" 
+                                     style="width: 130px;">
+                        <f:selectItem itemLabel="Si" itemValue="1" />
+                        <f:selectItem itemLabel="No" itemValue="0" />
+                    </h:selectOneMenu>
+
+                </h:panelGrid>
+                <h:panelGrid columns="3">
+                    <h:commandButton action="#{jornadaController.update}" value="#{bundle.OKLink}" />
+                    <h:outputText value="&nbsp;"/>
+                    <h:commandButton action="#{jornadaController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                </h:panelGrid>
+
+            </h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+
+</html>

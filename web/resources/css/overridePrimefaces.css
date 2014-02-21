@@ -1,0 +1,33 @@
+/* 
+    Document   : overridePrimefaces
+    Created on : 16-oct-2012, 14:41:46
+    Author     : jgcastillo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* Override primefaces styles*/
+.ui-menuitem-text{
+    color: #336600;
+    font-size: 1.1em;
+}
+
+.ui-datatable-data .ui-widget-content{
+    font-size: 0.8em;
+}
+
+.ui-state-default{
+    font-size: 0.9em;
+    color:#336600;
+}
+
+/* formato para los componentes de jsf */
+
+.panelgrid {
+    font-size: 0.8em;
+}
+
+.crear{
+    font-size: 0.8em;
+}
+

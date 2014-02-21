@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.FaseTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.FaseTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.FaseListTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form styleClass="jsfcrud_list_form">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.CreateLink}" action="#{faseController.prepareCreate}"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <br />
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.FaseLabel_Ligas}" for="ligaId" />
+                        <h:outputLabel value="#{bundle.FaseLabel_temporada}" for="temporadaId" />
+
+                        <h:selectOneMenu id="ligaId" value="#{faseController.liga}" 
+                                         title="#{bundle.FaseTitle_liga}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.FaseRequiredMessage_liga}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{faseController.ligasAvalaibleSelectOne}"/>
+                            <f:ajax render="temporadaId"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="temporadaId" value="#{faseController.temporada}" 
+                                         title="#{bundle.FaseTitle_temporada}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.FaseRequiredMessage_temporada}"
+                                         disabled="#{faseController.temporadaListDisabled}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{faseController.temporadasAvalaibleSelectOne}"/>
+                            <f:ajax render="datos"/>
+                        </h:selectOneMenu>
+
+                    </h:panelGrid>
+                    <br/>
+                    <h:outputText escape="false" value="#{bundle.FaseListEmpty}" 
+                                  rendered="#{faseController.items.rowCount == 0}"/>
+                    <h:panelGroup id="datos">
+                        <h:outputText value="#{faseController.pagination.pageFirstItem + 1}..#{faseController.pagination.pageLastItem + 1}/#{faseController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{faseController.previous}" value="#{bundle.Previous} #{faseController.pagination.pageSize}" rendered="#{faseController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{faseController.next}" value="#{bundle.Next} #{faseController.pagination.pageSize}" rendered="#{faseController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{faseController.items}" var="item" border="0" cellpadding="2" 
+                                     cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" 
+                                     style="border:solid 1px"
+                                     rendered="#{!faseController.tableDisabled}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.FaseTitle_liga}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.temporadaId.ligaId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.FaseTitle_temporada}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.temporadaId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.FaseTitle_nombre}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{faseController.prepareDestroy}" value="#{bundle.DeleteLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br/>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

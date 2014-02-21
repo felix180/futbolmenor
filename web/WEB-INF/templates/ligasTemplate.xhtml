@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title><ui:insert name="titulo">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="wrapper">
+            <!-- TOP -->
+            <ui:insert name="header">
+                Header Logo 
+            </ui:insert>
+            <!-- ENDS TOP -->
+            <!-- CONTENT -->
+            <div id="content">
+                <!-- top button -->
+                <ui:insert name="headerPatrocinante">
+                    Header Patrocinantes Principales
+                </ui:insert>
+                <!-- ENDS top button -->
+                <!-- MAIN -->
+
+                <div id="main">
+                    <!-- navigation -->                    
+                    <ui:insert name="headerMenu">
+                        Menu
+                    </ui:insert>
+                    <div class="clear"></div>
+                    <!-- ENDS navigation -->
+
+                    <ui:insert name="sponsorLiga">
+                        Sponsor Liga
+                    </ui:insert>
+
+                    <div id="posts">
+                        <div class="tabbed">
+                            <ul>
+                                <li><a href="#tab1"><span>CALENDARIO Y RESULTADOS</span></a></li>
+                                <li><a href="#tab2"><span>CLASIFICACIÓN</span></a></li>
+                                <li><a href="#tab3"><span>NOTICIAS</span></a></li>
+<!--                                <li><a href="#tab3"><span>CARRUSEL</span></a></li>
+                                
+                                <li><a href="#tab5"><span>EQUIPOS</span></a></li>
+                                <li><a href="#tab6"><span>ESTADÍSTICAS</span></a></li>-->
+                            </ul>
+                            <div id="tab1">
+                                <ui:insert name="calendario">
+                                    Calendario
+                                </ui:insert> 
+                            </div>
+                            <div id="tab2">
+                                <ui:insert name="clasificacion">
+                                    Clasificacion
+                                </ui:insert> 
+                            </div>
+<!--                            <div id="tab3">
+                                <ui:insert name="carrusel">
+                                    Carrusel
+                                </ui:insert> 
+                            </div>-->
+                            <div id="tab3">
+                                <ui:insert name="noticiasLiga">
+                                    Noticias Liga
+                                </ui:insert> 
+                            </div>
+<!--                            <div id="tab5">
+                                <ui:insert name="equipos">
+                                    Equipos
+                                </ui:insert> 
+                            </div>
+                            <div id="tab6">
+                                <ui:insert name="estadisticas">
+                                    Estadisticas
+                                </ui:insert>
+                            </div>-->
+
+                        </div>
+                    </div>
+                    <!-- sidebar -->
+                    <ul id="sidebar">
+                        <ui:insert name="sponsorsRight">
+                            Patrocinantes Derecha
+                        </ui:insert>    
+                    </ul>
+                    <ul id="sidebar">
+                        <ui:insert name="videosRight">
+                            Videos Liga Derecha
+                        </ui:insert>    
+                    </ul>
+                    <!-- ENDS sidebar -->
+                </div>
+                <!-- ENDS MAIN -->
+            </div>
+            <!-- ENDS CONTENT -->
+        </div>
+        <!-- ENDS WRAPPER -->
+
+        <!-- FOOTER -->
+        <ui:insert name="footerNew">
+            Footer
+        </ui:insert>
+        <!-- ENDS FOOTER -->
+        <!-- start cufon -->
+        <script type="text/javascript"> Cufon.now(); </script>
+        <!-- ENDS start cufon -->
+    </h:body>
+
+</html>
+
+

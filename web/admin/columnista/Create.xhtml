@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Columnistas
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Columnistas
+            </ui:define>
+            
+            <ui:define name="tituloContent">Agregar Columnista</ui:define>
+            <ui:define name="content">
+                    <h:form id="cronistaForm" enctype="multipart/form-data">
+                        <div class="hovermenu">
+                            <ul>
+                                <li><h:commandLink value="Listar Columnistas" action="#{columnistaBean.prepareList}" immediate="true"/></li>
+                                <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true" immediate="true"/></li>
+                                <li><h:commandLink value="Principal" action="/index?faces-redirect=true" immediate="true"/></li>
+                            </ul>
+                        </div>
+                        <p style="color: #336600;">Los campos marcados con * son obligatorios</p>
+                        <h:panelGrid columns="3" styleClass="crear">
+                            <h:outputLabel value="* Apellido: "/>
+                            <h:inputText id="apellido" value="#{columnistaBean.entity.apellido}" required="true" requiredMessage="Campo Obligatorio"/>
+                            <h:message for="apellido"/>
+                            
+                            <h:outputLabel value="* Nombre: "/>
+                            <h:inputText id="nombre" value="#{columnistaBean.entity.nombre}" required="true" requiredMessage="Campo Obligatorio"/>
+                            <h:message for="nombre"/>
+                            
+                            <h:outputLabel value="Alias: "/>
+                            <h:inputText value="#{columnistaBean.entity.alias}"/>
+                            <h:outputText value="&nbsp;"/>
+                            
+                            <h:outputLabel value="* Nombre de la columna: "/>
+                            <h:inputText id="columna" value="#{columnistaBean.entity.columna}" required="true" requiredMessage="Campo Obligatorio"/>
+                            <h:message for="columna"/>
+                            
+                            <h:outputLabel value="* Descripción de la columna: "/>
+                            <h:inputText id="desc" value="#{columnistaBean.entity.descripcion}" required="true" requiredMessage="Campo Obligatorio"/>
+                            <h:message for="desc"/>
+                            
+                            <h:outputLabel value="Email: "/>
+                            <h:inputText value="#{columnistaBean.entity.email}"/>
+                            <h:outputText value="&nbsp;"/>
+
+                            <h:outputLabel value="Twitter: "/>
+                            <h:inputText value="#{columnistaBean.entity.twitter}"/>
+                            <h:outputText value="&nbsp;"/>
+
+                            <h:outputLabel value="Celular: "/>
+                            <h:inputText value="#{columnistaBean.entity.celular}"/>
+                            <h:outputText value="&nbsp;"/>
+                            
+                            <h:outputLabel value="Teléfono: "/>
+                            <h:inputText value="#{columnistaBean.entity.telefono}"/>
+                            <h:outputText value="&nbsp;"/>
+                            
+                            <h:outputLabel value="Foto: "/>
+                            <p:fileUpload value="#{columnistaBean.uploadedFile}" mode="simple"/>
+                            <h:outputText value="&nbsp;"/>
+                            
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:commandButton value="Guardar" action="#{columnistaBean.create}"/>
+                            <h:outputText value="&nbsp;" style="width: 50px;"/>
+                            <h:commandButton value="Cancelar" action="#{columnistaBean.prepareList}" immediate="true"/>
+                        </h:panelGrid>
+                        <h:messages id="msg" style="color: red;"/>
+                    </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

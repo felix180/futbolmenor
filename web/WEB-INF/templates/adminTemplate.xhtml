@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+        <h:outputStylesheet name="default.css" library="css"/>
+        <h:outputStylesheet name="cssLayout.css" library="css"/>
+        <h:outputStylesheet name="menuAdmin.css" library="css"/>
+        <h:outputStylesheet name="jsfcrud.css" library="css"/>
+        <h:outputStylesheet name="overridePrimefaces.css" library="css"/>
+
+        <title><ui:insert name="titulo">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+
+        <div id="top" class="top">
+            <h:graphicImage name="images/banner.png"/>
+            <h1><ui:insert name="top">Top</ui:insert></h1>
+        </div>
+        <div>
+            <div id="left">
+
+                <div class="arrowgreen">
+                    <ul>
+                        <li><h:link value="Administración" outcome="/admin/admin?faces-redirect=true"/></li>
+                        <li><h:link value="Noticias" outcome="/admin/noticia/List?faces-redirect=true"/></li>
+                        <li><h:link value="Columnistas" outcome="/admin/columnista/List?faces-redirect=true"/></li>
+                        <li><h:link value="Columnas" outcome="/admin/columna/List?faces-redirect=true"/></li>
+                        <li><h:link value="Galería" outcome="/admin/galeria/List?faces-redirect=true"/></li>
+                        <li><h:link value="Video" outcome="/admin/video/List?faces-redirect=true"/></li>
+                        <li><h:link value="Patrocinantes" outcome="/admin/patrocinante/List?faces-redirect=true"/></li>
+                        <li><h:link value="Ligas" outcome="/admin/adminLigas?faces-redirect=true"/></li>
+                        <li><h:link value="Competiciones" outcome="/admin/adminTorneo?faces-redirect=true"/></li>
+                        <li><h:link value="Principal" outcome="/index?faces-redirect=true"/></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="content" class="left_content">
+
+                <h1><ui:insert name="tituloContent">
+                        Titulo Content
+                        <p/>
+                    </ui:insert></h1>
+
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+    </h:body>
+
+</html>

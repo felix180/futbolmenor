@@ -1,0 +1,843 @@
+div.calend-resultados {
+	position: relative;
+	left: 0px;
+	top: 0px;
+	width: 666px;
+	height: 200px;
+	background-image: url(../img/calendario/bg.png);
+}
+
+div.noticias-liga {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 666px; 
+}
+
+/*PRE-INFANTIL B*/
+
+a.p-infanB-w {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:110px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanB_w.png);
+}
+
+a.p-infanB-v {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:110px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanB_v.png);
+}
+
+a.p-infanB-w:hover{
+	background-image: url(../img/calendario/p_infanB_v.png);
+}
+
+/*PRE-INFANTIL A*/
+
+a.p-infanA-w {
+	position:absolute;
+	left:110px;
+	top:0px;
+	width:122px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanA_w.png);
+}
+
+a.p-infanA-v {
+	position:absolute;
+	left:110px;
+	top:0px;
+	width:122px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanA_v.png);
+}
+
+a.p-infanA-w:hover{
+	background-image: url(../img/calendario/p_infanA_v.png);
+}
+
+/*INFANTIL C*/
+
+a.infanC-w {
+	position:absolute;
+	left:232px;
+	top:0px;
+	width:118px;
+	height:66px;
+        background-image: url(../img/calendario/infanC_w.png);
+}
+
+a.infanC-v {
+	position:absolute;
+	left:232px;
+	top:0px;
+	width:118px;
+	height:66px;
+        background-image: url(../img/calendario/infanC_v.png);
+}
+
+a.infanC-w:hover{
+	background-image: url(../img/calendario/infanC_v.png);
+}
+
+/*INFANTIL B*/
+
+a.infanB-w {
+	position:absolute;
+	left:350px;
+	top:0px;
+	width:112px;
+	height:66px;
+        background-image: url(../img/calendario/infanB_w.png);
+}
+
+a.infanB-v {
+	position:absolute;
+	left:350px;
+	top:0px;
+	width:112px;
+	height:66px;
+        background-image: url(../img/calendario/infanB_v.png);
+}
+
+a.infanB-w:hover{
+	background-image: url(../img/calendario/infanB_v.png);
+}
+
+/*INFANTIL A*/
+
+a.infanA-w {
+	position:absolute;
+	left:462px;
+	top:0px;
+	width:103px;
+	height:66px;
+        background-image: url(../img/calendario/infanA_w.png);
+}
+
+a.infanA-v {
+	position:absolute;
+	left:462px;
+	top:0px;
+	width:103px;
+	height:66px;
+        background-image: url(../img/calendario/infanA_v.png);
+}
+
+a.infanA-w:hover{
+	background-image: url(../img/calendario/infanA_v.png);
+}
+
+/*JUVENIL*/
+
+a.junv-w {
+	position:absolute;
+	left:565px;
+	top:0px;
+	width:101px;
+	height:66px;
+        background-image: url(../img/calendario/junv_w.png);
+}
+
+a.junv-v {
+	position:absolute;
+	left:565px;
+	top:0px;
+	width:101px;
+	height:66px;
+        background-image: url(../img/calendario/junv_v.png);
+}
+
+a.junv-w:hover{
+	background-image: url(../img/calendario/junv_v.png);
+}
+
+div.fase {
+	position: absolute;
+	left: 0px;
+	top: 76px;
+	width: 103px;
+	height: 13px;
+	margin-top: -5px;
+	margin-left: 10px;
+}
+
+div.octavos {
+	position:absolute;
+	left:103px;
+	top:76px;
+	width:94px;
+	height:13px;
+}
+
+div.cuartos {
+	position:absolute;
+	left:197px;
+	top:76px;
+	width:93px;
+	height:13px;
+}
+
+div.semifinal {
+	position:absolute;
+	left:290px;
+	top:76px;
+	width:93px;
+	height:13px;
+}
+
+div.final {
+	position:absolute;
+	left:383px;
+	top:76px;
+	width:96px;
+	height:13px;
+}
+
+div.jornada {
+	position: absolute;
+	left: 479px;
+	top: 76px;
+	width: 30px;
+	height: 13px;
+	margin-left: 100px;
+	margin-top: -5px;
+}
+
+div.p-infan-b-w014 {
+	position:absolute;
+	left:0px;
+	top:89px;
+	width:666px;
+	height:5px;
+}
+
+/*GRUPO 1*/
+
+a.grup-1-gray {
+	position:absolute;
+	left:0px;
+	top:94px;
+	width:83px;
+	height:53px;
+        background-image: url(../img/calendario/grup_1_gray.png);
+}
+
+a.grup-1-green {
+	position:absolute;
+	left:0px;
+	top:94px;
+	width:83px;
+	height:53px;
+        background-image: url(../img/calendario/grup_1_green.png);
+}
+
+a.grup-1-gray:hover{
+	background-image: url(../img/calendario/grup_1_green.png);
+}
+
+/*GRUPO 2*/
+
+a.grup-2-gray {
+	position:absolute;
+	left:83px;
+	top:94px;
+	width:84px;
+	height:53px;
+        background-image: url(../img/calendario/grup_2_gray.png);
+}
+
+a.grup-2-green {
+	position:absolute;
+	left:83px;
+	top:94px;
+	width:84px;
+	height:53px;
+        background-image: url(../img/calendario/grup_2_green.png);
+}
+
+a.grup-2-gray:hover{
+	background-image: url(../img/calendario/grup_2_green.png);
+}
+
+/*GRUPO 3*/
+
+a.grup-3-gray {
+	position:absolute;
+	left:167px;
+	top:94px;
+	width:83px;
+	height:53px;
+        background-image: url(../img/calendario/grup_3_gray.png);
+}
+
+a.grup-3-green {
+	position:absolute;
+	left:167px;
+	top:94px;
+	width:83px;
+	height:53px;
+        background-image: url(../img/calendario/grup_3_green.png);
+}
+
+a.grup-3-gray:hover{
+	background-image: url(../img/calendario/grup_3_green.png);
+}
+
+/*GRUPO 4*/
+
+a.grup-4-gray {
+	position:absolute;
+	left:250px;
+	top:94px;
+	width:82px;
+	height:53px;
+        background-image: url(../img/calendario/grup_4_gray.png);
+}
+
+a.grup-4-green {
+	position:absolute;
+	left:250px;
+	top:94px;
+	width:82px;
+	height:53px;
+        background-image: url(../img/calendario/grup_4_green.png);
+}
+
+a.grup-4-gray:hover{
+	background-image: url(../img/calendario/grup_4_green.png);
+}
+
+/*GRUPO 5*/
+
+a.grup-5-gray {
+	position:absolute;
+	left:332px;
+	top:94px;
+	width:84px;
+	height:53px;
+        background-image: url(../img/calendario/grup_5_gray.png);
+}
+
+a.grup-5-green {
+	position:absolute;
+	left:332px;
+	top:94px;
+	width:84px;
+	height:53px;
+        background-image: url(../img/calendario/grup_5_green.png);
+}
+
+a.grup-5-gray:hover{
+	background-image: url(../img/calendario/grup_5_green.png);
+}
+
+/*GRUPO 6*/
+
+a.grup-6-gray {
+	position:absolute;
+	left:416px;
+	top:94px;
+	width:82px;
+	height:53px;
+        background-image: url(../img/calendario/grup_6_gray.png);
+}
+
+a.grup-6-green {
+	position:absolute;
+	left:416px;
+	top:94px;
+	width:82px;
+	height:53px;
+        background-image: url(../img/calendario/grup_6_green.png);
+}
+
+a.grup-6-gray:hover{
+	background-image: url(../img/calendario/grup_6_green.png);
+}
+
+/*GRUPO 7*/
+
+a.grup-7-gray {
+	position:absolute;
+	left:498px;
+	top:94px;
+	width:87px;
+	height:53px;
+        background-image: url(../img/calendario/grup_7_gray.png);
+}
+
+a.grup-7-green {
+	position:absolute;
+	left:498px;
+	top:94px;
+	width:87px;
+	height:53px;
+        background-image: url(../img/calendario/grup_7_green.png);
+}
+
+a.grup-7-gray:hover{
+	background-image: url(../img/calendario/grup_7_green.png);
+}
+
+/*GRUPO 8*/
+
+a.grup-8-gray {
+	position:absolute;
+	left:585px;
+	top:94px;
+	width:81px;
+	height:53px;
+        background-image: url(../img/calendario/grup_8_gray.png);
+}
+
+a.grup-8-green {
+	position:absolute;
+	left:585px;
+	top:94px;
+	width:81px;
+	height:53px;
+        background-image: url(../img/calendario/grup_8_gray.png);
+}
+
+a.grup-8-gray:hover{
+	background-image: url(../img/calendario/grup_8_green.png);
+}
+
+/*GRUPO 9*/
+
+a.grup-9-gray {
+	position:absolute;
+	left:0px;
+	top:147px;
+	width:83px;
+	height:57px;
+        background-image: url(../img/calendario/grup_9_gray.png);
+}
+
+a.grup-9-green {
+	position:absolute;
+	left:0px;
+	top:147px;
+	width:83px;
+	height:57px;
+        background-image: url(../img/calendario/grup_9_green.png);
+}
+
+a.grup-9-gray:hover{
+	background-image: url(../img/calendario/grup_9_green.png);
+}
+
+/*GRUPO 10*/
+
+a.grup-10-gray {
+	position:absolute;
+	left:83px;
+	top:147px;
+	width:84px;
+	height:57px;
+        background-image: url(../img/calendario/grup_10_gray.png);
+}
+
+a.grup-10-green {
+	position:absolute;
+	left:83px;
+	top:147px;
+	width:84px;
+	height:57px;
+        background-image: url(../img/calendario/grup_10_green.png);
+}
+
+a.grup-10-gray:hover{
+	background-image: url(../img/calendario/grup_10_green.png);
+}
+
+/*GRUPO 11*/
+
+a.grup-11-gray {
+	position:absolute;
+	left:167px;
+	top:147px;
+	width:83px;
+	height:57px;
+        background-image: url(../img/calendario/grup_11_gray.png);
+}
+
+a.grup-11-green {
+	position:absolute;
+	left:167px;
+	top:147px;
+	width:83px;
+	height:57px;
+        background-image: url(../img/calendario/grup_11_green.png);
+}
+
+a.grup-11-gray:hover{
+	background-image: url(../img/calendario/grup_11_green.png);
+}
+
+/*GRUPO 12*/
+
+a.grup-12-gray {
+	position:absolute;
+	left:250px;
+	top:147px;
+	width:82px;
+	height:57px;
+        background-image: url(../img/calendario/grup_12_gray.png);
+}
+
+a.green-12-gray {
+	position:absolute;
+	left:250px;
+	top:147px;
+	width:82px;
+	height:57px;
+        background-image: url(../img/calendario/grup_12_green.png);
+}
+
+a.grup-12-gray:hover{
+	background-image: url(../img/calendario/grup_12_green.png);
+}
+
+/*GRUPO 13*/
+
+a.grup-13-gray {
+	position:absolute;
+	left:332px;
+	top:147px;
+	width:84px;
+	height:57px;
+        background-image: url(../img/calendario/grup_13_gray.png);
+}
+
+a.grup-13-green {
+	position:absolute;
+	left:332px;
+	top:147px;
+	width:84px;
+	height:57px;
+        background-image: url(../img/calendario/grup_13_green.png);
+}
+
+a.grup-13-gray:hover{
+	background-image: url(../img/calendario/grup_13_green.png);
+}
+
+/*GRUPO 14*/
+
+a.grup-14-gray {
+	position:absolute;
+	left:416px;
+	top:147px;
+	width:82px;
+	height:57px;
+        background-image: url(../img/calendario/grup_14_gray.png);
+}
+
+a.grup-14-green {
+	position:absolute;
+	left:416px;
+	top:147px;
+	width:82px;
+	height:57px;
+        background-image: url(../img/calendario/grup_14_green.png);
+}
+
+a.grup-14-gray:hover{
+	background-image: url(../img/calendario/grup_14_green.png);
+}
+
+/*GRUPO 15*/
+
+a.grup-15-gray {
+	position:absolute;
+	left:498px;
+	top:147px;
+	width:87px;
+	height:57px;
+        background-image: url(../img/calendario/grup_15_gray.png);
+}
+
+a.grup-15-green {
+	position:absolute;
+	left:498px;
+	top:147px;
+	width:87px;
+	height:57px;
+        background-image: url(../img/calendario/grup_15_green.png);
+}
+
+a.grup-15-gray:hover{
+	background-image: url(../img/calendario/grup_15_green.png);
+}
+
+/*GRUPO 16*/
+
+a.grup-16-gray {
+	position:absolute;
+	left:585px;
+	top:147px;
+	width:81px;
+	height:57px;
+        background-image: url(../img/calendario/grup_16_gray.png);
+}
+
+a.grup-16-green {
+	position:absolute;
+	left:585px;
+	top:147px;
+	width:81px;
+	height:57px;
+        background-image: url(../img/calendario/grup_16_green.png);
+}
+
+a.grup-16-gray:hover{
+	background-image: url(../img/calendario/grup_16_green.png);
+}
+
+div.tabla-inf {
+	position:absolute;
+	left:0px;
+	top:204px;
+	width:666px;
+	height:505px;
+}
+.tabla-calend {
+	width: 665px;
+	background-color: #FFF;
+}
+
+.texto_interno {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 11px;
+	color: #000;
+}
+
+.texto_interno2 {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 11px;
+	color: #000;
+	text-align: center;
+}
+
+.texto_interno3 td{text-align: center;}
+
+.texto_interno3 {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 11px;
+	color: #000;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.texto_interno4 td{text-align: center;}
+
+.texto_interno4 {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.texto_interno5 {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.texto_interno5:hover{
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+        cursor:  pointer;
+        color:#FFFFFF;
+}
+
+.texto_interno4:hover{
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+        cursor:  pointer;
+        color:#FFFFFF;
+}
+.img_escudos {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.puntuacion {
+	text-align: center;
+	background: #464547;
+/*	background: -webkit-gradient(linear, top, bottom, from(#6d6e71), to(#383637));
+	background: -moz-linear-gradient(top,  #6d6e71,  #383637);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6e71', endColorstr='#383637', GradientType=1);
+	*/
+        color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+
+
+/*PRE-INFANTIL B*/
+
+a.categoria-w-1 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:110px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanB_w.png);
+}
+
+a.categoria-v-1 {
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:110px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanB_v.png);
+}
+
+a.categoria-w-1:hover{
+	background-image: url(../img/calendario/p_infanB_v.png);
+}
+
+/*PRE-INFANTIL A*/
+
+a.categoria-w-2 {
+	position:absolute;
+	left:110px;
+	top:0px;
+	width:122px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanA_w.png);
+}
+
+a.categoria-v-2 {
+	position:absolute;
+	left:110px;
+	top:0px;
+	width:122px;
+	height:66px;
+        background-image: url(../img/calendario/p_infanA_v.png);
+}
+
+a.categoria-w-2:hover{
+	background-image: url(../img/calendario/p_infanA_v.png);
+}
+
+/*INFANTIL C*/
+
+a.categoria-w-3 {
+	position:absolute;
+	left:232px;
+	top:0px;
+	width:118px;
+	height:66px;
+        background-image: url(../img/calendario/infanC_w.png);
+}
+
+a.categoria-v-3 {
+	position:absolute;
+	left:232px;
+	top:0px;
+	width:118px;
+	height:66px;
+        background-image: url(../img/calendario/infanC_v.png);
+}
+
+a.categoria-w-3:hover{
+	background-image: url(../img/calendario/infanC_v.png);
+}
+
+/*INFANTIL B*/
+
+a.categoria-w-4 {
+	position:absolute;
+	left:350px;
+	top:0px;
+	width:112px;
+	height:66px;
+        background-image: url(../img/calendario/infanB_w.png);
+}
+
+a.categoria-v-4 {
+	position:absolute;
+	left:350px;
+	top:0px;
+	width:112px;
+	height:66px;
+        background-image: url(../img/calendario/infanB_v.png);
+}
+
+a.categoria-w-4:hover{
+	background-image: url(../img/calendario/infanB_v.png);
+}
+
+/*INFANTIL A*/
+
+a.categoria-w-5 {
+	position:absolute;
+	left:462px;
+	top:0px;
+	width:103px;
+	height:66px;
+        background-image: url(../img/calendario/infanA_w.png);
+}
+
+a.categoria-v-5 {
+	position:absolute;
+	left:462px;
+	top:0px;
+	width:103px;
+	height:66px;
+        background-image: url(../img/calendario/infanA_v.png);
+}
+
+a.categoria-w-5:hover{
+	background-image: url(../img/calendario/infanA_v.png);
+}
+
+/*JUVENIL*/
+
+a.categoria-w-6 {
+	position:absolute;
+	left:565px;
+	top:0px;
+	width:101px;
+	height:66px;
+        background-image: url(../img/calendario/junv_w.png);
+}
+
+a.categoria-v-6 {
+	position:absolute;
+	left:565px;
+	top:0px;
+	width:101px;
+	height:66px;
+        background-image: url(../img/calendario/junv_v.png);
+}
+
+a.categoria-w-6:hover{
+	background-image: url(../img/calendario/junv_v.png);
+}
+

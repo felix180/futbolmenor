@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{contactoController.selected.id}" title="#{bundle.CreateContactoTitle_id}" required="true" requiredMessage="#{bundle.CreateContactoRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_apellido}" for="apellido" />
+                    <h:inputText id="apellido" value="#{contactoController.selected.apellido}" title="#{bundle.CreateContactoTitle_apellido}" required="true" requiredMessage="#{bundle.CreateContactoRequiredMessage_apellido}"/>
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{contactoController.selected.nombre}" title="#{bundle.CreateContactoTitle_nombre}" required="true" requiredMessage="#{bundle.CreateContactoRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_apodo}" for="apodo" />
+                    <h:inputText id="apodo" value="#{contactoController.selected.apodo}" title="#{bundle.CreateContactoTitle_apodo}" />
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_cargo}" for="cargo" />
+                    <h:inputText id="cargo" value="#{contactoController.selected.cargo}" title="#{bundle.CreateContactoTitle_cargo}" />
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_telefono1}" for="telefono1" />
+                    <h:inputText id="telefono1" value="#{contactoController.selected.telefono1}" title="#{bundle.CreateContactoTitle_telefono1}" />
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_telefono2}" for="telefono2" />
+                    <h:inputText id="telefono2" value="#{contactoController.selected.telefono2}" title="#{bundle.CreateContactoTitle_telefono2}" />
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{contactoController.selected.email}" title="#{bundle.CreateContactoTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_otro}" for="otro" />
+                    <h:inputText id="otro" value="#{contactoController.selected.otro}" title="#{bundle.CreateContactoTitle_otro}" />
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_ligaId}" for="ligaId" />
+                    <h:selectOneMenu id="ligaId" value="#{contactoController.selected.ligaId}" title="#{bundle.CreateContactoTitle_ligaId}" >
+                        <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateContactoLabel_clubId}" for="clubId" />
+                    <h:selectOneMenu id="clubId" value="#{contactoController.selected.clubId}" title="#{bundle.CreateContactoTitle_clubId}" >
+                        <f:selectItems value="#{clubController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactoController.create}" value="#{bundle.CreateContactoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{contactoController.prepareList}" value="#{bundle.CreateContactoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateContactoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

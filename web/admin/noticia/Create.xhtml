@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Noticias
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Noticias
+            </ui:define>
+
+            <ui:define name="tituloContent">Agregar una Nueva Noticia</ui:define>
+            <ui:define name="content">
+                <h:panelGroup>
+                    <h:form id="newsForm" enctype="multipart/form-data" >
+                        <div class="hovermenu">
+                            <ul>
+                                <li><h:commandLink value="Listar Noticias" action="List"/></li>
+                                <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                                <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                            </ul>
+                        </div>
+                        <h:panelGrid columns="2" styleClass="crear">
+                            <h:outputLabel value="Lugar: "/>
+                            <h:inputText value="#{noticiaBean.entity.lugar}"/>
+
+                            <h:outputLabel value="Fecha: "/>
+                            <p:calendar value="#{noticiaBean.entity.fecha}" pattern="dd/MM/yyyy HH:mm" />
+
+                            <h:outputLabel value="Autor: "/>
+                            <h:inputText value="#{noticiaBean.entity.autor}"/>
+
+                            <h:outputLabel value="PreTítulo: "/>
+                            <h:inputText value="#{noticiaBean.entity.pretitulo}" style="width: 600px;"/>
+
+                            <h:outputLabel value="Título: "/>
+                            <h:inputText value="#{noticiaBean.entity.titulo}" style="width: 600px;"/>
+
+                            <h:outputLabel value="Liga: "/>
+                            <h:selectOneMenu id="localidad" value="#{noticiaBean.entity.ligaId}" 
+                                             title="Liga: ">
+                                <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+
+                            <h:outputLabel value="Comentario: "/>
+                            <h:inputText value="#{noticiaBean.entity.comentario}" style="width: 600px;"/>
+
+                            <h:outputLabel value="Cuerpo: "/>
+                            <p:editor id="editor" value="#{noticiaBean.entity.cuerpo}" width="600"/>
+
+                            <h:outputLabel value="Imagen: "/>
+                            <p:fileUpload value="#{noticiaBean.uploadedFile}" mode="simple" style="width: 450px;"/>
+
+                            <h:outputLabel value="¿Página Principal?"/>
+                            <h:selectBooleanCheckbox value="#{noticiaBean.pagPrincipal}"/>
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:commandButton value="Guardar" action="#{noticiaBean.create}"/>
+                            <h:outputText value="&nbsp;" style="width: 50px;"/>
+                            <h:commandButton value="Cancelar" action="#{noticiaBean.prepareList}"/>
+                        </h:panelGrid>
+                        <h:messages style="color: red;"/>
+
+                    </h:form>
+                </h:panelGroup>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+</html>
+

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Competiciones 
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Competiciones
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                Administración de Competiciones
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <table>
+                    <tr>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/List?faces-redirect=true">
+                                <h:graphicImage name="link_temporadas.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/fase/List?faces-redirect=true">
+                                <h:graphicImage name="link_fases.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/grupo/List?faces-redirect=true">
+                                <h:graphicImage name="link_grupos.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/jornada/List?faces-redirect=true">
+                                <h:graphicImage name="link_jornadas.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/partido/List?faces-redirect=true">
+                                <h:graphicImage name="link_partidos.png" library="images"/>
+                            </h:link>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/resultado/List?faces-redirect=true">
+                                <h:graphicImage name="link_resultados.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/torneo/temporada/clasificacion/List?faces-redirect=true">
+                                <h:graphicImage name="link_clasificaciones.png" library="images"/>
+                            </h:link>
+                        </td>
+                    </tr>
+                </table>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    
+        <div class="urbangreymenu">
+
+            <h3 class="headerbar">Principal</h3>
+            <ul class="submenu">
+                <li><h:link value="Salir" outcome="/index?faces-redirect=true"/></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C1/">Horizontal CSS Menus</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C2/">Vertical CSS Menus</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C4/">Image CSS</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C6/">Form CSS</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C5/">DIVs and containers</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C7/">Links & Buttons</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/category/C8/">Other</a></li>
+                <li><a href="http://www.dynamicdrive.com/style/csslibrary/all/">Browse All</a></li>
+            </ul>
+
+            <h3 class="headerbar">CSS Drive</h3>
+            <ul class="submenu">
+                <li><a href="http://www.cssdrive.com">CSS Gallery</a></li>
+                <li><a href="http://www.cssdrive.com/index.php/menudesigns/">Menu Gallery</a></li>
+                <li><a href="http://www.cssdrive.com/index.php/news/">Web Design News</a></li>
+                <li><a href="http://www.cssdrive.com/index.php/examples/">CSS Examples</a></li>
+                <li><a href="http://www.cssdrive.com/index.php/main/csscompressor/">CSS Compressor</a></li>
+                <li><a href="http://www.dynamicdrive.com/forums/forumdisplay.php?f=6">CSS Forums</a></li>
+            </ul>
+
+        </div>
+<!--            <h:form id="menuForm">
+                <p:panelMenu style="width: 150px; font-size: 0.9em;">
+                    <p:submenu label="Principal">
+                        <p:menuitem value="Salir" action="/index?faces-redirect=true"/>
+                    </p:submenu>
+                    <p:submenu label="Noticias">
+                        <p:menuitem value="Listar noticias" action="../admin/noticia/List"/>
+                        <p:menuitem value="Crear noticia" action="#{noticiaBean.prepareCreate}"/>
+                    </p:submenu>
+                    <p:submenu label="Cronistas">
+                        <p:menuitem value="Listar cronistas" action="/admin/cronista/List" inmediate="true"/>
+                        <p:menuitem value="Agregar cronista" action="#{cronistaBean.prepareCreate}" inmediate="true"/>
+                    </p:submenu>
+                    <p:submenu label="Galería">
+                        <p:menuitem value="Imágenes en galería" action="/admin/galeria/List"/>
+                        <p:menuitem value="Agregar imágen" action="#{galeriaBean.prepareCreate}"/>
+                    </p:submenu>
+                    <p:submenu label="Videos">
+                        <p:menuitem value="Listar videos" action="/admin/video/List"/>
+                        <p:menuitem value="Agregar video" action="#{videoBean.prepareCreate}"/>
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>-->
+    
+
+</ui:composition>

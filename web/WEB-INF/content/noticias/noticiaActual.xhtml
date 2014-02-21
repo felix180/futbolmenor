@@ -1,0 +1,36 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:form>
+
+
+        <div class="post">
+            <p style="background-image:url(resources/ligues/img/bg_tit.png); text-transform: uppercase; font-weight:bold; background-position: 0 0;background-repeat: no-repeat;display: block;font-size: 17px;height: 27px;padding-top: 8px;text-decoration: none;text-indent: 28px;">  
+                <h:outputText value="#{mainPageBean.entity.titulo}"/>
+            </p>
+            <div class="post-img">
+                <h:graphicImage url="#{noticiaBean.IMAGE_RETURN}#{mainPageBean.entity.foto}" width="557" height="244"></h:graphicImage>  
+            </div>
+            <div class="excerpt">
+                <p>
+                    <strong><h:outputText value="#{mainPageBean.entity.pretitulo}"/> </strong>
+                    <h:outputText value="#{mainPageBean.entity.cuerpo}" escape="false"/>
+                </p>
+            </div>
+            <ul class="meta">
+                <li class="date">
+                    <h:outputText value="#{mainPageBean.entity.lugar},"/>
+                    <h:outputText value="#{mainPageBean.entity.fecha}">
+                        <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                    </h:outputText>
+                </li>
+                <li class="author"><h:outputText value="#{mainPageBean.entity.autor}"/></li>
+            </ul>
+            <p><h:commandLink action="index?faces-redirect=true" styleClass="more">&lt;&lt; Inicio</h:commandLink></p>
+        </div>
+
+
+    </h:form>
+</ui:composition>

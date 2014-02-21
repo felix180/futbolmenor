@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.TemporadaTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h:outputText value="#{bundle.TemporadaTitle}"/>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.TemporadaConfigTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="configForm">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.CreateLink}" action="#{temporadaController.prepareCreate}"/></li>
+                            <li><h:commandLink value="#{bundle.EditLink}" action="#{temporadaController.prepareEditFromView}"/></li>
+                            <li><h:commandLink value="#{bundle.DeleteLink}" action="#{temporadaController.prepareDestroyFromView}"/></li>
+                            <li><h:commandLink value="#{bundle.ListLink}" action="#{temporadaController.prepareList}" immediate="true"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <p/>
+
+                    <h:panelGrid columns="2">
+                        <p:commandButton id="configCantFases" value="#{bundle.ConfigCantFases}"
+                                         onclick="fasesCantDlg.show();" type="button"
+                                         disabled="#{temporadaControllerExt.enableCantFasesButton}"
+                                         style="width: 160px;"/>
+                        <h:outputText value="La cantidad de fases configuradas son: #{temporadaControllerExt.cantFases}"
+                                      rendered="#{temporadaControllerExt.cantFases > 0}"/>
+                        
+                        <p:commandButton id="configNombreFases" value="#{bundle.ConfigFasesNombre}"
+                                         onclick="fasesNombreDlg.show();" type="button"
+                                         rendered="#{temporadaControllerExt.cantFases > 0}"
+                                         style="width: 160px;"/>
+                        <h:outputText value="Ha configurado las fases, proceda con los Grupos y Llaves en cada fase"
+                                      rendered="#{temporadaControllerExt.fasesReady}"/>
+                        
+                        <p:commandButton id="configGrupos" value="#{bundle.ConfigGruposButton}"
+                                         actionListener="#{temporadaControllerExt.configGrupos}"
+                                         rendered="#{temporadaControllerExt.fasesReady}"
+                                         style="width: 160px"/>
+                        
+                        <p:commandButton id="configLlaves" value="#{bundle.ConfigLlavesButton}"
+                                         actionListener="#{temporadaControllerExt.configLlaves}"
+                                         rendered="#{temporadaControllerExt.fasesReady}"
+                                         style="width: 160px"/>
+                        
+                        <h:selectOneMenu value="#{temporadaControllerExt.faseSelected}" 
+                                         rendered="#{temporadaControllerExt.confGrupos}">
+                            <f:selectItems value="#{temporadaControllerExt.fasesConGrupos}"/>
+                        </h:selectOneMenu>
+
+                        <p:commandButton id="configNombreGrupos" value="#{bundle.ConfigGruposNombre}"
+                                         oncomplete="gruposNombreDlg.show()" update=":gruposNombreDlg"
+                                         rendered="#{temporadaControllerExt.confGrupos}"
+                                         style="width: 160px;"/>
+                        
+                        <h:selectOneMenu value="#{temporadaControllerExt.faseConLlaveSelected}" 
+                                         rendered="#{temporadaControllerExt.confLlaves}">
+                            <f:selectItems value="#{temporadaControllerExt.fasesConLlaves}"/>
+                        </h:selectOneMenu>
+                            
+                        <p:commandButton id="configNombreLlaves" value="#{bundle.ConfigLlavesNombre}"
+                                         oncomplete="llavesNombreDlg.show()" update=":llavesNombreDlg"
+                                         rendered="#{temporadaControllerExt.confLlaves}"
+                                         style="width: 160px;"/>
+
+                    </h:panelGrid>
+                    <p:panel rendered="#{temporadaControllerExt.noHayGrupos}" 
+                             style="width: 750px">
+                        <h2><h:outputLabel value="Partidos de las Jornadas"/></h2>
+                        <p/>
+                        <h:panelGrid columns="6">
+                            <h:outputLabel value="Fase: "/>
+                            <h:panelGroup id="fases">
+                                <h:selectOneMenu value="#{temporadaControllerExt.faseSelectedFinal}">
+                                    <f:selectItems value="#{temporadaControllerExt.fasesConGrupos}"/>
+                                    <f:ajax render="grupos"/>
+                                </h:selectOneMenu>
+                            </h:panelGroup>
+
+                            <h:outputLabel value="Grupo: "/>
+                            <h:panelGroup id="grupos">
+                                <h:selectOneMenu value="#{temporadaControllerExt.grupoSelected}" 
+                                                 disabled="#{temporadaControllerExt.grupoListDisable}">
+                                    <f:selectItems value="#{temporadaControllerExt.gruposDefase}"/>
+                                    <f:ajax render="jornadas"/>
+                                </h:selectOneMenu>
+                            </h:panelGroup>
+
+                            <h:outputLabel value="Jornada: "/>
+                            <h:panelGroup id="jornadas">
+                                <h:selectOneMenu value="#{temporadaControllerExt.jornadaSelected}" 
+                                                 disabled="#{temporadaControllerExt.jornadaListDiseable}">
+                                    <f:selectItems value="#{temporadaControllerExt.jornadasEnGrupo}"/>
+                                </h:selectOneMenu>
+                            </h:panelGroup>
+
+                            <h:outputLabel value="Categoría: "/>
+                            <h:panelGroup id="categorias">
+                                <h:selectOneMenu value="#{temporadaControllerExt.categoriaSelected}">
+                                    <f:selectItems value="#{temporadaControllerExt.categorias}"/>
+                                </h:selectOneMenu>
+                            </h:panelGroup>
+
+                            <h:outputLabel value="Partidos: "/>
+                            <h:panelGroup id="partidos">
+                                <h:inputText value="#{temporadaControllerExt.cantPartidos}">
+                                    <f:convertNumber integerOnly="true"/>
+                                </h:inputText>
+                            </h:panelGroup>
+
+                            <h:outputLabel value=" "/>
+                            <h:panelGroup id="boton">
+                                <p:commandButton value="#{bundle.ConfigPartidos}"
+                                                 oncomplete="partidosDlg.show();" update=":partidosDlg"
+                                                 actionListener="#{temporadaControllerExt.creaPartidos}"
+                                                 style="width: 160px;"/>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+
+                <p:dialog id="configCantFasesDialog" header="#{bundle.ConfigCantFases}" 
+                          modal="true" widgetVar="fasesCantDlg">
+                    <h:form id="cantFasesForm">
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="#{bundle.TemporadaLabel_cantFases}" for="cantFases"/>
+                            <h:inputText id="cantFases" value="#{temporadaControllerExt.cantFases}" 
+                                         title="#{bundle.TemporadaTitle_cantFases}"
+                                         valueChangeListener="#{temporadaControllerExt.configFases}"
+                                         onchange="submit()"
+                                         immediate="true"/>
+                            <h:outputLabel value=" "/>
+
+                        </h:panelGrid>
+                    </h:form>
+                </p:dialog>
+
+                <p:dialog id="fasesNombreDlg" header="#{bundle.ConfigFasesTitle}"
+                          modal="true" widgetVar="fasesNombreDlg">
+                    <h:form id="nombreFasesForm">
+                        <ui:repeat var="fase" value="#{temporadaControllerExt.fasesStrings}"
+                                   varStatus="status"
+                                   rendered="#{temporadaControllerExt.cantFases > 0}">
+                            <h:panelGrid columns="5">
+                                <h:outputLabel value="#{bundle.TemporadaLabel_nombreFase}_#{status.index + 1}: "/>
+                                <h:inputText value="#{temporadaControllerExt.fasesStrings[status.index]}"/>
+
+                                <h:selectOneRadio value="#{temporadaControllerExt.tieneGrupos[status.index]}" layout="pageDirection">
+                                    <f:selectItem itemLabel="Con grupos" itemValue="si"/>
+                                    <f:selectItem itemLabel="Con llaves" itemValue="no"/>
+                                </h:selectOneRadio>
+
+                                <h:outputLabel value="Cant Grupos/Llaves:"/>
+                                <h:inputText value="#{temporadaControllerExt.cantGruposLlaves[status.index]}">
+                                    <f:convertNumber maxIntegerDigits="2"/>
+                                </h:inputText>
+                            </h:panelGrid>
+                        </ui:repeat>
+                        <h:commandButton value="#{bundle.ConfigFasesAceptarNombres}" 
+                                         actionListener="#{temporadaControllerExt.readFases}"/>
+                    </h:form>
+                </p:dialog>
+
+                <p:dialog id="gruposNombreDlg" header="#{bundle.ConfigGruposTitle}" 
+                          modal="true" widgetVar="gruposNombreDlg"
+                          appendToBody="true">
+
+                    <h:form id="nombreGruposForm">
+                        <p:growl id="growl1" showDetail="true" sticky="false"/>
+                        <h2>
+                            <h:outputLabel value="#{temporadaControllerExt.faseSelected}"/>
+                        </h2>
+                        <ui:repeat var="grupo" value="#{temporadaControllerExt.gruposEnFase}"
+                                   varStatus="status">
+                            <h:panelGrid columns="4" border="0" cellpadding="2" cellspacing="2" id="display">
+                                <h:outputLabel value="Nombre Grupo_#{status.index + 1}: " />
+                                <h:inputText value="#{temporadaControllerExt.nombreGrupo[status.index]}"/>
+                                <h:outputLabel value="Cant Jornadas: " />
+                                <h:inputText value="#{temporadaControllerExt.cantJornadas[status.index]}"/>
+                            </h:panelGrid>
+                        </ui:repeat>
+                        <p />
+                        <p:commandButton value="#{bundle.ConfigGruposGuardar}" 
+                                         actionListener="#{temporadaControllerExt.readGrupos}"
+                                         oncomplete="gruposNombreDlg.hide();"
+                                         update="growl1, :configForm"/>
+                    </h:form>
+                </p:dialog>
+                
+                <p:dialog id="llavesNombreDlg" header="#{bundle.ConfigLlavesTitle}" 
+                          modal="true" widgetVar="llavesNombreDlg"
+                          appendToBody="true">
+                              
+                    <h:form id="nombreLlavesForm">
+                        <p:growl id="growl2" showDetail="true" sticky="false"/>
+                        <h2>
+                            <h:outputLabel value="#{temporadaControllerExt.faseConLlaveSelected}"/>
+                        </h2>
+                        <ui:repeat var="grupo" value="#{temporadaControllerExt.llavesEnFase}"
+                                   varStatus="status">
+                            <h:panelGrid columns="4" border="0" cellpadding="2" cellspacing="2" id="display">
+                                <h:outputLabel value="Nombre Llave_#{status.index + 1}: " />
+                                <h:inputText value="#{temporadaControllerExt.nombreLlave[status.index]}"/>
+                                <h:outputLabel value="Cant Partidos: " />
+                                <h:inputText value="#{temporadaControllerExt.cantPartidosEnLlave[status.index]}"/>
+                            </h:panelGrid>
+                        </ui:repeat>
+                        <p />
+                        <p:commandButton value="#{bundle.ConfigLlavesGuardar}" 
+                                         actionListener="#{temporadaControllerExt.readLlaves}"
+                                         oncomplete="llavesNombreDlg.hide();"
+                                         update="growl2, :configForm"/>
+                    </h:form>
+                </p:dialog>
+
+                <p:dialog id="partidosDlg" header="#{bundle.ConfigPartidosTitle}"
+                          modal="true" widgetVar="partidosDlg"
+                          appendToBody="true">
+                    <h:form id="partidosForm">
+                        <p:growl id="growl2" showDetail="true" sticky="false"/>
+
+                        <h2>
+                            <h:outputText value="#{temporadaControllerExt.jornadaConfigurada}"/>
+                        </h2>
+                        <ui:repeat var="partido" value="#{temporadaControllerExt.partidos}"
+                                   varStatus="status">
+                            <h:panelGrid columns="5">
+                                <h:selectOneMenu id="eq1" value="#{temporadaControllerExt.equipo1Selected[status.index]}">
+                                    <f:selectItems value="#{temporadaControllerExt.equipo1List}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value=" vs. "/>
+                                <h:selectOneMenu id="eq2" value="#{temporadaControllerExt.equipo2Selected[status.index]}">
+                                    <f:selectItems value="#{temporadaControllerExt.equipo2List}"/>
+                                </h:selectOneMenu>
+                                <p:calendar id="fch" value="#{temporadaControllerExt.fechaPartido[status.index]}" pattern="dd/MM/yyyy HH:mm"/>
+                                <h:selectOneMenu id="cnh" value="#{temporadaControllerExt.canchaSelected[status.index]}">
+                                    <f:selectItems value="#{temporadaControllerExt.canchasList}"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </ui:repeat>
+                        <p:commandButton value="Guardar Jornada"
+                                         actionListener="#{temporadaControllerExt.readPartidos}"
+                                         oncomplete="partidosDlg.hide();"
+                                         update="growl2,:configForm"/>
+                    </h:form>
+                </p:dialog>
+            </ui:define>
+
+
+        </ui:composition>
+
+    </body>
+</html>

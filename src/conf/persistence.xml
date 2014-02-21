@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="LittleLigues2PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.spontecorp.littleligues.model.Noticia</class>
+        <class>com.spontecorp.littleligues.model.Foto</class>
+        <class>com.spontecorp.littleligues.model.Cronica</class>
+        <class>com.spontecorp.littleligues.model.Cronista</class>
+        <class>com.spontecorp.littleligues.model.Patrocinante</class>
+        <class>com.spontecorp.littleligues.model.liga.Direccion</class>
+        <class>com.spontecorp.littleligues.model.liga.Contacto</class>
+        <class>com.spontecorp.littleligues.model.liga.Equipo</class>
+        <class>com.spontecorp.littleligues.model.liga.Categoria</class>
+        <class>com.spontecorp.littleligues.model.liga.Liga</class>
+        <class>com.spontecorp.littleligues.model.liga.Club</class>
+        <class>com.spontecorp.littleligues.model.liga.Localidad</class>
+        <class>com.spontecorp.littleligues.model.liga.Cancha</class>
+        <class>com.spontecorp.littleligues.model.torneo.Evento</class>
+        <class>com.spontecorp.littleligues.model.torneo.TipoEvento</class>
+        <class>com.spontecorp.littleligues.model.torneo.Cargo</class>
+        <class>com.spontecorp.littleligues.model.torneo.Grupo</class>
+        <class>com.spontecorp.littleligues.model.torneo.Fase</class>
+        <class>com.spontecorp.littleligues.model.torneo.Staff</class>
+        <class>com.spontecorp.littleligues.model.torneo.Temporada</class>
+        <class>com.spontecorp.littleligues.model.torneo.Partido</class>
+        <class>com.spontecorp.littleligues.model.torneo.Jugador</class>
+        <class>com.spontecorp.littleligues.model.torneo.Convocado</class>
+        <class>com.spontecorp.littleligues.model.torneo.Clasificacion</class>
+        <class>com.spontecorp.littleligues.model.torneo.ConvocatoriaEq</class>
+        <class>com.spontecorp.littleligues.model.torneo.Pregunta</class>
+        <class>com.spontecorp.littleligues.model.torneo.Perfil</class>
+        <class>com.spontecorp.littleligues.model.torneo.ArbitroPartido</class>
+        <class>com.spontecorp.littleligues.model.torneo.TipoArbitro</class>
+        <class>com.spontecorp.littleligues.model.torneo.Arbitro</class>
+        <class>com.spontecorp.littleligues.model.torneo.Jornada</class>
+        <class>com.spontecorp.littleligues.model.torneo.Asociacion</class>
+        <class>com.spontecorp.littleligues.model.torneo.Llave</class>
+        <class>com.spontecorp.littleligues.jsfcontroller.CarruselHome</class>
+        <class>com.spontecorp.littleligues.model.Video</class>
+        <class>com.spontecorp.littleligues.model.CarruselHome</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+      
+            <!--DESARROLLO CASA-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/futbol?useUnicode=yes&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>-->
+      
+            <!--DESARROLLO OFICINA-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://spontedev32:3306/futbol?useUnicode=yes&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.user" value="futbol"/>
+            <property name="javax.persistence.jdbc.password" value="futbol"/>
+      -->
+            <!--PRODUCCION-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/futbol?useUnicode=yes&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.user" value="futbol"/>
+            <property name="javax.persistence.jdbc.password" value="ABC@123"/>
+            
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+</persistence>

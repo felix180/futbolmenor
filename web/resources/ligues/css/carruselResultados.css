@@ -1,0 +1,178 @@
+div.c_small {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 665px;
+	height: 430px;
+	background-image: url(../img/carruselResultados/bg.png);
+}
+
+div.fase {
+	position: absolute;
+	left: 0px;
+	top: 67px;
+	width: 85px;
+	height: 21px;
+	margin-left: 10px;
+}
+
+div.octavos {
+	position:absolute;
+	left:101px;
+	top:67px;
+	width:94px;
+	height:21px;
+}
+
+div.cuartos {
+	position:absolute;
+	left:195px;
+	top:67px;
+	width:93px;
+	height:21px;
+}
+
+div.semifinal {
+	position:absolute;
+	left:288px;
+	top:67px;
+	width:93px;
+	height:21px;
+}
+
+div.final {
+	position:absolute;
+	left:381px;
+	top:67px;
+	width:96px;
+	height:21px;
+}
+
+div.jornada {
+	position: absolute;
+	left: 477px;
+	top: 67px;
+	width: 100px;
+	margin-left: 100px;
+}
+
+/* Menú copa
+----------------------------------------------- */
+
+#navigation
+{
+	width: 100%;
+	height: 22px;
+	margin-top: 208px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+#navigation ul
+{margin:0px; padding:0px;}
+
+#navigation ul li
+{
+	display: inline;
+	float: left;
+	list-style: none;
+	margin-left: 15px;
+	position: relative;
+	height: 30px;
+}
+
+#navigation li a
+{
+	color: #FC0;
+	text-decoration: none;
+}
+
+#navigation li a:hover
+{
+	color: #0C0;
+}
+
+#navigation li ul
+{margin:0px; padding:0px; display:none; position:absolute; left:0px; top:20px; background-color:#999;}
+
+#navigation li:hover ul
+{display:block; width:160px;}
+
+#navigation li li
+{list-style:none; display:list-item;}
+
+#navigation li li a
+{color:#fff; text-decoration:none;}
+
+#navigation li li a:hover
+{color:#fff; text-decoration:underline;}
+
+/* END Menú copa
+----------------------------------------------- */
+
+div.tabla-resultados {
+	position: absolute;
+	left: 0px;
+	top: 227px;
+	width: 630px;
+	height: 174px;
+	margin-left: 15px;
+}
+
+div.id31-31 {
+	position:absolute;
+	left:0px;
+	top:401px;
+	width:665px;
+	height:29px;
+}
+
+.numeros_gris {
+	text-align: center;
+	background: #464547;
+/*	background: -webkit-gradient(linear, top, bottom, from(#6d6e71), to(#383637));
+	background: -moz-linear-gradient(top,  #6d6e71,  #383637);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6e71', endColorstr='#383637', GradientType=1);
+	*/
+        color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.numeros_amarillos {
+	text-align: center;
+	background: #DC993D;
+/*	background: -webkit-gradient(linear, top, bottom, from(#fbb040), to(#704933));
+	background: -moz-linear-gradient(top,  #fbb040,  #704933);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb040', endColorstr='#704933', GradientType=1);
+	*/
+        color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.numeros_rojos {
+	text-align: center;
+	background: #941E2D;
+/*	background: -webkit-gradient(linear, top, bottom, from(#be1e2d), to(#661e2d));
+	background: -moz-linear-gradient(top,  #be1e2d,  #661e2d);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#be1e2d', endColorstr='#661e2d', GradientType=1);
+	*/
+        color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.texto_interno {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 11px;
+	color: #000;
+}
+.tabla_right {
+	margin-top: -10px;
+}
+
+

@@ -1,0 +1,50 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:form id="menuLigas">
+        <!-- Menu Ligas -->
+        <div class="ligas">
+            <ui:repeat var="liga" value="#{ligaBean.ligas}"  offset="0" size="1">
+                <div class="id1-01">
+                    <h:commandLink action="#{ligaBean.selectedLiga}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('liga cesar del vecchio','','resources/ligues/img/menu_ligas/1_up.png',1)">     
+                        <img src="resources/ligues/img/menu_ligas/1_01.png" width="204" height="43" id="liga cesar del vecchio" />
+                    </h:commandLink>
+                </div>
+            </ui:repeat>
+            <ui:repeat var="liga" value="#{ligaBean.ligas}"  offset="1" size="2">
+                <div class="id2-02">
+                    <h:commandLink action="#{ligaBean.selectedLiga}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('colegial de caracas2','','resources/ligues/img/menu_ligas/2_up.png',1)">     
+                        <img src="resources/ligues/img/menu_ligas/2_02.png" width="204" height="43" id="colegial de caracas2" />
+                    </h:commandLink>
+                </div>
+            </ui:repeat>
+            <ui:repeat var="liga" value="#{ligaBean.ligas}"  offset="9" size="10">
+                <div class="id3-03">
+                    <h:commandLink action="#{ligaBean.selectedLiga}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Romulo Hernandez','','resources/ligues/img/menu_ligas/3_up.png',1)">     
+                            <img src="resources/ligues/img/menu_ligas/3_03.png" width="204" height="43" id="Romulo Hernandez" />
+                    </h:commandLink>
+                </div>
+            </ui:repeat>
+            <ui:repeat var="liga" value="#{ligaBean.ligas}"  offset="8" size="9">
+                <div class="id4-04">
+                    <h:commandLink action="#{ligaBean.selectedLiga}" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Liex','','resources/ligues/img/menu_ligas/4_up.png',1)">     
+                        <img src="resources/ligues/img/menu_ligas/4_04.png" width="204" height="43" id="Liex" />
+                    </h:commandLink>
+                </div>
+            </ui:repeat>
+            <div class="id5-05">
+                <a href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Don Bosco','','resources/ligues/img/menu_ligas/5_up.png',1)">
+                    <img src="resources/ligues/img/menu_ligas/5_05.png" width="204" height="43" id="Don Bosco" />
+                </a> 
+            </div>
+        </div>
+
+        <!-- ENDS Menu Ligas -->
+        <div class="clear" style="margin-top:0px;"></div>
+<!--        <div class="clear2">
+            <img src="resources/ligues/img/patrocinante-news.png" alt="" width="1020" height="72" style="margin-top:290px;"/>
+        </div>	-->
+    </h:form>
+</ui:composition>

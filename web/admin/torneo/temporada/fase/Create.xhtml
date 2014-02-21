@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.FaseTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.FaseTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.FaseCreateTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.ListLink}" action="#{faseController.prepareList}" immediate="true"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.FaseLabel_liga}" for="ligaId" />
+                        <h:selectOneMenu id="ligaId" value="#{faseController.liga}" 
+                                         title="#{bundle.FaseTitle_liga}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.FaseRequiredMessage_liga}"
+                                         style="width: 180px;">
+                            <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                            <f:ajax render="temporadaId"/>
+                        </h:selectOneMenu>
+                        
+                        <h:outputLabel value="#{bundle.FaseLabel_temporada}" for="temporadaId" />
+                        <h:selectOneMenu id="temporadaId" value="#{faseController.selected.temporadaId}" 
+                                         title="#{bundle.FaseTitle_temporada}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.FaseRequiredMessage_temporada}"
+                                         style="width: 180px;">
+                            <f:selectItems value="#{faseController.temporadasAvalaibleSelectOne}"/>
+                        </h:selectOneMenu>
+                        
+                        <h:outputLabel value="#{bundle.FaseLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{faseController.selected.nombre}" 
+                                     title="#{bundle.FaseTitle_nombre}" 
+                                     style="width: 180px;"/>
+
+                    </h:panelGrid>
+                    <h:panelGrid columns="3">
+                        <h:commandButton action="#{faseController.create}" value="#{bundle.OKLink}" />
+                        <h:outputText value="&nbsp;"/>
+                        <h:commandButton action="#{faseController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

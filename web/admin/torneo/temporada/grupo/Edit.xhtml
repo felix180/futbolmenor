@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.GrupoTitle}"/>
+        </ui:define>
+
+        <ui:define name="top">
+            <h1><h:outputText value="#{bundle.GrupoTitle}"/></h1>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.GrupoEditTitle}"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.CreateLink}" action="#{grupoController.prepareCreate}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.DeleteLink}" action="#{grupoController.prepareDestroyFromView}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.GrupoListTitle}" action="#{grupoController.prepareList}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                    </ul>
+                </div>
+                <br/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.GrupoLabel_liga}" for="ligaList" />
+                    <h:selectOneMenu id="ligaList" value="#{grupoController.liga}"
+                                     title="#{bundle.GrupoTitle_liga}"
+                                     style="width: 180px">
+                        <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                        <f:ajax render="temporadaList"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.GrupoLabel_temporada}" for="temporadaList" />
+                    <h:selectOneMenu id="temporadaList" value="#{grupoController.temporada}"
+                                     title="#{bundle.GrupoTitle_temporada}"
+                                     disabled="#{grupoController.temporadaListDisabled}"
+                                     style="width: 180px">
+                        <f:selectItems value="#{grupoController.temporadasAvalaibleSelectOne}"/>
+                        <f:ajax render="faseId"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.GrupoLabel_fase}" for="faseId" />
+                    <h:selectOneMenu id="faseId" value="#{grupoController.selected.faseId}" 
+                                     title="#{bundle.GrupoTitle_fase}" 
+                                     required="true"
+                                     requiredMessage="#{bundle.GrupoRequiredMessage_fase}"
+                                     style="width: 180px;">
+                        <f:selectItems value="#{grupoController.fasesAvalaibleSelectOne}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.GrupoLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{grupoController.selected.nombre}" 
+                                 title="#{bundle.GrupoTitle_nombre}" />
+                </h:panelGrid>
+                <h:panelGrid columns="3">
+                    <h:commandButton action="#{grupoController.update}" value="#{bundle.OKLink}" />
+                    <h:outputText value="&nbsp;"/>
+                    <h:commandButton action="#{grupoController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                </h:panelGrid>
+
+            </h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+
+</html>

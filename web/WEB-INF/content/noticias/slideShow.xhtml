@@ -1,0 +1,44 @@
+<ui:composition 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+    xmlns:h="http://java.sun.com/jsf/html">
+    <h:form id="slideShow">
+
+        <script type="text/javascript">
+            function abrirVentana(){ 
+                document.getElementById("span1").style.visibility="hidden"; 
+            } 
+        </script>
+
+        <!-- slideshow -->
+        <div id="slideshow">
+            <span id="span1" onclick="abrirVentana();"></span>
+            <ul id="slides">
+                <ui:repeat var="noticia" value="#{mainPageBean.noticiasSlide}">
+                    <li>
+                        <h:commandLink id="myCommandLink" action="#{mainPageBean.verMasSlide}">
+                            <table align="center" cellpadding="3" cellspacing="2" background="#{noticiaBean.IMAGE_RETURN}#{noticia.foto}" height="340" style="z-index: 0">
+                                <tr>
+                                    <td width="1020" style="vertical-align:top;">
+                                        <div style="width:400px; position: absolute; margin-left: 45px;margin-top: 15px; cursor: pointer;">
+                                            <p style="font-size: 36px; color:#faec05; font-family:arial black;font-weight:lighter">
+                                                <h:outputText value="#{noticia.titulo}"/>
+                                            </p>
+                                            <p style="font-size: 19px; color:#FFFFFF; font-family:arial black;font-weight:lighter; margin-top: -25px">
+                                                <h:outputText value=" #{fn:substring(noticia.comentario, 0, 135)}"/>
+                                                <h:outputText value="(...)" rendered="#{fn:length(noticia.comentario) > 135 }" />
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </h:commandLink>
+                    </li>
+                </ui:repeat>
+            </ul>
+        </div>
+        <!-- ENDS slideshow -->
+    </h:form>
+</ui:composition>

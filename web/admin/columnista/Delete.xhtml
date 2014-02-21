@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Columnistas
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Columnistas
+            </ui:define>
+
+            <ui:define name="tituloContent">Eliminar un Columnista</ui:define>
+            <ui:define name="content">
+                <h:form id="deleteForm">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="Agregar Columnista" action="#{columnistaBean.prepareCreate}"/></li>
+                            <li><h:commandLink value="Editar Columnista" action="#{columnistaBean.prepareEditFromView}"/></li>
+                            <li><h:commandLink value="Listar Columnista" action="#{columnistaBean.prepareList}"/></li>
+                            <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h3><h:outputText value="Va a eliminar este(a) columnista: "/></h3>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Columnista: " for="columnista"/>
+                        <h:outputText id="columnista" value="#{columnistaBean.entity.nombre} #{columnistaBean.entity.apellido}"/>
+
+                        <h:outputLabel value="Alias: " for="alias"/>
+                        <h:outputText id="alias" value="#{columnistaBean.entity.alias}"/>
+
+                        <h:outputLabel value="Columna: " for="columna"/>
+                        <h:outputText id="columna" value="#{columnistaBean.entity.columna}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:panelGrid columns="3">
+                        <h:commandButton value="Eliminar" action="#{columnistaBean.destroy}"/>
+                        <h:outputText value="&nbsp;" style="width: 50px;"/>
+                        <h:commandButton value="Cancelar" action="#{columnistaBean.prepareList}" immediate="true"/>
+                    </h:panelGrid>
+                    <h:messages style="color: red;"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

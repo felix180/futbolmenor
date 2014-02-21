@@ -1,0 +1,46 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+        <!-- recent posts -->
+        <li class="recent-posts">
+            <h2 class="custom"><span>ULTIMOS COMENTARIOS TW</span></h2>
+            <ul>
+                <li>
+                    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+                    <script>
+                        new TWTR.Widget({
+                            version: 2,
+                            type: 'profile',
+                            rpp: 5,
+                            interval: 30000,
+                            width: 260,
+                            height: 200,
+                            theme: {
+                                shell: {
+                                    background: '#666666',
+                                    color: '#fef00a'
+                                },
+                                tweets: {
+                                    background: '#999',
+                                    color: '#ffffff',
+                                    links: '#fed30a'
+                                }
+                            },
+                            features: {
+                                scrollbar: false,
+                                loop: false,
+                                live: false,
+                                behavior: 'all'
+                            }
+                        }).render().setUser('FutbolMenor').start();
+                    </script>
+                    <p><a href="#">....</a></p>
+                </li>
+            </ul>
+        </li>
+        <!-- ENDS recent posts -->
+
+</ui:composition>

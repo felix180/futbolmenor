@@ -1,0 +1,117 @@
+div.equipo {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 665px;
+	height: 929px;
+	background-image: url(../img/equipos/bg.png);
+	background-repeat: repeat-x;
+}
+
+div.escudos {
+	position:absolute;
+	left:0px;
+	top:77px;
+	width:665px;
+	height:123px;
+}
+
+div.plantel {
+	position: absolute;
+	left: 0px;
+	top: 200px;
+	width: 665px;
+	height: 24px;
+	margin-top: -15px;
+}
+
+div.n-jugador {
+	position:absolute;
+	left:0px;
+	top:224px;
+	width:190px;
+	height:50px;
+}
+
+div.date-born {
+	position:absolute;
+	left:190px;
+	top:224px;
+	width:186px;
+	height:50px;
+}
+
+div.naci {
+	position:absolute;
+	left:376px;
+	top:224px;
+	width:130px;
+	height:50px;
+}
+
+div.alto {
+	position:absolute;
+	left:506px;
+	top:224px;
+	width:78px;
+	height:50px;
+}
+
+div.peso {
+	position:absolute;
+	left:584px;
+	top:224px;
+	width:81px;
+	height:50px;
+}
+
+div.detalle_equipo {
+	position:absolute;
+	left:0px;
+	top:274px;
+	width:665px;
+	height:655px;
+}
+.img_escudo {
+	background-position: center center;
+	vertical-align: middle;
+}
+
+.titl_plantel {
+	text-align: left;
+	background: #010508;
+	background: -webkit-gradient(linear, top, bottom, from(#196aab), to(#010508));
+	background: -moz-linear-gradient(top,  #196aab,  #010508);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#196aab', endColorstr='#010508', GradientType=1);
+	color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+	height: 24px;
+}
+
+.texto_interno {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 11px;
+	color: #000;
+}
+
+.texto_interno2 {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 11px;
+	color: #000;
+	text-align: center;
+}
+
+.numeros_gris {
+	text-align: left;
+	background: #383637;
+	background: -webkit-gradient(linear, top, bottom, from(#6d6e71), to(#383637));
+	background: -moz-linear-gradient(top,  #6d6e71,  #383637);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6e71', endColorstr='#383637', GradientType=1);
+	color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+

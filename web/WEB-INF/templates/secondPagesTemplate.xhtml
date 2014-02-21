@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="style.css" library="css"/>
+        <h:outputStylesheet name="overridePrimefaces.css" library="css"/>
+        <ui:include src="../snippets/javaScripts.xhtml" />
+        <title><ui:insert name="titulo">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="wrapper">
+            <ui:insert name="header">
+                Aqui va le header
+            </ui:insert>
+
+            <div id="hold">
+                
+
+                <div id="content">
+
+                    <div id="subheader">
+                        <p/>
+                        <h2>
+                            <ui:insert name="subheader">
+                                Título de subHeader
+                            </ui:insert>
+                        </h2>
+                    </div>
+
+                    <div id="leftcolumn">
+                        <ui:insert name="izquierda">
+                            Aqui va el contenido de la izquierda
+                        </ui:insert>    
+                    </div>
+
+                    <div id="rightcolumn" >
+                        <ui:insert name="derecha">
+                            Aqui el contenido derecho
+                        </ui:insert>    
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <ui:insert name="footer">
+                    Aqui va le footer
+                </ui:insert>
+            </div>
+        </div>
+
+    </h:body>
+
+</html>

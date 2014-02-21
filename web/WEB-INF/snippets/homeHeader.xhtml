@@ -1,0 +1,52 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+    <div id="featured">
+        <h:form>
+            <div class="sliderImages">
+                <ul class="slider-image-list">
+                    <ui:repeat var="noticia" value="#{mainPageBean.items}" >
+                        <li>
+                            <h:commandLink action="#{mainPageBean.verMas}" styleClass="package">
+                                <p:graphicImage value="#{mainPageBean.streamedImageById}" width="297" height="198">
+                                    <f:param name="id" value="#{noticia.id}"/>
+                                </p:graphicImage>
+                            </h:commandLink>
+                        </li>
+                    </ui:repeat>
+                </ul>
+            </div>
+            <div class="arrows">
+                <a href="#" class="next"><span>next</span></a>
+                <a href="#" class="prev"><span>previous</span></a>
+            </div>
+            <div class="texthold"><div class="sliderText">
+                    <ul class="slider-text-list">
+                        <ui:repeat var="noticia" value="#{mainPageBean.items}">
+                            <li>
+                                <h:outputText value="#{noticia.titulo}" style="color: white; font-size: 2.0em; font-weight: bold;"/>
+                                <p><h:outputText value="#{noticia.comentario}"/></p>
+                                <h:commandLink action="#{mainPageBean.verMas}" styleClass="more">leer mas</h:commandLink>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                </div>
+            </div>
+        </h:form>
+    </div>
+
+<!--    <div id="services">
+        <div class="box"><img src="#{facesContext.externalContext.requestContextPath}/resources/images/valid.png" width="64" height="64" alt="valid" />
+            <h3>quality standards</h3><p>Always delivered to the same high quality standard.</p></div>
+
+        <div class="box"><img src="#{facesContext.externalContext.requestContextPath}/resources/images/help.png" width="64" height="64" alt="help" />
+            <h3>live support</h3><p>We offer 24/7 customer live support.</p></div>
+
+        <div class="box2"><img src="#{facesContext.externalContext.requestContextPath}/resources/images/clock.png" width="64" height="64" alt="clock"/>
+            <h3>time management</h3><p>We strive to meeet all design deadlines we set.</p></div>
+    </div>-->
+</ui:composition>

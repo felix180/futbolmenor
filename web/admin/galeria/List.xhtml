@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de la Galería
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de la Galería
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGroup>
+                        <p:dataTable var="item" value="#{galeriaBean.items}" style="width: 400px">
+                            <p:column headerText="Fecha">
+                                <h:outputText value="#{item.fecha}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Descripción">
+                                <h:outputText value="#{item.descripcion}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <h:messages style="color: red;"/>
+                    </h:panelGroup>
+                    <p />
+                    <ul>
+                        <li><h:commandLink value="Agregar foto a galería" action="Create"/></li>
+                        <li><h:commandLink value="Retornar al index" action="/index"/></li>
+                    </ul>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

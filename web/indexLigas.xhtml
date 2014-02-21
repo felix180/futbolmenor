@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:composition template="./WEB-INF/templates/ligasTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Ligas F&uacute;tbol Menor, A.C.
+            </ui:define>
+
+            <ui:define name="header">
+                <ui:include src="./WEB-INF/snippets/header.xhtml"/>
+            </ui:define>
+
+            <ui:define name="headerPatrocinante">
+                <ui:include src="./WEB-INF/snippets/headerPatrocinante.xhtml"/>
+            </ui:define>
+
+            <ui:define name="headerMenu">
+                <ui:include src="./WEB-INF/snippets/headerMenuLiga.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="sponsorLiga">
+                <ui:include src="./WEB-INF/snippets/sponsorLiga.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="clasificacion">
+                <ui:include src="./WEB-INF/content/ligas/clasificacion.xhtml"/>
+            </ui:define>
+
+            <ui:define name="calendario">
+                <ui:include src="./WEB-INF/content/ligas/calendario.xhtml"/>
+            </ui:define>
+            
+            
+            
+            <ui:define name="carrusel">
+                <ui:include src="./WEB-INF/content/ligas/carrusel.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="noticiasLiga">
+                <ui:include src="./WEB-INF/content/ligas/noticiasLiga.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="equipos">
+                <ui:include src="./WEB-INF/content/ligas/equipos.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="estadisticas">
+                <ui:include src="./WEB-INF/content/ligas/estadisticas.xhtml"/>
+            </ui:define>
+
+            <ui:define name="sponsorsRight">
+                <ui:include src="./WEB-INF/snippets/sponsorsRight.xhtml"/>
+            </ui:define>
+
+            <ui:define name="videosRight">
+                <ui:include src="./WEB-INF/content/ligas/videosRight.xhtml"/>
+            </ui:define>
+            
+            <ui:define name="footerNew">
+                <ui:include src="./WEB-INF/snippets/footer.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
+

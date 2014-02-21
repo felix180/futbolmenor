@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Videos
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Videos
+            </ui:define>
+            
+            <ui:define name="tituloContent">
+                Eliminar un Video
+            </ui:define>
+
+            <ui:define name="content">
+                <h:panelGroup layout="block">
+                    <h:form id="videoForm" enctype="multipart/form-data">
+                        <div class="hovermenu">
+                            <ul>
+                                <li><h:commandLink value="Agregar Video" action="#{videoBean.prepareCreate}"/></li>
+                                <li><h:commandLink value="Editar Video" action="#{videoBean.prepareEditFromView}"/></li>
+                                <li><h:commandLink value="Listar Videos" action="#{videoBean.prepareList}"/></li>
+                                <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                                <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                            </ul>
+                        </div>
+                        <h3><h:outputText value="Va a eliminar este video: "/></h3>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Título: "/>
+                            <h:outputText value="#{videoBean.entity.titulo}"/>
+                            <h:outputLabel value="Descripción: "/>
+                            <h:outputText value="#{videoBean.entity.descripcion}"/>
+                            <h:outputLabel value="Fecha: "/>
+                            <h:outputText value="#{videoBean.entity.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                            <h:outputLabel value="Video"/>
+                            <p:column headerText="Video">
+                                <object type="application/x-shockwave-flash" style="width:335px;height:180px" data="#{videoBean.entity.url}" allowfullscreen="true">
+                                    <param name="movie" value="#{videoBean.entity.url}" />
+                                </object>
+                            </p:column>
+                            <h:outputLabel value="Direccion de video"/>
+                            <h:outputText value="#{videoBean.entity.url}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:commandButton value="Eliminar video" action="#{videoBean.destroy}"/>
+                            <h:outputText value="&nbsp;"/>
+                            <h:commandButton value="Cancelar" action="List"/>
+                        </h:panelGrid>
+                        <h:messages style="color: red;"/>
+                    </h:form>
+                </h:panelGroup>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.ClubTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="top">
+            <h:outputText value="#{bundle.ClubTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.ClubEditTitle}"/>
+        </ui:define>
+        <ui:define name="content">
+            <h:form enctype="multipart/form-data">
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.CreateLink}" action="#{clubController.prepareCreate}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.DeleteLink}" action="#{clubController.prepareDestroyFromView}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.ListLink}" action="#{clubController.prepareList}"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                    </ul>
+                </div>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.ClubTitle_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{clubController.selected.nombre}" 
+                                 title="#{bundle.ClubTitle_nombre}" required="true" 
+                                 requiredMessage="#{bundle.ClubRequiredMessage_nombre}"/>
+
+                    <h:outputLabel value="#{bundle.ClubLabel_logo}"/>
+                    <h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{clubController.selected.logo}"></h:graphicImage>
+                    
+                    <h:outputLabel value="#{bundle.ClubLabel_logo}"/>
+                    <p:fileUpload value="#{clubController.uploadedFile}" mode="simple" style="width: 450px;"/>
+                    
+                    <h:outputLabel value="#{bundle.ClubLabel_localidad}" for="localidad"/>
+                    <h:selectOneMenu id="localidad" value="#{clubController.localidad}" 
+                                     title="#{bundle.ClubTitle_localidad}">
+                        <f:selectItems value="#{localidadController.localidades}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel value="#{bundle.ClubLabel_direccion}" for="direccion"/>
+                    <h:inputTextarea id="direccion" value="#{clubController.direccion.direccion}" rows="3"
+                                     label="#{bundle.ClubTitle_direccion}"/>
+
+                    <h:outputLabel value="#{bundle.ClubLabel_telf1}" for="telefono1"/>
+                    <h:inputText id="telefono1" value="#{clubController.direccion.telefono1}" 
+                                 label="#{bundle.ClubTitle_telf1}"/>
+
+                    <h:outputLabel value="#{bundle.ClubLabel_telf2}" for="telefono2"/>
+                    <h:inputText id="telefono2" value="#{clubController.direccion.telefono2}" 
+                                 label="#{bundle.ClubTitle_telf2}"/>
+
+                    <h:outputLabel value="#{bundle.ClubLabel_email}" for="email"/>
+                    <h:inputText id="email" value="#{clubController.direccion.email}" 
+                                 label="#{bundle.ClubTitle_email}"/>
+
+                    <h:outputLabel value="#{bundle.ClubLabel_pagWeb}" for="pagweb"/>
+                    <h:inputText id="pagweb" value="#{clubController.direccion.paginaWeb}" 
+                                 label="#{bundle.ClubTitle_pagWeb}"/>
+                    <h:outputLabel value="#{bundle.ClubLabel_canchas}" for="canchas"/>
+                    <h:selectManyListbox id="canchas" value="#{clubController.selectedItems}" size="8">
+                        <f:selectItems value="#{canchaController.itemsAvailableSelelectManyStr}"/>
+                    </h:selectManyListbox>
+                </h:panelGrid>
+                <h:panelGrid columns="3">
+                    <h:commandButton action="#{clubController.update}" value="#{bundle.OKLink}" />
+                    <h:outputText value="&nbsp;"/>
+                    <h:commandButton action="#{clubController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                </h:panelGrid>
+            </h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+
+</html>

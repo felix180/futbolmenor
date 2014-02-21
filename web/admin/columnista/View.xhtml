@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Cronistas
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Cronistas
+            </ui:define>
+            
+            <ui:define name="tituloContent">Datos de un Cronista</ui:define>
+            <ui:define name="content">
+                <h:form id="cronistaForm">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="Agregar Columnista" action="#{columnistaBean.prepareCreate}"/></li>
+                            <li><h:commandLink value="Editar Columnista" action="#{columnistaBean.prepareEditFromView}"/></li>
+                            <li><h:commandLink value="Eliminar Columnista" action="#{columnistaBean.prepareDestroyFromView}"/></li>
+                            <li><h:commandLink value="Listar Columnistas" action="#{columnistaBean.prepareList}"/></li>
+                            <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h:panelGrid columns="2" styleClass="panelgrid">
+                        <h:outputLabel value="Cronista: " for="cronista"/>
+                        <h:outputText id="cronista" value="#{columnistaBean.entity.nombre} #{columnistaBean.entity.apellido}"/>
+                        
+                        <h:outputLabel value="Alias: " for="alias"/>
+                        <h:outputText id="alias" value="#{columnistaBean.entity.alias}"/>
+                        
+                        <h:outputLabel value="Columna: " for="columna"/>
+                        <h:outputText id="columna" value="#{columnistaBean.entity.columna}"/>
+                        
+                        <h:outputLabel value="Descripción de la columna: " for="desc"/>
+                        <h:outputText id="desc" value="#{columnistaBean.entity.descripcion}"/>
+                        
+                        <h:outputLabel value="Contacto: " style="font-weight: bold; color:#336600;text-decoration: underline"/>
+                        <h:outputText value="&nbsp;"/>
+                        
+                        <h:outputLabel value="Celular: " for="celPhone"/>
+                        <h:outputText id="celPhone" value="#{columnistaBean.entity.celular}"/>
+                        
+                        <h:outputLabel value="Teléfono: " for="phone"/>
+                        <h:outputText id="phone" value="#{columnistaBean.entity.telefono}"/>
+                        
+                        <h:outputLabel value="Email: " for="email"/>
+                        <h:outputText id="email" value="#{columnistaBean.entity.email}"/>
+                        
+                        <h:outputLabel value="Twitter: " for="twitter"/>
+                        <h:outputText id="twitter" value="#{columnistaBean.entity.twitter}"/>
+                    </h:panelGrid>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

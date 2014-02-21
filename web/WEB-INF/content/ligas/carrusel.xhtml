@@ -1,0 +1,178 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:form>
+        <h1>
+            <img src="resources/ligues/img/publicidad/patrocinate-tabs.png" class="left-align boxed" alt="img"/>
+        </h1>
+        <div class="c_small" style="margin-top: 406px;">
+            <!--INICIO CATEGORIAS-->
+            <ui:repeat var="categoria" value="#{ligaBean.categorias}" varStatus="status">
+                <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="categoria-w-#{status.index+1}" title="#{categoria.nombre}" rendered="#{ligaBean.idCategoria != categoria.id}">
+                    <div></div>
+                    <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                    <f:param name="tab" value="tab3"/>
+                </h:commandLink>
+                <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="categoria-v-#{status.index+1}" title="#{categoria.nombre}" rendered="#{ligaBean.idCategoria == categoria.id}">
+                    <div></div>
+                    <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                    <f:param name="tab" value="tab3"/>
+                </h:commandLink>
+            </ui:repeat>
+            <!--FIN CATEGORIAS-->
+            
+            <!--INICIO FASES-->
+            <div class="fase" style="width:450px">
+                <span style="color:#FFFFFF; font-size: 11px; font-family:Arial;font-weight: bold;">Seleccione una Fase: </span>
+                <h:form id="formSelectedFase">
+                    <h:selectOneMenu value="#{ligaBean.selectedFase}" onchange="submit()"
+                                     valueChangeListener="#{ligaBean.faseChanged}" style="width: 130px" title="Seleccione una Fase">
+                        <f:selectItems value="#{ligaBean.fasesInMap}" />
+                    </h:selectOneMenu>
+                </h:form>
+            </div>
+            <!--FIN FASES-->
+
+<!--            <div class="octavos">
+                <a href="#">
+                    <img src="resources/ligues/img/calendario/octavos.png" width="94" height="13" border="0" alt=""/>
+                </a>
+            </div>
+            <div class="cuartos">
+                <a href="#">
+                    <img src="resources/ligues/img/calendario/cuartos.png" width="93" height="13" border="0" alt=""/>
+                </a>
+            </div>
+            <div class="semifinal">
+                <a href="#">
+                    <img src="resources/ligues/img/calendario/semifinal.png" width="93" height="13" border="0" alt=""/>
+                </a>
+            </div>
+            <div class="final">
+                <a href="#">
+                    <img src="resources/ligues/img/calendario/final.png" width="96" height="13" border="0" alt=""/>
+                </a>
+            </div>-->
+            
+            <!--INICIO JORNADAS-->
+            <div class="jornada" style="width:450px;margin-left:-15px;">
+                <span style="color:#FFFFFF; font-size: 11px; font-family:Arial;font-weight: bold;">Seleccione una Jornada: </span>
+                <h:selectOneMenu value="#{ligaBean.selectedJornada}" onchange="submit()"
+                                 valueChangeListener="#{ligaBean.jornadaChangedTab3}" style="width: 60px" title="Seleccione una Jornada">
+                    <f:selectItems value="#{ligaBean.jornadasInMap}" />
+                </h:selectOneMenu>
+            </div>
+            <!--FIN JORNADAS-->
+
+            <!--INICIO GRUPOS-->
+            <h:panelGroup id="grupos">
+                <ui:repeat var="grupo" value="#{ligaBean.listaGrupos}" varStatus="status">
+                    <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="grup-#{status.index+1}-green" title="#{grupo.nombre}" 
+                                   rendered="#{grupo.id == ligaBean.idGrupo}">
+                        <div></div>
+                        <f:param name="idSelectedGrupo" value="#{grupo.id}"/>
+                        <f:param name="tab" value="tab3"/>
+                    </h:commandLink>
+
+                    <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="grup-#{status.index+1}-gray" title="#{grupo.nombre}" 
+                                   rendered="#{grupo.id != ligaBean.idGrupo}">
+                        <div></div>
+                        <f:param name="idSelectedGrupo" value="#{grupo.id}"/>
+                        <f:param name="tab" value="tab3"/>
+                    </h:commandLink>
+                </ui:repeat>
+            </h:panelGroup>
+            <!--FIN GRUPOS-->
+
+            <div id="navigation">
+                <ul>
+                    <li>
+                        <a href="#">NOMBRE DE LA COPA</a>
+                    </li>
+                    <li>
+                        <a href="#">NOMBRE DE LA COPA</a>          
+                    </li>
+                    <li>
+                        <a href="#">NOMBRE DE LA COPA</a>           
+                    </li>
+                </ul>    
+            </div>
+            <div class="tabla-resultados">
+                <table width="630" class="tabla_left">
+                    <tr>
+                        <td width="236" bgcolor="#d1d2d3" class="texto_interno">Lorem ipsum dolor sit amet</td>
+                        <td width="31" height="18" class="numeros_rojos" style="text-align: center;">0</td>
+                        <td width="31" height="18" class="numeros_rojos" style="text-align: center;">0</td>
+                        <td width="273" bgcolor="#d1d2d3"><span class="texto_interno">Lorem ipsum dolor sit amet </span></td>
+                        <td width="35" bgcolor="#d1d2d3">
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultados/+info.png" width="30" height="16" alt="+info"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="31" height="18" class="numeros_amarillos" style="text-align: center;">0</td>
+                        <td width="31" height="18" class="numeros_amarillos" style="text-align: center;">0</td>
+                        <td bgcolor="#FFFFFF"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="35" bgcolor="#d1d2d3">
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultados/+info.png" width="30" height="16" alt="+info"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#d1d2d3"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td bgcolor="#d1d2d3"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="35" bgcolor="#d1d2d3">
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultados/+info.png" width="30" height="16" alt="+info"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td bgcolor="#FFFFFF"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="35" bgcolor="#d1d2d3">
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultados/+info.png" width="30" height="16" alt="+info"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#d1d2d3"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td bgcolor="#d1d2d3"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="35" bgcolor="#d1d2d3">
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultados/+info.png" width="30" height="16" alt="+info"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#FFFFFF"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td width="31" height="18" class="numeros_gris" style="text-align: center;">0</td>
+                        <td bgcolor="#FFFFFF"><span class="texto_interno">Lorem ipsum dolor sit amet</span></td>
+                        <td width="35" bgcolor="#d1d2d3">
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultados/+info.png" width="30" height="16" alt="+info"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="id31-31">
+                <img src="resources/ligues/img/carruselResultados/31_31.png" width="665" height="29" alt=""/>
+            </div>
+        </div>
+    </h:form>
+
+</ui:composition>

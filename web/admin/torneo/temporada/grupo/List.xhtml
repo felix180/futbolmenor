@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.GrupoTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.GrupoTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.GrupoListTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form styleClass="jsfcrud_list_form">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.CreateLink}" action="#{grupoLlaveController.prepareCreate}"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <br/>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="#{bundle.GrupoLabel_Ligas}" for="ligaId" />
+                        <h:outputLabel value="#{bundle.GrupoLabel_temporada}" for="temporadaId" />
+                        <h:outputLabel value="#{bundle.GrupoLabel_fase}" for="faseId" />
+
+                        <h:selectOneMenu id="ligaId" value="#{grupoLlaveController.liga}" 
+                                         title="#{bundle.GrupoTitle_liga}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.GrupoRequiredMessage_liga}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{grupoLlaveController.ligasAvalaibleSelectOne}"/>
+                            <f:ajax render="temporadaId"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="temporadaId" value="#{grupoLlaveController.temporada}" 
+                                         title="#{bundle.GrupoTitle_temporada}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.GrupoRequiredMessage_temporada}"
+                                         disabled="#{grupoLlaveController.temporadaListDisabled}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{grupoLlaveController.temporadasAvalaibleSelectOne}"/>
+                            <f:ajax render="faseId"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="faseId" value="#{grupoLlaveController.fase}" 
+                                         title="#{bundle.GrupoTitle_fase}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.GrupoRequiredMessage_fase}"
+                                         disabled="#{grupoLlaveController.faseListDisabled}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{grupoLlaveController.fasesAvalaibleSelectOne}"/>
+                            <f:ajax render="grupos llaves"/>
+                        </h:selectOneMenu>
+
+                    </h:panelGrid>
+                    <br />
+<!--                    <h:outputText escape="false" value="#{bundle.GrupoListEmpty}" 
+                                  rendered="#{grupoLlaveController.grupoItems.rowCount == 0}"/>-->
+                    <h:panelGrid columns="3">
+                        <h:panelGroup id="grupos">
+                            <h:outputText value="#{grupoLlaveController.grupoPagination.pageFirstItem + 1}..#{grupoLlaveController.grupoPagination.pageLastItem + 1}/#{grupoLlaveController.grupoPagination.itemsCount}"/>&nbsp;
+                            <h:commandLink action="#{grupoLlaveController.grupoPrevious}" value="#{bundle.Previous} #{grupoLlaveController.grupoPagination.pageSize}" rendered="#{grupoLlaveController.grupoPagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{grupoLlaveController.grupoNext}" value="#{bundle.Next} #{grupoLlaveController.grupoPagination.pageSize}" rendered="#{grupoLlaveController.grupoPagination.hasNextPage}"/>&nbsp;
+                            <h:dataTable value="#{grupoLlaveController.grupoItems}" var="item" border="0" cellpadding="2"
+                                         cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" 
+                                         style="border:solid 1px"
+                                         rendered="#{!grupoLlaveController.tableDisabled}">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.GrupoTitle_temporada}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.faseId.temporadaId.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.GrupoTitle_fase}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.faseId.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.GrupoTitle_nombre}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="&nbsp;"/>
+                                    </f:facet>
+                                    <h:commandLink action="#{grupoLlaveController.prepareGrupoDestroy}" value="#{bundle.DeleteLink}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup>
+                            <h:outputLabel value="&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                        </h:panelGroup>
+                        
+                        <h:panelGroup id="llaves">
+                            <h:outputText value="#{grupoLlaveController.llavePagination.pageFirstItem + 1}..#{grupoLlaveController.llavePagination.pageLastItem + 1}/#{grupoLlaveController.llavePagination.itemsCount}"/>&nbsp;
+                            <h:commandLink action="#{grupoLlaveController.llavePrevious}" value="#{bundle.Previous} #{grupoLlaveController.llavePagination.pageSize}" rendered="#{grupoLlaveController.llavePagination.hasPreviousPage}"/>&nbsp;
+                            <h:commandLink action="#{grupoLlaveController.llaveNext}" value="#{bundle.Next} #{grupoLlaveController.llavePagination.pageSize}" rendered="#{grupoLlaveController.llavePagination.hasNextPage}"/>&nbsp;
+                            <h:dataTable value="#{grupoLlaveController.llaveItems}" var="itemLlave" border="0" cellpadding="2"
+                                         cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" 
+                                         style="border:solid 1px"
+                                         rendered="#{!grupoLlaveController.tableDisabled}">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.GrupoTitle_temporada}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemLlave.faseId.temporadaId.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.GrupoTitle_fase}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemLlave.faseId.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="#{bundle.GrupoLlaveTitle_nombre}"/>
+                                    </f:facet>
+                                    <h:outputText value="#{itemLlave.nombre}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="&nbsp;"/>
+                                    </f:facet>
+                                    <h:commandLink action="#{grupoLlaveController.prepareLlaveDestroy}" value="#{bundle.DeleteLink}"/>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <br/>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

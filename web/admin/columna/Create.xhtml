@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Columnas
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Columnas
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                Agregar un Artículo de Columnista
+            </ui:define>
+
+            <ui:define name="content">
+                <h:panelGroup>
+                    <h:form id="columnForm" enctype="multipart/form-data" >
+                        <div class="hovermenu">
+                            <ul>
+                                <li><h:commandLink value="Listar Artículos" action="#{columnaBean.prepareList}"/></li>
+                                <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                                <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                            </ul>
+                        </div>
+                        <h:panelGrid columns="2" styleClass="crear">
+                            <h:outputLabel value="Autor: "/>
+                            <h:selectOneMenu value="#{columnaBean.entity.cronistaId}">
+                                <f:selectItems value="#{columnistaBean.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+
+                            <h:outputLabel value="Fecha: "/>
+                            <p:calendar value="#{columnaBean.entity.fecha}" pattern="dd/MM/yyyy"/>
+
+                            <h:outputLabel value="Título: "/>
+                            <h:inputText id="editor" value="#{columnaBean.entity.titulo}" style="width: 600px;"/>
+                            
+                            <h:outputLabel value="Cuerpo: "/>
+                            <p:editor id="columnEditor" value="#{columnaBean.entity.cuerpo}" width="600"/>
+
+                            <h:outputLabel value="Imagen: "/>
+                            <p:fileUpload value="#{columnaBean.uploadedFile}" mode="simple" style="width: 450px;"/>
+                            
+                            <h:outputLabel value="Activo: "/>
+                            <h:selectBooleanCheckbox value="#{columnaBean.activo}"/>
+
+                        </h:panelGrid>
+                        <h:panelGrid columns="3">
+                            <h:commandButton value="Guardar" action="#{columnaBean.create}"/>
+                            <h:outputText value="&nbsp;" style="width: 50px;"/>
+                            <h:commandButton value="Cancelar" action="#{columnaBean.prepareList}" immediate="true"/>
+                        </h:panelGrid> 
+                        <h:messages style="color: red;"/>
+
+                    </h:form>
+                </h:panelGroup>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

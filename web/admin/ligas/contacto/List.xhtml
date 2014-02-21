@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListContactoEmpty}" rendered="#{contactoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{contactoController.items.rowCount > 0}">
+                    <h:outputText value="#{contactoController.pagination.pageFirstItem + 1}..#{contactoController.pagination.pageLastItem + 1}/#{contactoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{contactoController.previous}" value="#{bundle.Previous} #{contactoController.pagination.pageSize}" rendered="#{contactoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{contactoController.next}" value="#{bundle.Next} #{contactoController.pagination.pageSize}" rendered="#{contactoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{contactoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_apellido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apellido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_apodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.apodo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_cargo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cargo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_telefono1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono1}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_telefono2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono2}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_otro}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.otro}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_ligaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ligaId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListContactoTitle_clubId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.clubId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{contactoController.prepareView}" value="#{bundle.ListContactoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{contactoController.prepareEdit}" value="#{bundle.ListContactoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{contactoController.destroy}" value="#{bundle.ListContactoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{contactoController.prepareCreate}" value="#{bundle.ListContactoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListContactoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

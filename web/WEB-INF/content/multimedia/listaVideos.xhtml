@@ -1,0 +1,52 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:form>
+
+        <h3>Videos Fútbol Menor, A.C.</h3>
+
+        <h:panelGroup rendered="#{videoPagesBean.items.rowCount > 0}">
+            <div style="width: 90%; margin-top: 30px; margin-bottom: 10px; text-align: right;margin-right: 20px;">
+                <p>
+                    <strong>
+                        <h:outputText value="Resultados: #{videoPagesBean.pagination.pageFirstItem + 1} - #{videoPagesBean.pagination.pageLastItem + 1} de #{videoPagesBean.pagination.itemsCount}"/>
+                    </strong>
+                </p>
+            </div>
+            <ui:repeat var="video" value="#{videoPagesBean.items}">
+                <div class="post">
+                    <p style="background-image:url(resources/ligues/img/bg_tit.png); background-position: 0 0; text-transform: uppercase; color:#000000; font-weight:bold; background-repeat: no-repeat;display: block;font-size: 17px;height: 27px;padding-top: 8px;text-decoration: none;text-indent: 28px;">   
+                        <h:outputText value="#{video.titulo}" escape="false"/>
+                    </p>
+                    <div class="post-img" style="height:350px">
+                        <object type="application/x-shockwave-flash" style="width:557px;height:350px" data="#{video.url}" allowfullscreen="true">
+                            <param name="movie" value="#{video.url}" />
+                        </object>
+                    </div>
+                    <div class="excerpt" style="margin-top:-15px;">
+                        <p>
+                            <h:outputText value="#{video.descripcion}" escape="false"/>
+                        </p>
+                    </div>
+                    <ul class="meta">
+                        <li class="date">
+                            <h:outputText value="#{video.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                            </h:outputText>
+                        </li>
+                    </ul>
+                </div>
+            </ui:repeat>
+            
+            <!-- blog-pager -->
+            <ul class="blog-pager" style="width:400px;margin-left: 50px">
+                <li><h:commandLink action="#{videoPagesBean.previous}" value="#{bundle.Previous} #{videoPagesBean.pagination.pageSize}" rendered="#{videoPagesBean.pagination.hasPreviousPage}"/></li>
+                <li><h:commandLink action="#{videoPagesBean.next}" value="#{bundle.Next} #{videoPagesBean.pagination.pageSize}" rendered="#{videoPagesBean.pagination.hasNextPage}"/></li>
+            </ul>
+            <!-- ENDS blog-pager -->	
+            <!-- ENDS POSTS -->
+        </h:panelGroup>
+    </h:form>
+</ui:composition>

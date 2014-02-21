@@ -1,0 +1,378 @@
+<ui:composition 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <h:form id="carruselResultadosHome">
+
+        <div id="patro_carrusel"> 
+<!--            <a href="#">
+                <img src="resources/ligues/img/carruselResultHome/1_01.png" width="346" height="74" alt=""/>
+            </a>
+            <a href="#">
+                <img src="resources/ligues/img/carruselResultHome/2_02.png" width="674" height="74" alt=""/>
+            </a>-->
+            <img src="resources/ligues/img/publicidad/patrocinantes_home.png" width="1020" height="100" alt=""/>
+        </div>
+
+<!--        <div class="carrusel" id="carrusel" style="margin-top: 460px;">
+            <div style="font-size: 14px;font-weight: bold; font-family: Arial Black;text-align: center; float:right;margin-top: 55px;width:370px;">
+                <b>#{carruselHomeBean.entity.nombre}</b>
+            </div>
+            INICIO CATEGORIAS
+            <ui:repeat var="categoria" value="#{carruselHomeBean.carruselHome}" varStatus="status">
+                <h:commandLink action="#{carruselHomeBean.reloadIndexLigas}" class="categoriaHome-w-#{status.index+1}" title="#{categoria.nombre}" rendered="#{carruselHomeBean.idCategoria != categoria.id}">
+                    <div></div>
+                    <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                </h:commandLink>
+                <h:commandLink action="#{carruselHomeBean.reloadIndexLigas}" class="categoriaHome-v-#{status.index+1}" title="#{categoria.nombre}" rendered="#{carruselHomeBean.idCategoria == categoria.id}">
+                    <div></div>
+                    <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                </h:commandLink>
+            </ui:repeat>
+            FIN CATEGORIAS
+
+            INICIO FASES
+            <div class="fase" style="width:450px">
+                <span style="color:#FFFFFF; font-size: 11px; font-family:Arial;font-weight: bold;">Seleccione una Fase: </span>
+                <h:form id="formSelectedFase">
+                    <h:selectOneMenu value="#{carruselHomeBean.selectedFase}" onchange="submit()"
+                                     valueChangeListener="#{carruselHomeBean.faseChanged}" style="width: 130px" title="Seleccione una Fase">
+                        <f:selectItems value="#{carruselHomeBean.fasesInMap}" />
+                    </h:selectOneMenu>
+                </h:form>
+            </div>
+            FIN FASES
+
+            INICIO JORNADAS
+            <h:panelGroup id="jornadasGroup" rendered="#{carruselHomeBean.totalGrupos > 0}">
+                <div class="jornada" style="width:450px;margin-left:-50px;margin-top:-73px;">
+                    <span style="color:#FFFFFF; font-size: 11px; font-family:Arial;font-weight: bold;">Seleccione una Jornada: </span>
+                    <h:selectOneMenu value="#{carruselHomeBean.selectedJornada}" onchange="submit()"
+                                     valueChangeListener="#{carruselHomeBean.jornadaChanged}" style="width: 60px" title="Seleccione una Jornada">
+                        <f:selectItems value="#{carruselHomeBean.jornadasInMap}" />
+                    </h:selectOneMenu>
+                </div>
+            </h:panelGroup>
+            FIN JORNADAS
+
+                        <div class="octav"> 
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultHome/octav.png" width="94" height="20" alt=""/>
+                            </a>
+                        </div>
+                        <div class="cuart"> 
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultHome/cuart.png" width="92" height="20" alt=""/>
+                            </a>
+                        </div>
+                        <div class="sem-f"> 
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultHome/sem-f.png" width="93" height="20" alt=""/>
+                            </a>
+                        </div>
+                        <div class="final"> 
+                            <a href="#">
+                                <img src="resources/ligues/img/carruselResultHome/final.png" width="98" height="20" alt=""/>
+                            </a>
+                        </div>
+                        <div class="bt-juv-w012">
+                            <img src="images/bt_juv_w-12.png" width="1" height="66" alt=""/>
+                        </div>
+
+            INICIO GRUPOS
+            <h:panelGroup id="grupos" rendered="#{carruselHomeBean.totalGrupos > 0}">
+                <ui:repeat var="grupo" value="#{carruselHomeBean.listaGrupos}" varStatus="status">
+                    <h:commandLink action="#{carruselHomeBean.reloadIndexLigas}" class="grup#{status.index+1}-green" title="#{grupo.nombre}" 
+                                   rendered="#{grupo.id == carruselHomeBean.idGrupo}">
+                        <div></div>
+                        <f:param name="idSelectedGrupo" value="#{grupo.id}"/>
+                        <f:param name="tab" value="tab1"/>
+                    </h:commandLink>
+
+                    <h:commandLink action="#{carruselHomeBean.reloadIndexLigas}" class="grup#{status.index+1}-gray" title="#{grupo.nombre}" 
+                                   rendered="#{grupo.id != carruselHomeBean.idGrupo}">
+                        <div></div>
+                        <f:param name="idSelectedGrupo" value="#{grupo.id}"/>
+                        <f:param name="tab" value="tab1"/>
+                    </h:commandLink>
+                </ui:repeat>
+            </h:panelGroup>
+            FIN GRUPOS
+
+            INICIO LLAVES
+            <h:panelGroup id="llaves" rendered="#{carruselHomeBean.totalLlaves > 0}">
+                <ui:repeat var="llave" value="#{carruselHomeBean.listaLlaves}" varStatus="status">
+                    <h:commandLink action="#{carruselHomeBean.reloadIndexLigas}" class="grup#{status.index+1}-green" title="#{llave.nombre}" 
+                                   rendered="#{llave.id == carruselHomeBean.idLlave}">
+                        <div></div>
+                        <f:param name="idSelectedLlave" value="#{llave.id}"/>
+                        <f:param name="tab" value="tab1"/>
+                    </h:commandLink>
+
+                    <h:commandLink action="#{carruselHomeBean.reloadIndexLigas}" class="grup#{status.index+1}-gray" title="#{llave.nombre}" 
+                                   rendered="#{llave.id != carruselHomeBean.idLlave}">
+                        <div></div>
+                        <f:param name="idSelectedLlave" value="#{llave.id}"/>
+                        <f:param name="tab" value="tab1"/>
+                    </h:commandLink>
+                </ui:repeat>
+            </h:panelGroup>
+            FIN LLAVES
+
+            INICIO LISTA PARTIDOS   
+            <h:panelGroup id="hayPartidos" rendered="#{carruselHomeBean.totalListaPartidos1 != 0}">
+                <div class="square-left" style="margin-left:12px;margin-top:-16px;">
+                    <table width="475" class="tabla_left">
+                        <ui:repeat var="partido" value="#{carruselHomeBean.listaPartidosParte1}" varStatus ="status" offset="0" size="#{carruselHomeBean.totalListaPartidos1}">
+                            <h:panelGroup id="datosParesRojos" rendered="#{(status.index %2 == 0) and (status.index ==0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#d1d2d3" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_rojos"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_rojos"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#d1d2d3"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#d1d2d3" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup id="datosImparesAmarillos" rendered="#{(status.index %2 != 0) and (status.index ==1)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#FFFFFF" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_amarillos"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_amarillos"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#FFFFFF" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup id="datosPares" rendered="#{(status.index %2 == 0) and (status.index > 0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#d1d2d3" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#d1d2d3"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#d1d2d3" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup id="datosImpares" rendered="#{(status.index %2 != 0) and (status.index > 1)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#FFFFFF" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#FFFFFF" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                        </ui:repeat>
+
+                        <c:forEach begin="1" end="#{5 - carruselHomeBean.totalListaPartidos1}" varStatus ="status">
+                            <h:panelGroup rendered="#{(status.index %2 == 0) and (status.index > 0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#d1d2d3" class="texto_interno"><h:outputText value=""  /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="150" bgcolor="#d1d2d3"><span class="texto_interno"><h:outputText value="" rendered="" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#d1d2d3" class="texto_interno"><h:outputText value="" /></td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{(status.index %2 != 0) and (status.index > 0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#FFFFFF" class="texto_interno"><h:outputText value=""  /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="150" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="" rendered="" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#FFFFFF" class="texto_interno"><h:outputText value="" /></td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                        </c:forEach>
+
+                    </table>
+                </div>
+                <div class="square-right" style="margin-left:2px;margin-top:-16px;margin-right: 10px">
+                    <table width="475" class="tabla_left">    
+                        <ui:repeat var="partido" value="#{carruselHomeBean.listaPartidosParte2}" varStatus ="status" offset="0" size="#{carruselHomeBean.totalListaPartidos2}">
+                            <h:panelGroup id="datosParesRojos2" rendered="#{(status.index %2 == 0) and (status.index ==0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#d1d2d3" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#d1d2d3"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#d1d2d3" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup id="datosImparesAmarillos2" rendered="#{(status.index %2 != 0) and (status.index ==1)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#FFFFFF" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#FFFFFF" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup id="datosPares2" rendered="#{(status.index %2 == 0) and (status.index > 0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#d1d2d3" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#d1d2d3"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#d1d2d3" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup id="datosImpares2" rendered="#{(status.index %2 != 0) and (status.index > 1)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#FFFFFF" class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq1}" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="#{partido.golEq2}" /></td>
+                                    <td width="150" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#FFFFFF" class="texto_interno">
+                                        <h:outputText value=" #{fn:substring(partido.statusString, 0, 16)}" title="#{partido.statusString}"/>
+                                    </td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                        </ui:repeat> 
+
+                        <c:forEach begin="1" end="#{5 - carruselHomeBean.totalListaPartidos2}" varStatus ="status">
+                            <h:panelGroup rendered="#{(status.index %2 == 0) and (status.index > 0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#d1d2d3" class="texto_interno"><h:outputText value=""  /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="150" bgcolor="#d1d2d3"><span class="texto_interno"><h:outputText value="" rendered="" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#d1d2d3" class="texto_interno"><h:outputText value="" /></td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{(status.index %2 != 0) and (status.index > 0)}">
+                                <tr>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td width="150" bgcolor="#FFFFFF" class="texto_interno"><h:outputText value=""  /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="22" height="18" class="numeros_gris"><h:outputText value="" /></td>
+                                    <td width="150" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="" rendered="" /></span></td>
+                                    <td bgcolor="#FFFFFF"><h:graphicImage url="" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                    <td bgcolor="#FFFFFF" class="texto_interno"><h:outputText value="" /></td>
+                                    <td width="30" bgcolor="#d1d2d3">
+                                        <a href="#">
+                                            <img src="resources/ligues/img/carruselResultHome/+info.png" width="30" height="16" alt="+info"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </h:panelGroup>
+                        </c:forEach>
+
+                    </table>
+                </div>
+            </h:panelGroup>
+            
+            <div class="clasif"> 
+                <a href="#">
+                    <img src="resources/ligues/img/carruselResultHome/clasif.png" width="1020" height="24" alt=""/>
+                </a>
+            </div>
+            
+            FIN LISTA PARTIDOS   
+
+            <h:panelGroup id="mensajeNohayPartidos" rendered="#{carruselHomeBean.totalListaPartidos1 == 0 and carruselHomeBean.totalListaPartidos2 == 0}">
+                <div class="square-left" style="width:550px;margin-left: 320px">
+                    <p style="font-size: 15px; color:#FFFFFF; font-family:arial black;font-weight:lighter; margin-top: 50px"> 
+                        No hay partidos disponibles para esta Categoría
+                    </p>
+                </div>
+            </h:panelGroup>
+
+        </div>-->
+
+
+    </h:form>
+</ui:composition>

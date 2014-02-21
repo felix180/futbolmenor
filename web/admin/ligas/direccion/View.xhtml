@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDireccionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDireccionLabel_id}"/>
+                    <h:outputText value="#{direccionController.selected.id}" title="#{bundle.ViewDireccionTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_direccion}"/>
+                    <h:outputText value="#{direccionController.selected.direccion}" title="#{bundle.ViewDireccionTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_telefono1}"/>
+                    <h:outputText value="#{direccionController.selected.telefono1}" title="#{bundle.ViewDireccionTitle_telefono1}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_telefono2}"/>
+                    <h:outputText value="#{direccionController.selected.telefono2}" title="#{bundle.ViewDireccionTitle_telefono2}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_email}"/>
+                    <h:outputText value="#{direccionController.selected.email}" title="#{bundle.ViewDireccionTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_paginaWeb}"/>
+                    <h:outputText value="#{direccionController.selected.paginaWeb}" title="#{bundle.ViewDireccionTitle_paginaWeb}"/>
+                    <h:outputText value="#{bundle.ViewDireccionLabel_localidadId}"/>
+                    <h:outputText value="#{direccionController.selected.localidadId}" title="#{bundle.ViewDireccionTitle_localidadId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{direccionController.destroyAndView}" value="#{bundle.ViewDireccionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDireccionEditLink}"/>
+                <br />
+                <h:commandLink action="#{direccionController.prepareCreate}" value="#{bundle.ViewDireccionCreateLink}" />
+                <br />
+                <h:commandLink action="#{direccionController.prepareList}" value="#{bundle.ViewDireccionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDireccionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

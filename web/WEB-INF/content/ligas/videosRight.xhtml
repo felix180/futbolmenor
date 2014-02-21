@@ -1,0 +1,101 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <!-- init sidebar -->
+
+    <ui:repeat var="video" value="#{ligaBean.videosLiga}" varStatus="status">
+        <h:panelGroup id="videos" rendered="#{status.index == 0}">
+            <li class="blocks-holder" style="min-height: 10px;margin-top: -30px;margin-left: 25px;width:300px">
+                <p class="block-title" style="text-align: center;font-size: 15px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                    Videos
+                </p>
+            </li>
+        </h:panelGroup>
+        <ul class="blocks-holder" style="width: 335px;margin-bottom: -90px">
+            <li class="block-3">
+                <ul  class="gallery four-cols" >
+                    <li class="filter-autumn">
+                        <!--<span></span>-->
+                        <object type="application/x-shockwave-flash" style="width:272px;height:180px" data="#{video.url}" allowfullscreen="true" >
+                            <param name="movie" value="#{video.url}" />
+                        </object> 
+                        <em>#{video.titulo}</em>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ui:repeat>
+    
+    <h:panelGroup id="contactosLiga" rendered="#{ligaBean.entity.direccionId.paginaWeb == null || ligaBean.entity.direccionId.paginaWeb == 'No tiene'}">
+        <li class="blocks-holder" style="min-height: 10px;margin-top: 0px;margin-left: 25px;width:300px">
+        <p class="block-title" style="text-align: center;font-size: 15px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+            Contactos <br/>#{ligaBean.entity.nombre}
+        </p>
+    </li>
+        <ul class="blocks-holder" style="width: 335px;margin-bottom: -90px">
+            <li class="block-3">
+                <ul  class="gallery four-cols" >
+                    <li class="filter-autumn">
+                            <span></span>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                Dirección: 
+                            </p>
+                            <p style="text-align: center; font-size: 15px;" class="texto_interno">#{ligaBean.entity.direccionId.direccion}</p>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                Teléfono(s): 
+                            </p>
+                            <p style="text-align: center; font-size: 14px;" class="texto_interno">#{ligaBean.entity.direccionId.telefono1} / #{ligaBean.entity.direccionId.telefono2}</p>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                e-mail: 
+                            </p>
+                            <p style="text-align: center; font-size: 14px;" class="texto_interno">#{ligaBean.entity.direccionId.email}</p>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                Web Site: #{ligaBean.entity.direccionId.paginaWeb}
+                            </p>
+                            <p style="text-align: center; font-size: 14px;" class="texto_interno">#{ligaBean.entity.direccionId.paginaWeb}</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </h:panelGroup>
+
+    <h:panelGroup id="contactos" rendered="#{ligaBean.entity.direccionId.paginaWeb != null and ligaBean.entity.direccionId.paginaWeb != 'No tiene'}">
+        <li class="blocks-holder" style="min-height: 10px;margin-top: 0px;margin-left: 25px;width:300px">
+        <p class="block-title" style="text-align: center;font-size: 15px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+            Contactos <br/>#{ligaBean.entity.nombre}
+        </p>
+    </li>
+        <ul class="blocks-holder" style="width: 335px;margin-bottom: -90px">
+            <li class="block-3">
+                <ul class="gallery four-cols" >
+                    <li class="filter-autumn">
+                        <a href="#{ligaBean.entity.direccionId.paginaWeb}" target="_blank">
+                            <span></span>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                Dirección: 
+                            </p>
+                            <p style="text-align: center; font-size: 15px;" class="texto_interno">#{ligaBean.entity.direccionId.direccion}</p>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                Teléfono(s): 
+                            </p>
+                            <p style="text-align: center; font-size: 14px;" class="texto_interno">#{ligaBean.entity.direccionId.telefono1} / #{ligaBean.entity.direccionId.telefono2}</p>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                e-mail: 
+                            </p>
+                            <p style="text-align: center; font-size: 14px;" class="texto_interno">#{ligaBean.entity.direccionId.email}</p>
+                            <p style="text-align: center; font-size: 11px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold;">
+                                Web Site: #{ligaBean.entity.direccionId.paginaWeb}
+                            </p>
+                            <p style="text-align: center; font-size: 14px;" class="texto_interno">#{ligaBean.entity.direccionId.paginaWeb}</p>
+                        </a>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </h:panelGroup>
+
+</ui:composition>

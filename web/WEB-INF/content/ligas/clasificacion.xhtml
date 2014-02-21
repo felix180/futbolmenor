@@ -1,0 +1,389 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:form>
+
+
+        <!--                <table>
+                            <tr>
+                                <td>
+                                    <h1>
+                                        <img src="resources/ligues/img/publicidad/patrocinate-tabs.png" class="left-align boxed" alt="img"/>
+                                    </h1>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height:200px;">
+                                    <div class="calend-resultados" >
+                                        INICIO CATEGORIAS
+                                        <ui:repeat var="categoria" value="#{ligaBean.categorias}" varStatus="status">
+                                            <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="categoria-w-#{status.index+1}" title="#{categoria.nombre}" rendered="#{ligaBean.idCategoria != categoria.id}">
+                                                <div></div>
+                                                <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                                                <f:param name="tab" value="tab2"/>
+                                            </h:commandLink>
+                                            <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="categoria-v-#{status.index+1}" title="#{categoria.nombre}" rendered="#{ligaBean.idCategoria == categoria.id}">
+                                                <div></div>
+                                                <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                                                <f:param name="tab" value="tab2"/>
+                                            </h:commandLink>
+                                        </ui:repeat>
+                                        FIN CATEGORIAS
+                
+                                        INICIO FASES
+                
+                                        <div class="fase" style="width:450px">
+                                            <span style="color:#FFFFFF; font-size: 11px; font-family:Arial;font-weight: bold;">Seleccione una Fase: </span>
+                                            <h:form id="formSelectedFase">
+                                                <h:selectOneMenu value="#{ligaBean.selectedFase}" onchange="submit()"
+                                                                 valueChangeListener="#{ligaBean.faseChanged}" style="width: 130px" title="Seleccione una Fase">
+                                                    <f:selectItems value="#{ligaBean.fasesInMap}" />
+                                                </h:selectOneMenu>
+                                            </h:form>
+                                        </div>
+                                        FIN FASES
+                
+                                                                <div class="octavos">
+                                                                    <a href="#">
+                                                                        <img src="resources/ligues/img/calendario/octavos.png" width="94" height="13" border="0" alt=""/>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="cuartos">
+                                                                    <a href="#">
+                                                                        <img src="resources/ligues/img/calendario/cuartos.png" width="93" height="13" border="0" alt=""/>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="semifinal">
+                                                                    <a href="#">
+                                                                        <img src="resources/ligues/img/calendario/semifinal.png" width="93" height="13" border="0" alt=""/>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="final">
+                                                                    <a href="#">
+                                                                        <img src="resources/ligues/img/calendario/final.png" width="96" height="13" border="0" alt=""/>
+                                                                    </a>
+                                                                </div>
+                
+                                        INICIO JORNADAS
+                                        <h:panelGroup id="jornadasGroup" rendered="#{ligaBean.totalGrupos > 0}">
+                                            <div class="jornada" style="width:450px;margin-left:-15px;">
+                                                <span style="color:#FFFFFF; font-size: 11px; font-family:Arial;font-weight: bold;">Seleccione una Jornada: </span>
+                                                <h:selectOneMenu value="#{ligaBean.selectedJornada}" onchange="submit()"
+                                                                 valueChangeListener="#{ligaBean.jornadaChangedTab2}" style="width: 60px" title="Seleccione una Jornada">
+                                                    <f:selectItems value="#{ligaBean.jornadasInMap}" />
+                                                </h:selectOneMenu>
+                                            </div>
+                                        </h:panelGroup>
+                                        FIN JORNADAS
+                
+                                        INICIO GRUPOS
+                                        <h:panelGroup id="grupos" rendered="#{ligaBean.totalGrupos > 0}">
+                                            <ui:repeat var="grupo" value="#{ligaBean.listaGrupos}" varStatus="status">
+                                                <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="grup-#{status.index+1}-green" title="#{grupo.nombre}" 
+                                                               rendered="#{grupo.id == ligaBean.idGrupo}">
+                                                    <div></div>
+                                                    <f:param name="idSelectedGrupo" value="#{grupo.id}"/>
+                                                    <f:param name="tab" value="tab2"/>
+                                                </h:commandLink>
+                
+                                                <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="grup-#{status.index+1}-gray" title="#{grupo.nombre}" 
+                                                               rendered="#{grupo.id != ligaBean.idGrupo}">
+                                                    <div></div>
+                                                    <f:param name="idSelectedGrupo" value="#{grupo.id}"/>
+                                                    <f:param name="tab" value="tab2"/>
+                                                </h:commandLink>
+                                            </ui:repeat>
+                                        </h:panelGroup>
+                                        FIN GRUPOS
+                
+                                        INICIO LLAVES
+                                        <h:panelGroup id="llaves" rendered="#{ligaBean.totalLlaves > 0}">
+                                            <ui:repeat var="llave" value="#{ligaBean.listaLlaves}" varStatus="status">
+                                                <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="grup-#{status.index+1}-green" title="#{llave.nombre}" 
+                                                               rendered="#{llave.id == ligaBean.idLlave}">
+                                                    <div></div>
+                                                    <f:param name="idSelectedLlave" value="#{llave.id}"/>
+                                                    <f:param name="tab" value="tab2"/>
+                                                </h:commandLink>
+                
+                                                <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="grup-#{status.index+1}-gray" title="#{llave.nombre}" 
+                                                               rendered="#{llave.id != ligaBean.idLlave}">
+                                                    <div></div>
+                                                    <f:param name="idSelectedLlave" value="#{llave.id}"/>
+                                                    <f:param name="tab" value="tab2"/>
+                                                </h:commandLink>
+                                            </ui:repeat>
+                                        </h:panelGroup>
+                                        FIN LLAVES
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    INICIO CLASIFICACION
+                                    <div style="margin-top:-4px">
+                                        <h:panelGroup id="hayClasificacion" rendered="#{ligaBean.totalPartidos != 0}">
+                                            <table width="665">
+                                                <tr class="texto_interno3">
+                                                    <td bgcolor="#E5E5E5" class="texto_interno3" colspan="2" rowspan="2">EQUIPO</td>
+                                                    <td bgcolor="#E5E5E5" colspan="7">Total</td>
+                                                    <td bgcolor="#E5E5E5" colspan="7">Local</td>
+                                                    <td bgcolor="#E5E5E5" colspan="7">Visitante</td>
+                                                </tr>
+                
+                                                <tr class="texto_interno3">
+                                                    <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                                    <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                                    <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                                    <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                                    <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                                    <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                                    <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                                    <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                                    <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                                    <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                                    <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                                </tr>
+                
+                                                <ui:repeat var="posicion" value="#{ligaBean.clasificacion}" varStatus ="status">
+                                                    <tr>  
+                                                        <td class="texto_interno">#{status.index+1}</td>
+                                                        <td class="texto_interno">#{posicion.equipoName}</td>
+                                                        <td style="text-align: center;">#{posicion.jjugados}</td>
+                                                        <td style="text-align: center;">#{posicion.jganados}</td>
+                                                        <td style="text-align: center;">#{posicion.jempatados}</td>
+                                                        <td style="text-align: center;">#{posicion.jperdidos}</td>
+                                                        <td style="text-align: center;">#{posicion.gfavor}</td>
+                                                        <td style="text-align: center;">#{posicion.gcontra}</td>
+                                                        <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntos}</td>
+                                                        <td style="text-align: center;">#{posicion.jjugadosLocal}</td>
+                                                        <td style="text-align: center;">#{posicion.jganadosLocal}</td>
+                                                        <td style="text-align: center;">#{posicion.jempatadosLocal}</td>
+                                                        <td style="text-align: center;">#{posicion.jperdidosLocal}</td>
+                                                        <td style="text-align: center;">#{posicion.gfavorLocal}</td>
+                                                        <td style="text-align: center;">#{posicion.gcontraLocal}</td>
+                                                        <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntosLocal}</td>
+                                                        <td style="text-align: center;">#{posicion.jjugadosVisitante}</td>
+                                                        <td style="text-align: center;">#{posicion.jganadosVisitante}</td>
+                                                        <td style="text-align: center;">#{posicion.jempatadosVisitante}</td>
+                                                        <td style="text-align: center;">#{posicion.jperdidosVisitante}</td>
+                                                        <td style="text-align: center;">#{posicion.gfavorVisitante}</td>
+                                                        <td style="text-align: center;">#{posicion.gcontraVisitante}</td>
+                                                        <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntosVisitante}</td>
+                                                    </tr> 
+                                                </ui:repeat>
+                
+                                            </table>
+                                        </h:panelGroup>
+                                        <h:panelGroup id="mensajeNohayClasificacion" rendered="#{ligaBean.totalPartidos == 0}">
+                                            <div class="square-left" style="margin-left: 130px;">
+                                                <p style="font-size: 15px; color:#000000; font-family:arial black;font-weight:lighter; margin-top: 30px; "> 
+                                                    No hay información disponible para esta Categoría
+                                                </p>
+                                            </div>
+                                        </h:panelGroup>
+                                    </div>
+                                    FIN CLASIFICACION
+                                </td>
+                            </tr>
+                        </table>-->
+
+        <table style="border-bottom: 0px; border-left: 0px">
+            <tr>
+                <td style="border-bottom: 0px; border-left: 0px">
+                    <h1>
+                        <img src="resources/ligues/img/publicidad/patrocinate-tabs.png" class="left-align boxed" alt="img"/>
+                    </h1>
+                </td>
+            </tr>
+            <tr>
+                <td style="border-bottom: 0px; border-left: 0px">
+                    <table>
+                        <ui:repeat var="category" value="#{ligaBean.classification}" varStatus ="statusCat">
+                           
+                            <ui:repeat var="grupo" value="#{category.allGrupos}" varStatus ="statusGroup">
+                                <tr>
+                                    <td style="border-bottom: 0px; border-left: 0px">
+                                        <table  style="margin-top: -25px">
+                                            <tr height="70">
+                                                <td width="120" style="vertical-align: top; border-bottom: 0px; border-left: 0px">
+                                                    <img src="resources/ligues/img/calendario/categorias/categoria_#{statusCat.index+1}.png" title="Categoría #{category.nombre}"/>
+                                                </td>
+                                                <td style="padding-top:25px; border-bottom: 0px; border-left: 0px">
+                                                    <p class="block-title" style="text-align: left;font-size: 15px; border-color:black; text-transform: uppercase; color:#39B549; line-height:18px; font-family:arial black; font-weight:bold;">
+                                                        <h:outputLabel value="#{grupo.nombre}"/> 
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-bottom: 0px; border-left: 0px">
+                                        <table style="margin-top:-40px">
+                                            <tr>
+                                                <td class="texto_interno3" bgcolor="#E5E5E5" style="border-bottom: 0px; border-left: 0px; width:8%; height:25px">
+                                                    <h:outputLabel value="Jornada"/>
+                                                </td>
+                                                <ui:repeat var="jornada" value="#{grupo.jornadaList}" varStatus ="statusJornada">
+                                                    <h:panelGroup id="jornadaActual" rendered="#{jornada.isCurrent == 1}">
+                                                        <td id="jornadaSelected#{statusCat.index+1}#{statusGroup.index+1}#{statusJornada.index+1}"  style="border-bottom: 0px; border-left: 2px solid #FFFFFF; width:4%; text-align: center;" class="texto_interno4" bgcolor="#39B549">
+                                                            <a onclick="showJornada(#{ligaBean.entity.id},#{category.id}, #{grupo.id}, #{jornada.id}, #{statusCat.index+1}#{statusGroup.index+1}, #{statusJornada.index+1}, #{grupo.totalJornadas});" title="Jornada #{jornada.numero}">
+                                                                <h:outputLabel value="#{jornada.numero}" style="color:#FFFFFF; cursor: pointer"  rendered="#{jornada.isCurrent == 1}" title="Jornada #{jornada.numero}" class="texto_interno4"/>
+                                                            </a>
+                                                        </td>
+                                                    </h:panelGroup>
+                                                    <h:panelGroup id="jornadasAll" rendered="#{jornada.isCurrent != 1}">
+                                                        <td id="jornadaSelected#{statusCat.index+1}#{statusGroup.index+1}#{statusJornada.index+1}" style="border-bottom: 0px; border-left: 2px solid #FFFFFF; width:4%; text-align: center;" class="texto_interno5" bgcolor="#8B8B8B">
+                                                            <a onclick="showJornada(#{ligaBean.entity.id},#{category.id}, #{grupo.id}, #{jornada.id}, #{statusCat.index+1}#{statusGroup.index+1}, #{statusJornada.index+1}, #{grupo.totalJornadas});" title="Jornada #{jornada.numero}">
+                                                                <h:outputLabel id="textSelected#{statusCat.index+1}#{statusGroup.index+1}#{statusJornada.index+1}" value="#{jornada.numero}" class="texto_interno5"/>
+                                                            </a>
+                                                        </td>
+                                                    </h:panelGroup>
+                                                </ui:repeat> 
+                                            </tr>
+                                        </table>
+                                        <div id="cargaAjax#{statusCat.index+1}#{statusGroup.index+1}">
+                                            <table style="border-bottom: 0px; border-left: 0px">
+                                                <tr>
+                                                    <td style="border-bottom: 0px; border-left: 0px">
+                                                        <table width="665" style="border-bottom: 0px; border-left: 0px; margin-top:-20px">
+                                                            <tr class="texto_interno3">
+                                                                <td bgcolor="#E5E5E5" class="texto_interno3" colspan="2" rowspan="2">EQUIPO</td>
+                                                                <td bgcolor="#E5E5E5" colspan="7">Total</td>
+                                                                <td bgcolor="#E5E5E5" colspan="7">Local</td>
+                                                                <td bgcolor="#E5E5E5" colspan="7">Visitante</td>
+                                                            </tr>
+                                                            <tr class="texto_interno3">
+                                                                <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                                                <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                                                <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                                                <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                                                <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                                                <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                                                <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Jugados">pj</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Ganados">pg</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Empatados">pe</td>
+                                                                <td bgcolor="#E5E5E5" title="Partidos Perdidos">pp</td>
+                                                                <td bgcolor="#E5E5E5" title="Goles a Favor">gf</td>
+                                                                <td bgcolor="#E5E5E5" title="Goles en Contra">gc</td>
+                                                                <td bgcolor="#CCCCCC" title="Puntos">pt</td>
+                                                            </tr>
+                                                            <ui:repeat var="jornada" value="#{grupo.allJornadas}">
+                                                                
+                                                                <ui:repeat var="posicion" value="#{jornada.clasifica}" varStatus ="status">
+                                                                    <tr>  
+                                                                        <td class="texto_interno">#{status.index+1}</td>
+                                                                        <td class="texto_interno">#{posicion.equipoName}</td>
+                                                                        <td style="text-align: center;">#{posicion.jjugados}</td>
+                                                                        <td style="text-align: center;">#{posicion.jganados}</td>
+                                                                        <td style="text-align: center;">#{posicion.jempatados}</td>
+                                                                        <td style="text-align: center;">#{posicion.jperdidos}</td>
+                                                                        <td style="text-align: center;">#{posicion.gfavor}</td>
+                                                                        <td style="text-align: center;">#{posicion.gcontra}</td>
+                                                                        <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntos}</td>
+                                                                        <td style="text-align: center;">#{posicion.jjugadosLocal}</td>
+                                                                        <td style="text-align: center;">#{posicion.jganadosLocal}</td>
+                                                                        <td style="text-align: center;">#{posicion.jempatadosLocal}</td>
+                                                                        <td style="text-align: center;">#{posicion.jperdidosLocal}</td>
+                                                                        <td style="text-align: center;">#{posicion.gfavorLocal}</td>
+                                                                        <td style="text-align: center;">#{posicion.gcontraLocal}</td>
+                                                                        <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntosLocal}</td>
+                                                                        <td style="text-align: center;">#{posicion.jjugadosVisitante}</td>
+                                                                        <td style="text-align: center;">#{posicion.jganadosVisitante}</td>
+                                                                        <td style="text-align: center;">#{posicion.jempatadosVisitante}</td>
+                                                                        <td style="text-align: center;">#{posicion.jperdidosVisitante}</td>
+                                                                        <td style="text-align: center;">#{posicion.gfavorVisitante}</td>
+                                                                        <td style="text-align: center;">#{posicion.gcontraVisitante}</td>
+                                                                        <td bgcolor="#CCCCCC" class="texto_interno3">#{posicion.puntosVisitante}</td>
+                                                                    </tr> 
+                                                                </ui:repeat>
+                                                            </ui:repeat>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </ui:repeat>
+                        </ui:repeat>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+
+<!--        <h:panelGroup id="mensajeNohayClasificacion" rendered="#{ligaBean.totalPartidos == 0}">
+            <div class="square-left" style="margin-left: 130px;">
+                <p style="font-size: 15px; color:#000000; font-family:arial black;font-weight:lighter; margin-top: 30px; "> 
+                    No hay información disponible en esta Sección.
+                </p>
+            </div>
+        </h:panelGroup>-->
+
+    </h:form>
+
+</ui:composition>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

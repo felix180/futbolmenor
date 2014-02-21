@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewContactoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewContactoLabel_id}"/>
+                    <h:outputText value="#{contactoController.selected.id}" title="#{bundle.ViewContactoTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_apellido}"/>
+                    <h:outputText value="#{contactoController.selected.apellido}" title="#{bundle.ViewContactoTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_nombre}"/>
+                    <h:outputText value="#{contactoController.selected.nombre}" title="#{bundle.ViewContactoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_apodo}"/>
+                    <h:outputText value="#{contactoController.selected.apodo}" title="#{bundle.ViewContactoTitle_apodo}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_cargo}"/>
+                    <h:outputText value="#{contactoController.selected.cargo}" title="#{bundle.ViewContactoTitle_cargo}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_telefono1}"/>
+                    <h:outputText value="#{contactoController.selected.telefono1}" title="#{bundle.ViewContactoTitle_telefono1}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_telefono2}"/>
+                    <h:outputText value="#{contactoController.selected.telefono2}" title="#{bundle.ViewContactoTitle_telefono2}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_email}"/>
+                    <h:outputText value="#{contactoController.selected.email}" title="#{bundle.ViewContactoTitle_email}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_otro}"/>
+                    <h:outputText value="#{contactoController.selected.otro}" title="#{bundle.ViewContactoTitle_otro}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_ligaId}"/>
+                    <h:outputText value="#{contactoController.selected.ligaId}" title="#{bundle.ViewContactoTitle_ligaId}"/>
+                    <h:outputText value="#{bundle.ViewContactoLabel_clubId}"/>
+                    <h:outputText value="#{contactoController.selected.clubId}" title="#{bundle.ViewContactoTitle_clubId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{contactoController.destroyAndView}" value="#{bundle.ViewContactoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewContactoEditLink}"/>
+                <br />
+                <h:commandLink action="#{contactoController.prepareCreate}" value="#{bundle.ViewContactoCreateLink}" />
+                <br />
+                <h:commandLink action="#{contactoController.prepareList}" value="#{bundle.ViewContactoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewContactoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

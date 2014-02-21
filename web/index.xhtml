@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body  onload="MM_preloadImages('resources/ligues/img/menu_ligas/1_up.png','resources/ligues/img/menu_ligas/2_up.png','resources/ligues/img/menu_ligas/3_up.png','resources/ligues/img/menu_ligas/4_up.png','resources/ligues/img/menu_ligas/5_up.png')">
+
+        <ui:composition template="./WEB-INF/templates/homeTemplate.xhtml">
+
+            <ui:define name="titulo">
+                F&uacute;tbol Menor, A.C.
+            </ui:define>
+
+            <ui:define name="header">
+                <ui:include src="./WEB-INF/snippets/headerIndex.xhtml"/>
+            </ui:define>
+
+            <ui:define name="headerPatrocinante">
+                <ui:include src="./WEB-INF/snippets/headerPatrocinante.xhtml"/>
+            </ui:define>
+
+            <ui:define name="headerMenu">
+                <ui:include src="./WEB-INF/snippets/headerMenu.xhtml"/>
+            </ui:define>
+
+            <ui:define name="slideShow">
+                <ui:include src="./WEB-INF/content/noticias/slideShow.xhtml"/>
+            </ui:define>
+
+            <ui:define name="carruselResultados">
+                <ui:include src="./WEB-INF/content/resultados/carruselResultados.xhtml"/>
+            </ui:define>
+
+            <ui:define name="menuLigas">
+                <ui:include src="./WEB-INF/snippets/menuLigas.xhtml"/>
+            </ui:define>
+
+            <ui:define name="bloqueNoticias1">
+                <ui:include src="./WEB-INF/content/noticias/bloqueNoticias.xhtml"/>
+            </ui:define>
+
+            <ui:define name="footerNew">
+                <ui:include src="./WEB-INF/snippets/footer.xhtml"/>
+            </ui:define>
+
+        </ui:composition>
+       
+                    <h:form>
+                    <h:commandLink action="/admin/carruselHome/List" value="Show All CarruselHome Items"/>
+                </h:form>
+                <h:form>
+                    <h:commandLink action="/admin/Carrusel/carruselHome/List" value="Show All CarruselHome Items"/>
+                </h:form>
+</body>
+
+
+</html>

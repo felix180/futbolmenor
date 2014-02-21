@@ -1,0 +1,217 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:form>
+        <table>
+            <tr>
+                <td>
+                    <h1>
+                        <img src="resources/ligues/img/publicidad/patrocinate-tabs.png" class="left-align boxed" alt="img"/>
+                    </h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="equipo" style="position: relative;">
+                        <!--INICIO CATEGORIAS-->
+                        <ui:repeat var="categoria" value="#{ligaBean.categorias}" varStatus="status">
+                            <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="categoria-w-#{status.index+1}" title="#{categoria.nombre}" rendered="#{ligaBean.idCategoria != categoria.id}">
+                                <div></div>
+                                <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                                <f:param name="tab" value="tab5"/>
+                            </h:commandLink>
+                            <h:commandLink action="#{ligaBean.reloadIndexLigas}" class="categoria-v-#{status.index+1}" title="#{categoria.nombre}" rendered="#{ligaBean.idCategoria == categoria.id}">
+                                <div></div>
+                                <f:param name="idSelectedCategoria" value="#{categoria.id}"/>
+                                <f:param name="tab" value="tab5"/>
+                            </h:commandLink>
+                        </ui:repeat>
+                        <!--FIN CATEGORIAS-->
+
+                        <!--INICIO LISTA DE EQUIPOS-->
+                        <div class="escudos">
+                            <table width="660" height="115" border="1" align="center">
+                                <tr>
+                                    <td>
+                                        <ui:repeat var="equipo" value="#{ligaBean.listaEquipos}" varStatus="status">
+                                            <div style="float:left;margin-left: 6px;margin-bottom: 5px; margin-top: 5px" title="#{equipo.nombre}">
+                                                <h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{equipo.clubId.logo}" width="35" height="35"></h:graphicImage>
+                                            </div>
+                                        </ui:repeat>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--FIN LISTA DE EQUIPOS-->
+
+                        <div class="plantel"><p class="titl_plantel">Plantel</p></div>
+
+                        <div class="n-jugador">
+                            <a href="#">
+                                <img src="resources/ligues/img/equipos/n_jugador.png" width="190" height="29" border="0" alt=""/>
+                            </a>
+                        </div>
+                        <div class="date-born">
+                            <a href="#">
+                                <img src="resources/ligues/img/equipos/date_born.png" width="186" height="29" border="0" alt=""/>
+                            </a>
+                        </div>
+                        <div class="naci">
+                            <a href="#">
+                                <img src="resources/ligues/img/equipos/naci.png" width="130" height="29" border="0" alt=""/>
+                            </a>
+                        </div>
+                        <div class="alto">
+                            <a href="#">
+                                <img src="resources/ligues/img/equipos/alto.png" width="78" height="29" border="0" alt=""/>
+                            </a>
+                        </div>
+                        <div class="peso">
+                            <a href="#">
+                                <img src="resources/ligues/img/equipos/peso.png" width="81" height="29" border="0" alt=""/>
+                            </a>
+                        </div>
+
+                        <div class="detalle_equipo" style="margin-top:-4px">
+                            <table width="660">
+                                <tr>
+                                    <td colspan="5" class="numeros_gris">Defensor(es)</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="numeros_gris">Volante(s)</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="numeros_gris">Delantero(s)</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="numeros_gris">Portero(s)</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="numeros_gris">Director(es) Técnico(s) (DT)</td>
+                                </tr>
+                                <tr>
+                                    <td width="225" bgcolor="#ECECEC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td width="135" bgcolor="#ECECEC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td width="110" bgcolor="#ECECEC" class="texto_interno2">Venezuela</td>
+                                    <td width="97" bgcolor="#ECECEC" class="texto_interno2">1.55 m</td>
+                                    <td width="69" bgcolor="#ECECEC" class="texto_interno2">55 kg</td>
+                                </tr>
+                                <tr>
+                                    <td bgcolor="#DCDCDC"><span class="texto_interno">Pedro Miguel Coronado</span></td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1987-03-24 (28 años)</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">Venezuela</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">1.55 m</td>
+                                    <td bgcolor="#DCDCDC" class="texto_interno2">55 kg.</td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </h:form>
+
+</ui:composition>
+

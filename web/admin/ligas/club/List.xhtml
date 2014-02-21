@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./../../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="#{bundle.ClubTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="top">
+            <h:outputText value="#{bundle.ClubTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="#{bundle.ClubListTitle}"/>
+        </ui:define>
+        
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.CreateLink}" action="#{clubController.prepareCreate}"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                    </ul>
+                </div>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ClubListEmpty}" rendered="#{clubController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{clubController.items.rowCount > 0}">
+                    <h:outputText value="#{clubController.pagination.pageFirstItem + 1}..#{clubController.pagination.pageLastItem + 1}/#{clubController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{clubController.previous}" value="#{bundle.Previous} #{clubController.pagination.pageSize}" rendered="#{clubController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{clubController.next}" value="#{bundle.Next} #{clubController.pagination.pageSize}" rendered="#{clubController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{clubController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ClubTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ClubTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionId.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ClubTitle_localidad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccionId.localidadId.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{clubController.prepareView}" value="#{bundle.ViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clubController.prepareEdit}" value="#{bundle.EditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{clubController.prepareDestroy}" value="#{bundle.DeleteLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,85 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:form>
+
+        <div id="showCalendarJornada">
+            <h:panelGroup id="listaCalendario" rendered="#{jornadaCalendarBean.totalPartidoList == 0}">
+                <div class="square-left" style="margin-left: 130px;margin-bottom: 50px;">
+                    <p style="aling-text: center; font-size: 12px; color:#000000; font-family:arial black;font-weight:lighter; margin-top: 20px; "> 
+                        No hay Calendario disponible para esta Jornada.
+                    </p>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup id="mensajeNohayCalendario" rendered="#{jornadaCalendarBean.totalPartidoList > 0}">  
+                <table style="border-bottom: 0px; border-left: 0px">
+                    <tr>
+                        <td style="border-bottom: 0px; border-left: 0px">
+
+                            <table width="665" style="border-bottom: 0px; border-left: 0px; margin-top:-20px">
+                                <tr>
+                                    <td style="border-bottom: 0px; border-left: 0px">
+                                        <table width="665">
+                                            <tr>
+                                                <td colspan="9" class="texto_interno3" bgcolor="#d9d9da"></td>     
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="texto_interno3" bgcolor="#d9d9da" style="height:18px;">LOCAL</td>
+                                                <td colspan="2" class="texto_interno3" bgcolor="#d9d9da">RESULTADO</td>
+                                                <td colspan="2" class="texto_interno3" bgcolor="#d9d9da">VISITANTE</td>
+                                                <td class="texto_interno3" bgcolor="#d9d9da">STATUS</td>
+                                                <td class="texto_interno3" bgcolor="#d9d9da">FECHA - HORA</td>
+                                                <td class="texto_interno3" bgcolor="#d9d9da">ESTADIO</td>     
+                                            </tr>
+                                            <tr>
+                                                <td colspan="9" class="texto_interno3" bgcolor="#d9d9da"></td>     
+                                            </tr>
+                                            <ui:repeat var="partido" value="#{jornadaCalendarBean.partidoList}" varStatus ="status">
+                                                <h:panelGroup id="datosPares" rendered="#{status.index %2 == 0}">
+                                                    <tr>
+                                                        <td width="31" height="28" bgcolor="#d9d9da"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                                        <td width="151" height="28" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}"></h:outputText></span></td>
+                                                        <td width="25" height="28" bgcolor="#FFFFFF" class="puntuacion"><h:outputText value="#{partido.golEq1}"></h:outputText></td>
+                                                        <td width="25" height="28" bgcolor="#FFFFFF" class="puntuacion"><h:outputText value="#{partido.golEq2}"></h:outputText></td>
+                                                        <td width="155" height="28" bgcolor="#FFFFFF"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}"></h:outputText></span></td>
+                                                        <td width="27" height="28" bgcolor="#d9d9da"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                                        <td width="80" height="28" bgcolor="#FFFFFF" class="texto_interno" style="text-align:center"><h:outputText value="#{partido.statusString}"></h:outputText></td>
+                                                        <td width="80" height="28" bgcolor="#FFFFFF"  style="text-align:center"><span class="texto_interno"><h:outputText value="#{partido.fecha}"><f:convertDateTime pattern="dd/MM/yyyy - HH:mm" /></h:outputText></span></td>
+                                                        <td width="51" height="28" bgcolor="#FFFFFF" class="texto_interno" style="text-align:center" title="Estadio: #{partido.canchaId.nombre} - Ciudad: #{partido.canchaId.direccionId.localidadId.nombre}"><span class="texto_interno"><h:outputText value="#{partido.canchaId.nombre}"></h:outputText>
+                                                            </span></td>
+                                                    </tr>
+                                                </h:panelGroup>
+                                                <h:panelGroup id="datosImpares" rendered="#{status.index %2 != 0}">
+                                                    <tr>
+                                                        <td width="31" height="28" bgcolor="#d9d9da"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo1Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                                        <td width="151" height="28" bgcolor="#F5F5F5"><span class="texto_interno"><h:outputText value="#{partido.equipo1Id.nombre}" rendered="#{partido.equipo1Id.clubId.nombre != ''}"></h:outputText></span></td>
+                                                        <td width="25" height="28" bgcolor="#F5F5F5" class="puntuacion"><h:outputText value="#{partido.golEq1}" ></h:outputText></td>
+                                                        <td width="25" height="28" bgcolor="#F5F5F5" class="puntuacion"><h:outputText value="#{partido.golEq2}" ></h:outputText></td>
+                                                        <td width="155" height="28" bgcolor="#F5F5F5"><span class="texto_interno"><h:outputText value="#{partido.equipo2Id.nombre}" rendered="#{partido.equipo2Id.clubId.nombre != ''}"></h:outputText></span></td>
+                                                        <td width="27" height="28" bgcolor="#d9d9da"><h:graphicImage url="#{clubController.IMAGE_RETURN}thumb_#{partido.equipo2Id.clubId.logo}" width="28" height="28" class="img_escudos"></h:graphicImage></td>
+                                                        <td width="80" height="28" bgcolor="#F5F5F5" class="texto_interno" style="text-align:center"><h:outputText value="#{partido.statusString}"></h:outputText></td>
+                                                        <td width="80" height="28" bgcolor="#F5F5F5"  style="text-align:center"><span class="texto_interno"><h:outputText value="#{partido.fecha}"><f:convertDateTime pattern="dd/MM/yyyy - HH:mm" /></h:outputText></span></td>
+                                                        <td width="51" height="28" bgcolor="#F5F5F5" class="texto_interno" style="text-align:center" title="Estadio: #{partido.canchaId.nombre} - Ciudad: #{partido.canchaId.direccionId.localidadId.nombre}"><span class="texto_interno"><h:outputText value="#{partido.canchaId.nombre}"></h:outputText>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </h:panelGroup>
+                                            </ui:repeat>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </h:panelGroup>
+        </div>
+
+
+    </h:form>
+
+</ui:composition>
+

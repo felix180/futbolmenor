@@ -1,0 +1,61 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <!-- post -->
+    <!-- POSTS -->
+    <h:form>
+        <!-- post -->
+        <h:panelGroup rendered="#{mainPageBean.items.rowCount > 0}">
+            <div style="width: 90%; margin-top: 30px; margin-bottom: 10px; text-align: right;margin-right: 20px;">
+                <p>
+                    <strong>
+                        <h:outputText value="Resultados: #{mainPageBean.pagination.pageFirstItem + 1} - #{mainPageBean.pagination.pageLastItem + 1} de #{mainPageBean.pagination.itemsCount}"/>
+                    </strong>
+                </p>
+            </div>
+            <ui:repeat var="noticia" value="#{mainPageBean.items}">
+                <div class="post">
+                    <h:commandLink action="#{mainPageBean.verMas}">
+                        <p style="background-image:url(resources/ligues/img/bg_tit.png); background-position: 0 0; text-transform: uppercase; color:#000000; font-weight:bold; background-repeat: no-repeat;display: block;font-size: 17px;height: 27px;padding-top: 8px;text-decoration: none;text-indent: 28px;">   
+                            <h:outputText value="#{noticia.titulo}"/>
+                        </p>
+                    </h:commandLink>
+                    <div class="post-img">
+                        <h:commandLink action="#{mainPageBean.verMas}">
+                            <h:graphicImage url="#{noticiaBean.IMAGE_RETURN}#{noticia.foto}" width="557" height="244"></h:graphicImage>  
+                        </h:commandLink>
+                    </div>
+                    <div class="excerpt">
+                        <p>
+                            <strong><h:outputText value="#{noticia.pretitulo}"/> </strong>
+                            <h:outputText value="#{noticia.comentario}"/>
+                        </p>
+                    </div>
+                    <ul class="meta">
+                        <li class="date">
+                            <h:outputText value="#{noticia.lugar}, "/>
+                            <h:outputText value="#{noticia.fecha}">
+                                <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                            </h:outputText>
+                        </li>
+                        <li class="author"><h:outputText value="#{noticia.autor}"/></li>
+                    </ul>
+                    <p><h:commandLink action="#{mainPageBean.verMas}" styleClass="more">+ info</h:commandLink></p>
+                </div>
+            </ui:repeat>
+
+            <!-- blog-pager -->
+            <ul class="blog-pager" style="width:400px;margin-left: 50px">
+                <li><h:commandLink action="#{mainPageBean.previous}" value="#{bundle.Previous} #{mainPageBean.pagination.pageSize}" rendered="#{mainPageBean.pagination.hasPreviousPage}"/></li>
+                <li><h:commandLink action="#{mainPageBean.next}" value="#{bundle.Next} #{mainPageBean.pagination.pageSize}" rendered="#{mainPageBean.pagination.hasNextPage}"/></li>
+            </ul>
+            <!-- ENDS blog-pager -->	
+            <!-- ENDS POSTS -->
+
+        </h:panelGroup>
+        <!-- ENDS post -->
+
+    </h:form>
+</ui:composition>

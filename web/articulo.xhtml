@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/secondPagesTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Columnistas en Fútbol Menor
+            </ui:define>
+
+            <ui:define name="header">
+                <ui:include src="./WEB-INF/snippets/header.xhtml"/>
+            </ui:define>
+
+            <ui:define name="subheader">
+                <h2>Los Columnistas de Fútbol Menor</h2>
+            </ui:define>
+
+            <ui:define name="izquierda">
+                <h:panelGroup layout="block">
+                    <h:outputText value="La opinión de nuestros columnistas"/><p/>
+                    <h:outputText value="#{flash.mainColumnistasBean.cronica.cronistaId.columna}" 
+                                  style="font-size: 2.0em; font-weight: bold; color: #AAA; text-decoration: underline;"/><p/>
+                    <p:graphicImage value="#{mainColumnistasBean.streamedImageByCronicaId}" width="530">
+                        <f:param name="id" value="#{flash.mainColumnistasBean.cronica.id}"/>
+                    </p:graphicImage>
+                    <p/>
+                    <h:outputText value="#{flash.mainColumnistasBean.cronica.titulo}" style="font-size: 2.0em; font-weight: bold;"/>
+                    <p/>
+                    <h:outputText value="#{flash.mainColumnistasBean.cronica.fecha}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>
+                    <p/>
+                    <h:outputText value="#{flash.mainColumnistasBean.cronica.cuerpo}" escape="false"/>
+                </h:panelGroup>
+            </ui:define>
+
+            <ui:define name="derecha">
+                derecha
+            </ui:define>
+
+            <ui:define name="footer">
+                footer
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

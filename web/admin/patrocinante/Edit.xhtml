@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Patrocinantes
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Patrocinantes
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                Editar un Patrocinante
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="columnForm" enctype="multipart/form-data" >
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="Agregar Artículo" action="#{patrocinanteBean.prepareCreate}"/></li>
+                            <li><h:commandLink value="Eliminar Artículo" action="#{patrocinanteBean.prepareDestroyFromView}"/></li>
+                            <li><h:commandLink value="Listar Artículos" action="#{patrocinanteBean.prepareList}"/></li>
+                            <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h:panelGrid columns="2" styleClass="crear">
+                        <h:outputLabel value="Nombre patrocinante: "/>
+                        <h:inputText id="patrocinante" value="#{patrocinanteBean.entity.nombre}" style="width: 600px"/>
+
+                        <h:outputLabel value="Logo: "/>
+                        <p:fileUpload value="#{patrocinanteBean.uploadedFile}" mode="simple" style="width: 450px;"/>
+
+                        <h:outputLabel value="Comentario: "/>
+                        <h:inputTextarea id="comentario" value="#{patrocinanteBean.entity.comentario}" rows="3" style="width: 600px;"/>
+
+                        <h:outputLabel value="Activo: "/>
+                        <h:selectBooleanCheckbox value="#{patrocinanteBean.activo}"/>
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="3">
+                        <h:commandButton value="Guardar" action="#{patrocinanteBean.update}"/>
+                        <h:outputText value="&nbsp;" style="width: 50px;"/>
+                        <h:commandButton value="Cancelar" action="#{patrocinanteBean.prepareList}" immediate="true"/>
+                    </h:panelGrid> 
+                    <h:messages style="color: red;"/>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

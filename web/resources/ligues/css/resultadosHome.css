@@ -1,0 +1,725 @@
+div.carrusel {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 1020px;
+	height: 347px;
+	background-image: url(../img/carruselResultHome/bg.png);
+}
+
+/*PRE-INFANTIL B*/
+
+a.categoriaHome-w-1 {
+	position:absolute;
+	left:0px;
+	top:74px;
+	width:60px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_preb_w.png);
+        
+}
+
+a.categoriaHome-v-1 {
+	position:absolute;
+	left:0px;
+	top:74px;
+	width:60px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_preb_v.png);
+        
+}
+
+a.categoriaHome-w-1:hover{
+	background-image: url(../img/carruselResultHome/bt_preb_v.png);
+}
+
+/*PRE-INFANTIL A*/
+
+a.categoriaHome-w-2 {
+	position:absolute;
+	left:60px;
+	top:74px;
+	width:71px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_prea_w.png);
+}
+
+a.categoriaHome-v-2 {
+	position:absolute;
+	left:60px;
+	top:74px;
+	width:71px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_prea_v.png);
+}
+
+a.categoriaHome-w-2:hover{
+	background-image: url(../img/carruselResultHome/bt_prea_v.png);
+}
+
+/*INFANTIL C*/
+
+a.categoriaHome-w-3 {
+	position:absolute;
+	left:131px;
+	top:74px;
+	width:72px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_infc_w.png);
+}
+
+a.categoriaHome-v-3 {
+	position:absolute;
+	left:131px;
+	top:74px;
+	width:72px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_infc_v.png);
+}
+
+a.categoriaHome-w-3:hover{
+	background-image: url(../img/carruselResultHome/bt_infc_v.png);
+}
+
+/*INFANTIL B*/
+
+a.categoriaHome-w-4 {
+	position:absolute;
+	left:203px;
+	top:74px;
+	width:77px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_infb_w.png);
+}
+
+a.categoriaHome-v-4 {
+	position:absolute;
+	left:203px;
+	top:74px;
+	width:77px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_infb_v.png);
+}
+
+a.categoriaHome-w-4:hover{
+	background-image: url(../img/carruselResultHome/bt_infb_v.png);
+}
+
+/*INFANTIL A*/
+
+a.categoriaHome-w-5 {
+	position:absolute;
+	left:280px;
+	top:74px;
+	width:74px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_infa_w.png);
+}
+
+a.categoriaHome-v-5{
+	position:absolute;
+	left:280px;
+	top:74px;
+	width:74px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_infa_v.png);
+}
+
+a.categoriaHome-w-5:hover{
+	background-image: url(../img/carruselResultHome/bt_infa_v.png);
+}
+
+/*JUVENIL*/
+
+a.categoriaHome-w-6 {
+	position:absolute;
+	left:354px;
+	top:74px;
+	width:84px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_juv_w.png);
+}
+
+a.categoriaHome-v-6 {
+	position:absolute;
+	left:354px;
+	top:74px;
+	width:84px;
+	height:86px;
+        background-image: url(../img/carruselResultHome/bt_juv_v.png);
+}
+
+a.categoriaHome-w-6:hover{
+	background-image: url(../img/carruselResultHome/bt_juv_v.png);
+}
+
+div.fase {
+	position: absolute;
+	left: 438px;
+	top: 74px;
+	width: 85px;
+	height: 20px;
+	margin-left: 135px;
+	
+}
+
+div.octav {
+	position:absolute;
+	left:643px;
+	top:74px;
+	width:94px;
+	height:20px;
+}
+
+div.cuart {
+	position:absolute;
+	left:737px;
+	top:74px;
+	width:92px;
+	height:20px;
+}
+
+div.sem-f {
+	position:absolute;
+	left:829px;
+	top:74px;
+	width:93px;
+	height:20px;
+}
+
+div.final {
+	position:absolute;
+	left:922px;
+	top:74px;
+	width:98px;
+	height:20px;
+}
+
+div.bt-juv-w012 {
+	position:absolute;
+	left:438px;
+	top:94px;
+	width:1px;
+	height:66px;
+}
+
+/*LLAVE*/
+
+a.llave-gray {
+	position:absolute;
+	left:439px;
+	top:94px;
+	width:80px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/llave-gray.png);
+}
+
+a.llave-green {
+	position:absolute;
+	left:439px;
+	top:94px;
+	width:80px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/llave-green.png);
+}
+
+a.llave-gray:hover{
+	background-image: url(../img/carruselResultHome/llave-green.png);
+}
+
+/*GRUPO 1*/
+
+a.grup1-gray {
+	position:absolute;
+	left:439px;
+	top:94px;
+	width:80px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup1-gray.png);
+}
+
+a.grup1-green {
+	position:absolute;
+	left:439px;
+	top:94px;
+	width:80px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup1-green.png);
+}
+
+a.grup1-gray:hover{
+	background-image: url(../img/carruselResultHome/grup1-green.png);
+}
+
+/*GRUPO 2*/
+
+a.grup2-gray {
+	position:absolute;
+	left:519px;
+	top:94px;
+	width:70px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup2-gray.png);
+}
+
+a.grup2-green {
+	position:absolute;
+	left:519px;
+	top:94px;
+	width:70px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup2-green.png);
+}
+
+a.grup2-gray:hover{
+	background-image: url(../img/carruselResultHome/grup2-green.png);
+}
+
+/*GRUPO 3*/
+
+a.grup3-gray {
+	position:absolute;
+	left:589px;
+	top:94px;
+	width:72px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup3-gray.png);
+}
+
+a.grup3-green {
+	position:absolute;
+	left:589px;
+	top:94px;
+	width:72px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup3-green.png);
+}
+
+a.grup3-gray:hover{
+	background-image: url(../img/carruselResultHome/grup3-green.png);
+}
+
+/*GRUPO 4*/
+
+a.grup4-gray {
+	position:absolute;
+	left:661px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup4-gray.png);
+}
+
+a.grup4-green {
+	position:absolute;
+	left:661px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup4-green.png);
+}
+
+a.grup4-gray:hover{
+	background-image: url(../img/carruselResultHome/grup4-green.png);
+}
+
+/*GRUPO 5*/
+
+a.grup5-gray {
+	position:absolute;
+	left:732px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup5-gray.png);
+}
+
+a.grup5-green {
+	position:absolute;
+	left:732px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup5-green.png);
+}
+
+a.grup5-gray:hover{
+	background-image: url(../img/carruselResultHome/grup5-green.png);
+}
+
+/*GRUPO 6*/
+
+a.grup6-gray {
+	position:absolute;
+	left:803px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup6-gray.png);
+}
+
+a.grup6-green {
+	position:absolute;
+	left:803px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup6-green.png);
+}
+
+a.grup6-gray:hover{
+	background-image: url(../img/carruselResultHome/grup6-green.png);
+}
+
+/*GRUPO 7*/
+
+a.grup7-gray {
+	position:absolute;
+	left:874px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup7-gray.png);
+}
+
+a.grup7-green {
+	position:absolute;
+	left:874px;
+	top:94px;
+	width:71px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup7-green.png);
+}
+
+a.grup7-gray:hover{
+	background-image: url(../img/carruselResultHome/grup7-green.png);
+}
+
+/*GRUPO 8*/
+
+a.grup8-gray {
+	position:absolute;
+	left:945px;
+	top:94px;
+	width:75px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup8-gray.png);
+}
+
+a.grup8-green {
+	position:absolute;
+	left:945px;
+	top:94px;
+	width:75px;
+	height:26px;
+        background-image: url(../img/carruselResultHome/grup8-green.png);
+}
+
+a.grup8-gray:hover{
+	background-image: url(../img/carruselResultHome/grup8-green.png);
+}
+
+/*GRUPO 9*/
+
+a.grup9-gray {
+	position:absolute;
+	left:439px;
+	top:120px;
+	width:80px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup9-gray.png);
+}
+
+a.grup9-green {
+	position:absolute;
+	left:439px;
+	top:120px;
+	width:80px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup9-green.png);
+}
+
+a.grup9-gray:hover{
+	background-image: url(../img/carruselResultHome/grup9-green.png);
+}
+
+/*GRUPO 10*/
+
+a.grup10-gray {
+	position:absolute;
+	left:519px;
+	top:120px;
+	width:70px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup10-gray.png);
+}
+
+a.grup10-green {
+	position:absolute;
+	left:519px;
+	top:120px;
+	width:70px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup10-green.png);
+}
+
+a.grup10-gray:hover{
+	background-image: url(../img/carruselResultHome/grup10-green.png);
+}
+
+/*GRUPO 11*/
+
+a.grup11-gray {
+	position:absolute;
+	left:589px;
+	top:120px;
+	width:72px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup11-gray.png);
+}
+
+a.grup11-green {
+	position:absolute;
+	left:589px;
+	top:120px;
+	width:72px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup11-green.png);
+}
+
+a.grup11-gray:hover{
+	background-image: url(../img/carruselResultHome/grup11-green.png);
+}
+
+/*GRUPO 12*/
+
+a.grup12-gray {
+	position:absolute;
+	left:661px;
+	top:120px;
+	width:71px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup12-gray.png);
+}
+
+a.grup12-green {
+	position:absolute;
+	left:661px;
+	top:120px;
+	width:71px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup12-green.png);
+}
+
+a.grup12-gray:hover{
+	background-image: url(../img/carruselResultHome/grup12-green.png);
+}
+
+/*GRUPO 13*/
+
+a.grup13-gray {
+	position:absolute;
+	left:732px;
+	top:120px;
+	width:71px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup13-gray.png);
+}
+
+a.grup13-green {
+	position:absolute;
+	left:732px;
+	top:120px;
+	width:71px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup13-green.png);
+}
+
+a.grup13-gray:hover{
+	background-image: url(../img/carruselResultHome/grup13-green.png);
+}
+
+/*GRUPO 14*/
+
+a.grup14-gray {
+	position:absolute;
+	left:803px;
+	top:120px;
+	width:71px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup14-gray.png);
+}
+
+a.grup14-green {
+	position:absolute;
+	left:803px;
+	top:120px;
+	width:71px;
+	height:40px;
+        background-image: url(../img/carruselResultHome/grup14-green.png);
+}
+
+a.grup14-gray:hover{
+	background-image: url(../img/carruselResultHome/grup14-green.png);
+}
+
+/*GRUPO 15*/
+
+a.grup15-gray {
+	position:absolute;
+	left:874px;
+	top:120px;
+	width:71px;
+	height:27px;
+        background-image: url(../img/carruselResultHome/grup15-gray.png);
+}
+
+a.grup15-green {
+	position:absolute;
+	left:874px;
+	top:120px;
+	width:71px;
+	height:27px;
+        background-image: url(../img/carruselResultHome/grup15-green.png);
+}
+
+a.grup15-gray:hover{
+	background-image: url(../img/carruselResultHome/grup15-green.png);
+}
+
+/*GRUPO 16*/
+
+a.grup16-gray {
+	position:absolute;
+	left:945px;
+	top:120px;
+	width:75px;
+	height:27px;
+        background-image: url(../img/carruselResultHome/grup16-gray.png);
+}
+
+a.grup16-green {
+	position:absolute;
+	left:945px;
+	top:120px;
+	width:75px;
+	height:27px;
+        background-image: url(../img/carruselResultHome/grup16-green.png);
+}
+
+a.grup16-gray:hover{
+	background-image: url(../img/carruselResultHome/grup16-green.png);
+}
+
+div.jornada {
+	position: absolute;
+	left: 874px;
+	top: 147px;
+	width: 90px;
+	height: 13px;
+	margin-left: 65px;
+	margin-top: -1px;
+}
+
+div.square-left {
+	position: absolute;
+	left: 6px;
+	top: 190px;
+	width: 475px;
+	height: 125px;
+	margin-top: -10px;
+}
+
+div.square-right {
+	position: absolute;
+	left: 524px;
+	top: 190px;
+	width: 474px;
+	height: 125px;
+	margin-top: -10px;
+}
+
+div.clasif {
+	position:absolute;
+	left:0px;
+	top:323px;
+	width:1020px;
+	height:24px;
+}
+#apDifv1 {
+	position: absolute;
+	width: 200px;
+	height: 115px;
+	z-index: 1;
+}
+#patro_carrusel {
+	height: 75px;
+	width: 1100px;
+}
+#titl_carrusel {
+	position: absolute;
+	width: 674px;
+	height: 74px;
+	z-index: 1;
+	float: right;
+	left: 346px;
+	top: -2px;
+}
+
+<!-- tablas resultados -->
+.tabla_left {
+	height: 125px;
+	width: 475px;
+}
+.numeros_gris {
+	text-align: center;
+	background: #464547;
+/*	background: -webkit-gradient(linear, top, bottom, from(#6d6e71), to(#383637));
+	background: -moz-linear-gradient(top,  #6d6e71,  #383637);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d6e71', endColorstr='#383637', GradientType=1);*/
+	color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.numeros_amarillos {
+	text-align: center;
+	background: #DC993D;
+/*	background: -webkit-gradient(linear, top, bottom, from(#fbb040), to(#704933));
+	background: -moz-linear-gradient(top,  #fbb040,  #704933);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb040', endColorstr='#704933', GradientType=1);
+	*/
+        color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.numeros_rojos {
+	text-align: center;
+	background: #941E2D;;
+/*	background: -webkit-gradient(linear, top, bottom, from(#be1e2d), to(#661e2d));
+	background: -moz-linear-gradient(top,  #be1e2d,  #661e2d);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#be1e2d', endColorstr='#661e2d', GradientType=1);
+	*/
+        color: #FFF;
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+<!-- END tablas resultados -->
+
+
+.tabla_right {
+	margin-top: -10px;
+}
+.texto_interno {
+	font-family: "Arial Narrow", "Arial Narrow Bold", Arial;
+	font-size: 12px;
+	color: #000;
+}
+
+a.categoria-w-6:hover{
+	background-image: url(../img/calendario/junv_v.png);
+}

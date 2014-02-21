@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de la Galería
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de la Galería
+            </ui:define>
+
+            <ui:define name="content">
+                <h:panelGroup>
+                    <h:form id="galeryForm" enctype="multipart/form-data">
+                        <h:panelGrid columns="2" styleClass="crear">
+                            <h:outputLabel value="Imagen: "/>
+                            <p:fileUpload value="#{galeriaBean.uploadedFile}" mode="simple"/>
+                            <h:outputLabel value=" "/>
+                            <h:commandButton value="Cargar Imagen" action="#{galeriaBean.upload}"/>
+                            
+                            <h:outputLabel value="Fecha: "/>
+                            <p:calendar value="#{galeriaBean.entity.fecha}" pattern="dd/MM/yyyy HH:mm" />
+                            <h:outputLabel value="Descripción: "/>
+                            <h:inputText value="#{galeriaBean.entity.descripcion}"/>
+                            
+                        </h:panelGrid>
+                        <h:commandButton value="Guardar" action="#{galeriaBean.create}"/>
+                        <h:messages style="color: red;"/>
+                        <p/>
+                        <ul>
+                            <li><h:commandLink value="Listar galería" action="List"/></li>
+                            <li><h:commandLink value="Retornar al index" action="/index"/></li>
+                        </ul>
+                    </h:form>
+                </h:panelGroup>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

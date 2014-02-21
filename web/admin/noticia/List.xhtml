@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Noticias
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Noticias
+            </ui:define>
+
+            <ui:define name="tituloContent">Listado de Noticias</ui:define>
+            <ui:define name="content">
+
+                <h:form id="noticiaForm">
+
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="Crear Noticia" action="#{noticiaBean.prepareCreate}"/></li>
+                            <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h:panelGroup>
+                        <p:dataTable var="item" value="#{noticiaBean.items}" style="width: 600px; font-size: 0.9em"
+                                     paginator="true" rows="10"  
+                                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+                            <p:column headerText="Fecha">
+                                <h:outputText value="#{item.fecha}">
+                                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Autor">
+                                <h:outputText value="#{item.autor}"/>
+                            </p:column>
+                            <p:column headerText="Título">
+                                <h:outputText value="#{item.titulo}"/>
+                            </p:column>
+                            <p:column headerText="Liga">
+                                <h:outputText value="#{item.ligaId.nombre}"/>
+                            </p:column>
+                            <p:column headerText="Principal">
+                                <h:outputText value="#{item.principal}"/>
+                            </p:column>
+                            <p:column headerText="Acciones">
+                                <h:commandLink value="Editar" action="#{noticiaBean.prepareEdit}"/>
+                                &nbsp;
+                                <p:commandLink value="Eliminar" action="#{noticiaBean.prepareDestroy}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                        <h:messages style="color: red;"/>
+                    </h:panelGroup>
+                    <p />
+                    <ul>
+
+                    </ul>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+
+</html>
+

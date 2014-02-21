@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/templates/secondPagesTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Videos de Fútbol Menor
+            </ui:define>
+
+            <ui:define name="header">
+                <ui:include src="./WEB-INF/snippets/header.xhtml"/>
+            </ui:define>
+
+            <ui:define name="subheader">
+                <h2>Los videos de Fútbol Menor</h2>
+            </ui:define>
+
+            <ui:define name="izquierda">
+                <h:form>
+                    <h:panelGroup layout="block">
+                        <ui:repeat var="video" value="#{videoPagesBean.items}">
+                            <h:panelGrid columns="2">
+                                <h:panelGroup>
+                                    <h:commandLink action="#{videoPagesBean.verMas}" styleClass="package">
+                                        <p:graphicImage value="#{videoPagesBean.streamedImageById}" width="220" height="180">
+                                            <f:param name="id" value="#{video.id}"/>
+                                        </p:graphicImage>
+                                    </h:commandLink>
+                                </h:panelGroup>
+                                <h:panelGroup>
+                                    <h:panelGrid columns="2">
+                                        <h:outputLabel value="Descripción: "/>
+                                        <h:outputText value="#{video.descripcion}"/>
+                                        <h:outputLabel value="Fecha: "/>
+                                        <h:outputText value="#{video.fecha}">
+                                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                        </h:outputText>
+                                    </h:panelGrid>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ui:repeat>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="derecha">
+                derecha
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

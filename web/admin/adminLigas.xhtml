@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Ligas 
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Ligas
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                Administración de Ligas
+            </ui:define>
+
+            <ui:define name="content">
+                <br/>
+                <table>
+                    <tr>
+                        <td>
+                            <h:link outcome="/admin/ligas/liga/List?faces-redirect=true">
+                                <h:graphicImage name="link_ligas.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/ligas/localidad/List?faces-redirect=true">
+                                <h:graphicImage name="link_localidad.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/ligas/categoria/List?faces-redirect=true">
+                                <h:graphicImage name="link_categorias.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/ligas/club/List?faces-redirect=true">
+                                <h:graphicImage name="link_club.png" library="images"/>
+                            </h:link>
+                        </td>
+                        <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/ligas/equipo/List?faces-redirect=true">
+                                <h:graphicImage name="link_equipos.png" library="images"/>
+                            </h:link>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h:link outcome="/admin/ligas/cancha/List?faces-redirect=true">
+                                <h:graphicImage name="link_canchas.png" library="images"/>
+                            </h:link>
+                        </td>
+                                                <td>
+                            <h:graphicImage name="space_table.gif" library="images"/>
+                        </td>
+                        <td>
+                            <h:link outcome="/admin/carruselHome/List?faces-redirect=true">
+                                <h:graphicImage name="link_config.png" library="images"/>
+                            </h:link>
+                        </td>
+                    </tr>
+                </table>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

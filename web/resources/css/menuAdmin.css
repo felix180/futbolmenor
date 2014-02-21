@@ -1,0 +1,80 @@
+/* 
+    Document   : menuAdmin
+    Created on : 15-oct-2012, 16:49:48
+    Author     : jgcastillo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*Menu vertical*/
+.arrowgreen{
+    width: 150px; /*width of menu*/
+    border-style: solid solid none solid;
+    border-color: #94AA74;
+    /*border-size: 1px;*/
+    border-width: 1px;
+}
+
+.arrowgreen ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.arrowgreen li a{
+    font: bold 12px Verdana, Arial, Helvetica, sans-serif;
+    display: block;
+    background: transparent url("#{resource['images:arrowgreen.gif']}") 100% 0;
+    height: 24px; /*Set to height of bg image- padding within link (ie: 32px - 4px - 4px)*/
+    padding: 4px 0 4px 10px;
+    line-height: 24px; /*Set line-height of bg image- padding within link (ie: 32px - 4px - 4px)*/
+    text-decoration: none;
+}	
+
+.arrowgreen li a:link, .arrowgreen li a:visited {
+    color: #5E7830;
+}
+
+.arrowgreen li a:hover{
+    color: #26370A;
+    background-position: 100% -32px;
+}
+
+
+.arrowgreen li a.selected{
+    color: #26370A;
+    background-position: 100% -64px;
+}
+
+/*Barra de menu Horizontal*/
+.hovermenu ul{
+    font: bold 13px arial;
+    padding-left: 0;
+    margin-left: 0;
+    height: 20px;
+}
+
+.hovermenu ul li{
+    list-style: none;
+    display: inline;
+}
+
+.hovermenu ul li a{
+    padding: 2px 0.5em;
+    text-decoration: none;
+    float: left;
+    color: #5E7830;
+    background-color: #FFF2BF;
+    border: 2px solid #94AA74;
+}
+
+.hovermenu ul li a:hover{
+    background-color: #FFE271;
+    border-style: outset;
+}
+
+html>body .hovermenu ul li a:active{ /* Apply mousedown effect only to NON IE browsers */
+    border-style: inset;
+}
+
+

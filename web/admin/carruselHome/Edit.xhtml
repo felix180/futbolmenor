@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+        <ui:define name="titulo">
+            <h:outputText value="Editar Configuración Carrusel de Resultados Home"></h:outputText>
+        </ui:define>
+
+        <ui:define name="top">
+            <h:outputText value="Configuración Carrusel de Resultados Home"></h:outputText>
+        </ui:define>
+
+        <ui:define name="tituloContent">
+            <h:outputText value="Editar Configuración Carrusel de Resultados Home"/>
+        </ui:define>
+        
+        <ui:define name="content">
+            <h:form>
+                <div class="hovermenu">
+                    <ul>
+                        <li><h:commandLink value="#{bundle.ListLink}" action="#{carruselHomeController.prepareList}" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.LigasLink}" action="/admin/adminLigas?faces-redirect=true" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true" immediate="true"/></li>
+                        <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true" immediate="true"/></li>
+                    </ul>
+                </div>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Liga" for="liga" />
+                    <h:selectOneMenu id="liga" value="#{carruselHomeController.selected.ligaId}" 
+                                     title="Seleccione una Liga" required="true" requiredMessage="Seleccione una Liga">
+                        <f:selectItems value="#{ligaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Fecha Inicio" for="fechaInicio" />
+                    <p:calendar value="#{carruselHomeController.selected.fechaInicio}" pattern="dd/MM/yyyy HH:mm" required="true" requiredMessage="Seleccione la Fecha de Inicio"/>
+                    <h:outputLabel value="Fecha Fin" for="fechaFin" />
+                    <p:calendar value="#{carruselHomeController.selected.fechaFin}" pattern="dd/MM/yyyy HH:mm" required="true" requiredMessage="Seleccione la Fecha Fin"/>
+                    <h:outputLabel value="Fecha Config." for="fecha" />
+                    <p:calendar value="#{carruselHomeController.selected.fechaConfig}" pattern="dd/MM/yyyy HH:mm" required="true" requiredMessage="Seleccione la Fecha de Configuración"/>
+                </h:panelGrid>
+                <h:panelGrid columns="3">
+                    <h:commandButton action="#{carruselHomeController.update}" value="#{bundle.OKLink}" />
+                    <h:outputText value="&nbsp;"/>
+                    <h:commandButton action="#{carruselHomeController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                </h:panelGrid>
+            </h:form>
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+
+<!--
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCarruselHomeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCarruselHomeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{carruselHomeController.selected.id}" title="#{bundle.EditCarruselHomeTitle_id}" required="true" requiredMessage="#{bundle.EditCarruselHomeRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditCarruselHomeLabel_ligaId}" for="ligaId" />
+                    <h:inputText id="ligaId" value="#{carruselHomeController.selected.ligaId}" title="#{bundle.EditCarruselHomeTitle_ligaId}" required="true" requiredMessage="#{bundle.EditCarruselHomeRequiredMessage_ligaId}"/>
+                    <h:outputLabel value="#{bundle.EditCarruselHomeLabel_fechaInicio}" for="fechaInicio" />
+                    <h:inputText id="fechaInicio" value="#{carruselHomeController.selected.fechaInicio}" title="#{bundle.EditCarruselHomeTitle_fechaInicio}" required="true" requiredMessage="#{bundle.EditCarruselHomeRequiredMessage_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCarruselHomeLabel_fechaFin}" for="fechaFin" />
+                    <h:inputText id="fechaFin" value="#{carruselHomeController.selected.fechaFin}" title="#{bundle.EditCarruselHomeTitle_fechaFin}" required="true" requiredMessage="#{bundle.EditCarruselHomeRequiredMessage_fechaFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCarruselHomeLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{carruselHomeController.selected.fecha}" title="#{bundle.EditCarruselHomeTitle_fecha}" required="true" requiredMessage="#{bundle.EditCarruselHomeRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{carruselHomeController.update}" value="#{bundle.EditCarruselHomeSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditCarruselHomeViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{carruselHomeController.prepareList}" value="#{bundle.EditCarruselHomeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditCarruselHomeIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>-->

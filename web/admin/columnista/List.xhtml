@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                Administración de Columnistas
+            </ui:define>
+
+            <ui:define name="top">
+                Administración de Columnistas
+            </ui:define>
+            
+            <ui:define name="tituloContent">Listado de Columnistas</ui:define>
+            <ui:define name="content">
+                <h:form id="noticiaForm">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="Agregar Columnista" action="#{columnistaBean.prepareCreate}"/></li>
+                            <li><h:commandLink value="Administración" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="Principal" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <h:panelGroup>
+                        <p:dataTable var="item" value="#{columnistaBean.items}" style="width: 600px;">
+                            <p:column headerText="Cronista" style="width: 200px;">
+                                <h:outputText value="#{item.nombre} #{item.apellido}">
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Alias">
+                                <h:outputText value="#{item.alias}"/>
+                            </p:column>
+                            <p:column headerText="Columna">
+                                <h:outputText value="#{item.columna}"/>
+                            </p:column>
+                            
+                            <p:column headerText="Acciones">
+                                <h:commandLink value="Ver" action="#{columnistaBean.prepareView}"/>
+                                &nbsp;
+                                <h:commandLink value="Editar" action="#{columnistaBean.prepareEdit}"/>
+                                &nbsp;
+                                <p:commandLink value="Eliminar" action="#{columnistaBean.prepareDestroy}"/>
+                            </p:column>
+                        </p:dataTable>
+                        <h:messages style="color: red;"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

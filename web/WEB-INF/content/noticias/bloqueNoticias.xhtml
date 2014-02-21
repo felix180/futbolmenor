@@ -1,0 +1,105 @@
+<ui:composition 
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:form id="bloqueNoticias">
+
+
+        <table style="margin-top:-250px;border-top:0px; " >
+            <tr style="border-top:0px; border-bottom: 0px; border-left: 0px;">
+                <td colspan="2" style="border-top:0px; border-bottom: 0px; border-left: 0px;">
+                    <table style="border-top:0px; ">
+                        <tr style="border-top:0px; border-bottom: 0px; border-left: 0px;">
+                            <td style="border-top:0px; border-bottom: 0px; border-left: 0px;">
+                                <a href="http://www.balonazos.com/" target="_blank">
+                                    <img title="Balonazos" src="resources/ligues/img/publicidad/logo-balonazos.jpg" alt="" width="510" height="130" style="margin-top:290px;"/> 
+                                </a>
+                            </td>
+                            <td style="border-top:0px; border-bottom: 0px; border-left: 0px;">
+                                <img src="resources/ligues/img/publicidad/patrocinante-news2.png" alt="" width="510" height="120" style="margin-top:290px;"/>     	
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top; border-bottom: 0px; border-left: 0px;">
+                    <ul class="blocks-holder" style="width:620px;border: 0px red solid; padding-top: 0;">
+                        <ui:repeat var="noticia" value="#{mainPageBean.noticiasHome}">
+                            <li class="block-1">
+                                <h:commandLink action="#{mainPageBean.verMasHome}">
+                                    <p class="block-title" style="font-size: 18px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold; height: 60px;">  
+                                        <h:outputText value="#{noticia.titulo}"/>
+                                    </p>
+                                </h:commandLink>
+                                <div class="thumb-holder" >
+                                    <div class="img-holder thumb" style="background-color: #E1E1E1">
+                                        <h:commandLink action="#{mainPageBean.verMasHome}">
+                                            <h:graphicImage url="#{noticiaBean.IMAGE_RETURN}#{noticia.foto}" width="270" height="110" style="margin-top: 30px"></h:graphicImage>  
+                                        </h:commandLink>
+                                    </div>
+                                    <p class="thumb-text" style="height: 65px;">
+                                        <h:outputText value=" #{fn:substring(noticia.comentario, 0, 140)}"/>
+                                        <h:outputText value="(...)" rendered="#{fn:length(noticia.comentario) > 140 }" />
+                                    </p>
+                                    <p><h:commandLink action="#{mainPageBean.verMasHome}" styleClass="more">+ info</h:commandLink></p>
+                                </div>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                    <!-- ENDS blocks 1-->
+                </td>
+                <td  style="vertical-align: top; border-bottom: 0px;">
+                    <ul class="blocks-holder" style="width: 335px;">
+                        <li class="block-3">
+                            <p class="block-title custom">Escuchanos en radio</p>
+                            <ul class="gallery four-cols" >
+                                <li class="filter-autumn">
+                                    <a href="#" onclick="Popup=window.open('http://www.lorini.net/streaming/clientes/radiodeporte.htm','Popup','toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no, width=600,height=195,left=300,top=300'); return false;" title="Escúchanos en radio">
+                                        <span></span>
+                                        <img src="resources/ligues/img/audio.png" alt="Escúchanos en radio" title=""/>
+                                    </a>
+                                    <em>Radio Deporte 1590 AM</em>
+                                </li>
+                            </ul>
+                            <div class="thumb-holder">
+                                <p><a href="#" onclick="Popup=window.open('http://www.lorini.net/streaming/clientes/radiodeporte.htm','Popup','toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no, width=600,height=195,left=300,top=300'); return false;" title="Escúchanos en radio" class="more">+ info</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="blocks-holder" style="width: 335px;">
+                        <li class="block-3">
+                            <p class="block-title custom">Videos</p>
+                            <ui:repeat var="video" value="#{mainPageBean.videos}" varStatus="status">
+                                <ul class="gallery four-cols" >
+                                    <li class="filter-autumn">
+                                        <!--                                    <span></span>-->
+
+                                        <object type="application/x-shockwave-flash" style="width:272px;height:180px" data="#{video.url}" allowfullscreen="true" >
+                                            <param name="movie" value="#{video.url}" />
+                                        </object> 
+                                        <em>#{video.titulo}</em>
+
+                                    </li>
+                                </ul>
+                            </ui:repeat>
+                            <div class="thumb-holder">
+                                <p><h:commandLink action="listaVideos?faces-redirect=true" class="more">+ info</h:commandLink></p>
+                            </div>
+                        </li>
+                    </ul>
+                    <!--                    <ul class="blocks-holder" style="width: 335px;height:560px;">
+                                            ESTO SE DEJO INDICADO PARA LA PUBLICIDAD QUE SE VAYA A COLOCAR EN EL FUTURO
+                                        </ul>-->
+                </td>
+            </tr>
+        </table>
+    </h:form>
+
+</ui:composition>

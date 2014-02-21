@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title><ui:insert name="titulo">Facelets Template</ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+        <div id="wrapper">
+            <!-- TOP -->
+            <ui:insert name="header">
+                Header Logo 
+            </ui:insert>
+            <!-- ENDS TOP -->
+            <!-- CONTENT -->
+            <div id="content">
+                <!-- top button -->
+                <ui:insert name="headerPatrocinante">
+                    Header Patrocinantes Principales
+                </ui:insert>
+                <!-- ENDS top button -->
+                <!-- MAIN -->
+
+                <div id="main">
+                    <!-- navigation -->                    
+                    <ui:insert name="headerMenu">
+                        Menu
+                    </ui:insert>
+                    <div class="clear"></div>
+                    <!-- ENDS navigation -->
+                    <div id="posts">
+                        <ui:insert name="listaNoticias">
+                            Lista Noticias
+                        </ui:insert>    
+                    </div>  
+                    <!-- sidebar -->
+                    <ul id="sidebar">
+                        <ui:insert name="sponsorsRight">
+                            Patrocinantes Derecha
+                        </ui:insert> 
+                        
+                        <ui:insert name="twitter">
+                            Twitter 
+                        </ui:insert> 
+                        
+                    </ul>
+                    <!-- ENDS sidebar -->
+                </div>
+                <!-- ENDS MAIN -->
+            </div>
+            <!-- ENDS CONTENT -->
+        </div>
+        <!-- ENDS WRAPPER -->
+
+        <!-- FOOTER -->
+        <ui:insert name="footerNew">
+            Footer
+        </ui:insert>
+        <!-- ENDS FOOTER -->
+        <!-- start cufon -->
+        <script type="text/javascript"> Cufon.now(); </script>
+        <!-- ENDS start cufon -->
+    </h:body>
+
+</html>
+

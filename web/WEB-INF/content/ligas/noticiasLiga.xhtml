@@ -1,0 +1,45 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:form>
+        <h1>
+            <img src="resources/ligues/img/publicidad/patrocinate-tabs.png" class="left-align boxed" alt="img"/>
+        </h1>
+        <div class="noticias-liga" style="margin-top: 460px;height:auto;">
+            <ul class="blocks-holder" style="width:620px;">
+                <ui:repeat var="noticia" value="#{ligaBean.noticiasLiga}">
+                    <li class="block-1">
+                        <h:commandLink action="#{ligaBean.selectedNoticia}">
+                            <p class="block-title" style="font-size: 18px; border-color:black; text-transform: uppercase; color:#408C22; line-height:18px; font-family:arial black; font-weight:bold; height: 60px;">    
+                                <h:outputText value="#{noticia.titulo}"/>
+                            </p>
+                            <f:param name="idSelectedNoticia" value="#{noticia.id}"/>
+                        </h:commandLink>
+                        <div class="thumb-holder">
+                            <div class="img-holder thumb" style="background-color: #E1E1E1;">
+                                <h:commandLink action="#{ligaBean.selectedNoticia}">
+                                    <h:graphicImage url="#{noticiaBean.IMAGE_RETURN}#{noticia.foto}" width="270" height="110" style="margin-top: 30px;"></h:graphicImage>  
+                                    <f:param name="idSelectedNoticia" value="#{noticia.id}"/>
+                                </h:commandLink>
+                            </div>
+                            <p class="thumb-text" style="height: 65px;">
+                                <h:outputText value=" #{fn:substring(noticia.comentario, 0, 140)}"/>
+                                <h:outputText value="(...)" rendered="#{fn:length(noticia.comentario) > 140 }" />
+                            </p>
+                            <h:commandLink action="#{ligaBean.selectedNoticia}" styleClass="more">
+                                <h:outputText value="+ info"/>
+                                <f:param name="idSelectedNoticia" value="#{noticia.id}"/>
+                            </h:commandLink>
+                        </div>
+                    </li>
+                </ui:repeat>
+            </ul>
+            <!-- ENDS blocks 1-->
+        </div>
+    </h:form>
+
+</ui:composition>
+

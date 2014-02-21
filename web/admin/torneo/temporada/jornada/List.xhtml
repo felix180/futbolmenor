@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <body>
+
+        <ui:composition template="./../../../../WEB-INF/templates/adminTemplate.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{bundle.JornadaTitle}"/>
+            </ui:define>
+
+            <ui:define name="top">
+                <h1><h:outputText value="#{bundle.JornadaTitle}"/></h1>
+            </ui:define>
+
+            <ui:define name="tituloContent">
+                <h:outputText value="#{bundle.JornadaListTitle}"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="form" styleClass="jsfcrud_list_form">
+                    <div class="hovermenu">
+                        <ul>
+                            <li><h:commandLink value="#{bundle.CreateLink}" action="#{jornadaController.prepareCreate}"/></li>
+                            <li><h:commandLink value="#{bundle.AdminLink}" action="/admin/admin?faces-redirect=true"/></li>
+                            <li><h:commandLink value="#{bundle.IndexLink}" action="/index?faces-redirect=true"/></li>
+                        </ul>
+                    </div>
+                    <br />
+
+                    <h:panelGrid columns="4">
+                        <h:outputLabel value="#{bundle.JornadaLabel_Ligas}" for="ligaId" />
+                        <h:outputLabel value="#{bundle.JornadaLabel_temporada}" for="temporadaId" />
+                        <h:outputLabel value="#{bundle.JornadaLabel_fase}" for="faseId" />
+                        <h:outputLabel value="#{bundle.JornadaLabel_grupo}" for="grupoId" />
+
+                        <h:selectOneMenu id="ligaId" value="#{jornadaController.liga}" 
+                                         title="#{bundle.JornadaTitle_liga}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_liga}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{jornadaController.ligasAvalaibleSelectOne}"/>
+                            <f:ajax render="temporadaId"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="temporadaId" value="#{jornadaController.temporada}" 
+                                         title="#{bundle.JornadaTitle_temporada}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_temporada}"
+                                         disabled="#{jornadaController.temporadaListDisabled}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{jornadaController.temporadasAvalaibleSelectOne}"/>
+                            <f:ajax render="faseId"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="faseId" value="#{jornadaController.fase}" 
+                                         title="#{bundle.JornadaTitle_fase}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_fase}"
+                                         disabled="#{jornadaController.faseListDisabled}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{jornadaController.fasesWithGrupoAvalaibleSelectOne}"/>
+                            <f:ajax render="grupoId"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu id="grupoId" value="#{jornadaController.grupo}" 
+                                         title="#{bundle.JornadaTitle_grupo}" 
+                                         required="true"
+                                         requiredMessage="#{bundle.JornadaRequiredMessage_grupo}"
+                                         disabled="#{jornadaController.grupoListDisabled}"
+                                         style="width: 180px">
+                            <f:selectItems value="#{jornadaController.gruposAvalaibleSelectOne}"/>
+                            <f:ajax render="datos"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br/>
+
+                    <h:panelGroup id="datos">
+                        <h:outputText value="#{jornadaController.pagination.pageFirstItem + 1}..#{jornadaController.pagination.pageLastItem + 1}/#{jornadaController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{jornadaController.previous}" value="#{bundle.Previous} #{jornadaController.pagination.pageSize}" rendered="#{jornadaController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{jornadaController.next}" value="#{bundle.Next} #{jornadaController.pagination.pageSize}" rendered="#{jornadaController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{jornadaController.items}" var="item" border="0" cellpadding="2"
+                                     cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" 
+                                     style="border:solid 1px"
+                                     rendered="#{!jornadaController.tableDisabled}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.JornadaTitle_liga}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.grupoId.faseId.temporadaId.ligaId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.JornadaTitle_temporada}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.grupoId.faseId.temporadaId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.JornadaTitle_fase}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.grupoId.faseId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.JornadaTitle_grupo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.grupoId.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.JornadaTitle_numero}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numero}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Jornada Actual"/>
+                                </f:facet>
+                                <h:outputText value="#{item.isCurrent}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{jornadaController.prepareEdit}" value="#{bundle.EditLink}">
+                                    <f:param name="jornadaId" value="#{item.id}"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{jornadaController.prepareDestroy}" value="#{bundle.DeleteLink}"/>
+                            </h:column>
+                        </h:dataTable>
+
+                    </h:panelGroup>
+                    <br/>
+
+                    <p:dialog header="#{bundle.JornadaDeleteTitle}" widgetVar="jornadaDialog" resizable="false" id="jornadaDlg"  
+                              showEffect="fade" hideEffect="explode" modal="true">  
+                        <h3><h:outputLabel value="#{bundle.JornadaDeleteTitle}"/></h3>
+                        <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
+                            <h:outputText value="#{bundle.JornadaLabel_grupo}:" />  
+                            <h:outputText value="#{jornadaController.selected.grupoId.nombre}" style="font-weight:bold"/>  
+
+                            <h:outputText value="#{bundle.JornadaLabel_numero}" />  
+                            <h:outputText value="#{jornadaController.selected.numero}" style="font-weight:bold"/>  
+                        </h:panelGrid>  
+                        <br/>
+                        <h:panelGrid columns="3">
+                            <h:commandButton action="#{jornadaController.destroy}" value="#{bundle.DeleteLink}" />
+                            <h:outputText value="&nbsp;"/>
+                            <h:commandButton action="#{jornadaController.prepareList}" value="#{bundle.CancelLink}" immediate="true" />
+                        </h:panelGrid>
+                    </p:dialog>
+                    <br/>
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
